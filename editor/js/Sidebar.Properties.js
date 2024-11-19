@@ -3,7 +3,7 @@ import { UITabbedPanel } from './libs/ui.js';
 import { SidebarObject } from './Sidebar.Object.js';
 import { SidebarGeometry } from './Sidebar.Geometry.js';
 import { SidebarMaterial } from './Sidebar.Material.js';
-import { SidebarScript } from './Sidebar.Script.js';
+// import { SidebarScript } from './Sidebar.Script.js';
 
 function SidebarProperties( editor ) {
 
@@ -15,7 +15,7 @@ function SidebarProperties( editor ) {
 	container.addTab( 'objectTab', strings.getKey( 'sidebar/properties/object' ), new SidebarObject( editor ) );
 	container.addTab( 'geometryTab', strings.getKey( 'sidebar/properties/geometry' ), new SidebarGeometry( editor ) );
 	container.addTab( 'materialTab', strings.getKey( 'sidebar/properties/material' ), new SidebarMaterial( editor ) );
-	container.addTab( 'scriptTab', strings.getKey( 'sidebar/properties/script' ), new SidebarScript( editor ) );
+	// container.addTab( 'scriptTab', strings.getKey( 'sidebar/properties/script' ), new SidebarScript( editor ) );
 	container.select( 'objectTab' );
 
 	function getTabByTabId( tabs, tabId ) {
@@ -30,7 +30,7 @@ function SidebarProperties( editor ) {
 
 	const geometryTab = getTabByTabId( container.tabs, 'geometryTab' );
 	const materialTab = getTabByTabId( container.tabs, 'materialTab' );
-	const scriptTab = getTabByTabId( container.tabs, 'scriptTab' );
+	// const scriptTab = getTabByTabId( container.tabs, 'scriptTab' );
 
 	function toggleTabs( object ) {
 
@@ -42,7 +42,7 @@ function SidebarProperties( editor ) {
 
 		materialTab.setHidden( ! object.material );
 
-		scriptTab.setHidden( object === editor.camera );
+		// scriptTab.setHidden( object === editor.camera );
 
 		// set active tab
 
@@ -54,11 +54,11 @@ function SidebarProperties( editor ) {
 
 			container.select( materialTab.isHidden() ? 'objectTab' : 'materialTab' );
 
-		} else if ( container.selected === 'scriptTab' ) {
+		} // else if ( container.selected === 'scriptTab' ) {
 
-			container.select( scriptTab.isHidden() ? 'objectTab' : 'scriptTab' );
+		// 	container.select( scriptTab.isHidden() ? 'objectTab' : 'scriptTab' );
 
-		}
+		// }
 
 	}
 

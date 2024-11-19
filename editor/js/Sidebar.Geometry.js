@@ -90,10 +90,10 @@ function SidebarGeometry( editor ) {
 	const geometryTypeRow = new UIRow();
 	const geometryType = new UIText();
 
-	geometryTypeRow.add( new UIText( strings.getKey( 'sidebar/geometry/type' ) ).setClass( 'Label' ) );
-	geometryTypeRow.add( geometryType );
+	// geometryTypeRow.add( new UIText( strings.getKey( 'sidebar/geometry/type' ) ).setClass( 'Label' ) );
+	// geometryTypeRow.add( geometryType );
 
-	container.add( geometryTypeRow );
+	// container.add( geometryTypeRow );
 
 	// uuid
 
@@ -107,11 +107,11 @@ function SidebarGeometry( editor ) {
 
 	} );
 
-	geometryUUIDRow.add( new UIText( strings.getKey( 'sidebar/geometry/uuid' ) ).setClass( 'Label' ) );
-	geometryUUIDRow.add( geometryUUID );
-	geometryUUIDRow.add( geometryUUIDRenew );
+	// geometryUUIDRow.add( new UIText( strings.getKey( 'sidebar/geometry/uuid' ) ).setClass( 'Label' ) );
+	// geometryUUIDRow.add( geometryUUID );
+	// geometryUUIDRow.add( geometryUUIDRenew );
 
-	container.add( geometryUUIDRow );
+	// container.add( geometryUUIDRow );
 
 	// name
 
@@ -122,10 +122,10 @@ function SidebarGeometry( editor ) {
 
 	} );
 
-	geometryNameRow.add( new UIText( strings.getKey( 'sidebar/geometry/name' ) ).setClass( 'Label' ) );
-	geometryNameRow.add( geometryName );
+	// geometryNameRow.add( new UIText( strings.getKey( 'sidebar/geometry/name' ) ).setClass( 'Label' ) );
+	// geometryNameRow.add( geometryName );
 
-	container.add( geometryNameRow );
+	// container.add( geometryNameRow );
 
 	// parameters
 
@@ -260,7 +260,6 @@ function SidebarGeometry( editor ) {
 
 			geometryUUID.setValue( geometry.uuid );
 			geometryName.setValue( geometry.name );
-
 			//
 
 			if ( currentGeometryType !== geometry.type ) {
