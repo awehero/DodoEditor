@@ -1,14 +1,13 @@
 import { UIElement } from './libs/ui.js';
 
 function Resizer( editor ) {
-
 	const signals = editor.signals;
 
 	const dom = document.createElement( 'div' );
 	dom.id = 'resizer';
 
 	function onPointerDown( event ) {
-
+		if (editor.selected.geometry.type == "ConeGeometry") return;
 		if ( event.isPrimary === false ) return;
 
 		dom.ownerDocument.addEventListener( 'pointermove', onPointerMove );
@@ -17,7 +16,7 @@ function Resizer( editor ) {
 	}
 
 	function onPointerUp( event ) {
-
+		if (editor.selected.geometry.type == "ConeGeometry") return;
 		if ( event.isPrimary === false ) return;
 
 		dom.ownerDocument.removeEventListener( 'pointermove', onPointerMove );
@@ -28,7 +27,7 @@ function Resizer( editor ) {
 	function onPointerMove( event ) {
 
 		// PointerEvent's movementX/movementY are 0 in WebKit
-
+		if (editor.selected.geometry.type == "ConeGeometry") return;
 		if ( event.isPrimary === false ) return;
 
 		const offsetWidth = document.body.offsetWidth;

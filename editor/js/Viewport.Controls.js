@@ -13,47 +13,47 @@ function ViewportControls( editor ) {
 	// camera
 
 	const cameraSelect = new UISelect();
-	cameraSelect.setMarginLeft( '10px' );
-	cameraSelect.setMarginRight( '10px' );
-	cameraSelect.onChange( function () {
+	// cameraSelect.setMarginLeft( '10px' );
+	// cameraSelect.setMarginRight( '10px' );
+	// cameraSelect.onChange( function () {
 
-		editor.setViewportCamera( this.getValue() );
+	// 	editor.setViewportCamera( this.getValue() );
 
-	} );
-	container.add( cameraSelect );
+	// } );
+	// container.add( cameraSelect );
 
-	signals.cameraAdded.add( update );
-	signals.cameraRemoved.add( update );
-	signals.objectChanged.add( function ( object ) {
+	// signals.cameraAdded.add( update );
+	// signals.cameraRemoved.add( update );
+	// signals.objectChanged.add( function ( object ) {
 
-		if ( object.isCamera ) {
+	// 	if ( object.isCamera ) {
 
-			update();
+	// 		update();
 
-		}
+	// 	}
 
-	} );
+	// } );
 
 	// shading
 
-	const shadingSelect = new UISelect();
-	shadingSelect.setOptions( { 'realistic': 'realistic', 'solid': 'solid', 'normals': 'normals', 'wireframe': 'wireframe' } );
-	shadingSelect.setValue( 'solid' );
-	shadingSelect.onChange( function () {
+	// const shadingSelect = new UISelect();
+	// shadingSelect.setOptions( { 'realistic': 'realistic', 'solid': 'solid', 'normals': 'normals', 'wireframe': 'wireframe' } );
+	// shadingSelect.setValue( 'solid' );
+	// shadingSelect.onChange( function () {
 
-		editor.setViewportShading( this.getValue() );
+	// 	editor.setViewportShading( this.getValue() );
 
-	} );
-	container.add( shadingSelect );
+	// } );
+	// container.add( shadingSelect );
 
-	signals.editorCleared.add( function () {
+	// signals.editorCleared.add( function () {
 
-		editor.setViewportCamera( editor.camera.uuid );
+	// 	editor.setViewportCamera( editor.camera.uuid );
 
-		shadingSelect.setValue( 'solid' );
-		editor.setViewportShading( shadingSelect.getValue() );
+	// 	shadingSelect.setValue( 'solid' );
+	// 	editor.setViewportShading( shadingSelect.getValue() );
 
-	} );
+	// } );
 
 	signals.cameraResetted.add( update );
 

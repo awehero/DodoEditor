@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { UIPanel, UIBreak, UIRow, UIColor, UISelect, UIText, UINumber } from './libs/ui.js';
 import { UIOutliner, UITexture } from './libs/ui.three.js';
 
+let refreshUI;
+
 function SidebarScene( editor ) {
 
 	const signals = editor.signals;
@@ -25,29 +27,29 @@ function SidebarScene( editor ) {
 
 		// opener
 
-		if ( nodeStates.has( object ) ) {
+		// if ( nodeStates.has( object ) ) {
 
-			const state = nodeStates.get( object );
+		// 	const state = nodeStates.get( object );
 
-			const opener = document.createElement( 'span' );
-			opener.classList.add( 'opener' );
+		// 	const opener = document.createElement( 'span' );
+		// 	opener.classList.add( 'opener' );
 
-			if ( object.children.length > 0 ) {
+		// 	if ( object.children.length > 0 ) {
 
-				opener.classList.add( state ? 'open' : 'closed' );
+		// 		opener.classList.add( state ? 'open' : 'closed' );
 
-			}
+		// 	}
 
-			opener.addEventListener( 'click', function () {
+		// 	opener.addEventListener( 'click', function () {
 
-				nodeStates.set( object, nodeStates.get( object ) === false ); // toggle
-				refreshUI();
+		// 		nodeStates.set( object, nodeStates.get( object ) === false ); // toggle
+		// 		refreshUI();
 
-			} );
+		// 	} );
 
-			option.insertBefore( opener, option.firstChild );
+		// 	option.insertBefore( opener, option.firstChild );
 
-		}
+		// }
 
 		return option;
 
@@ -101,15 +103,15 @@ function SidebarScene( editor ) {
 
 		let html = `<span class="type ${ getObjectType( object ) }"></span> ${ escapeHTML( object.name ) }`;
 
-		if ( object.isMesh ) {
+		// if ( object.isMesh ) {
 
-			const geometry = object.geometry;
-			const material = object.material;
+		// const geometry = object.geometry;
+		// const material = object.material;
 
-			html += ` <span class="type Geometry"></span> ${ escapeHTML( geometry.name ) }`;
-			html += ` <span class="type Material"></span> ${ escapeHTML( getMaterialName( material ) ) }`;
+		// html += ` <span class="type Geometry"></span> ${ escapeHTML( geometry.name ) }`;
+		// html += ` <span class="type Material"></span> ${ escapeHTML( getMaterialName( material ) ) }`;
 
-		}
+		// }
 
 		html += getScript( object.uuid );
 
@@ -244,12 +246,12 @@ function SidebarScene( editor ) {
 
 	} );
 
-	environmentRow.add( new UIText( strings.getKey( 'sidebar/scene/environment' ) ).setClass( 'Label' ) );
-	environmentRow.add( environmentType );
+	// environmentRow.add( new UIText( strings.getKey( 'sidebar/scene/environment' ) ).setClass( 'Label' ) );
+	// environmentRow.add( environmentType );
 
 	const environmentEquirectangularTexture = new UITexture( editor ).setMarginLeft( '8px' ).onChange( onEnvironmentChanged );
 	environmentEquirectangularTexture.setDisplay( 'none' );
-	environmentRow.add( environmentEquirectangularTexture );
+	// environmentRow.add( environmentEquirectangularTexture );
 
 	container.add( environmentRow );
 
@@ -312,48 +314,48 @@ function SidebarScene( editor ) {
 
 	} );
 
-	fogTypeRow.add( new UIText( strings.getKey( 'sidebar/scene/fog' ) ).setClass( 'Label' ) );
-	fogTypeRow.add( fogType );
+	// fogTypeRow.add( new UIText( strings.getKey( 'sidebar/scene/fog' ) ).setClass( 'Label' ) );
+	// fogTypeRow.add( fogType );
 
-	container.add( fogTypeRow );
+	// container.add( fogTypeRow );
 
 	// fog color
 
 	const fogPropertiesRow = new UIRow();
 	fogPropertiesRow.setDisplay( 'none' );
 	fogPropertiesRow.setMarginLeft( '120px' );
-	container.add( fogPropertiesRow );
+	// container.add( fogPropertiesRow );
 
 	const fogColor = new UIColor().setValue( '#aaaaaa' );
 	fogColor.onInput( onFogSettingsChanged );
-	fogPropertiesRow.add( fogColor );
+	// fogPropertiesRow.add( fogColor );
 
 	// fog near
 
 	const fogNear = new UINumber( 0.1 ).setWidth( '40px' ).setRange( 0, Infinity ).onChange( onFogSettingsChanged );
-	fogPropertiesRow.add( fogNear );
+	// fogPropertiesRow.add( fogNear );
 
 	// fog far
 
 	const fogFar = new UINumber( 50 ).setWidth( '40px' ).setRange( 0, Infinity ).onChange( onFogSettingsChanged );
-	fogPropertiesRow.add( fogFar );
+	// fogPropertiesRow.add( fogFar );
 
 	// fog density
 
 	const fogDensity = new UINumber( 0.05 ).setWidth( '40px' ).setRange( 0, 0.1 ).setStep( 0.001 ).setPrecision( 3 ).onChange( onFogSettingsChanged );
-	fogPropertiesRow.add( fogDensity );
+	// fogPropertiesRow.add( fogDensity );
 
 	//
 
-	function refreshUI() {
+	refreshUI = function refreshUI() {
 
-		const camera = editor.camera;
+		// const camera = editor.camera;
 		const scene = editor.scene;
 
 		const options = [];
 
-		options.push( buildOption( camera, false ) );
-		options.push( buildOption( scene, false ) );
+		// options.push( buildOption( camera, false ) );
+		// options.push( buildOption( scene, false ) );
 
 		( function addObjects( objects, pad ) {
 
@@ -473,7 +475,7 @@ function SidebarScene( editor ) {
 		refreshEnvironmentUI();
 		refreshFogUI();
 
-	}
+	};
 
 	function refreshFogUI() {
 
@@ -496,29 +498,29 @@ function SidebarScene( editor ) {
 
 	signals.refreshSidebarEnvironment.add( refreshUI );
 
-	signals.objectChanged.add( function ( object ) {
+	// signals.objectChanged.add( function ( object ) {
 
-		const options = outliner.options;
+	// const options = outliner.options;
 
-		for ( let i = 0; i < options.length; i ++ ) {
+	// for ( let i = 0; i < options.length; i ++ ) {
 
-			const option = options[ i ];
+	// const option = options[ i ];
 
-			if ( option.value === object.id ) {
+	// if ( option.value === object.id ) {
 
-				const openerElement = option.querySelector( ':scope > .opener' );
+	// 	const openerElement = option.querySelector( ':scope > .opener' );
 
-				const openerHTML = openerElement ? openerElement.outerHTML : '';
+	// 	const openerHTML = openerElement ? openerElement.outerHTML : '';
 
-				option.innerHTML = openerHTML + buildHTML( object );
+	// 	option.innerHTML = openerHTML + buildHTML( object );
 
-				return;
+	// 	return;
 
-			}
+	// }
 
-		}
+	// }
 
-	} );
+	// } );
 
 	signals.scriptAdded.add( function () {
 
@@ -582,4 +584,4 @@ function SidebarScene( editor ) {
 
 }
 
-export { SidebarScene };
+export { SidebarScene, refreshUI };

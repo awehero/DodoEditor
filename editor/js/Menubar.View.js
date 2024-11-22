@@ -54,7 +54,7 @@ function MenubarView( editor ) {
 
 	} ).toggleClass( 'toggle-on', states.cameraHelpers );
 
-	options.add( option );
+	// options.add( option );
 
 	// Light Helpers
 
@@ -68,7 +68,7 @@ function MenubarView( editor ) {
 
 	} ).toggleClass( 'toggle-on', states.lightHelpers );
 
-	options.add( option );
+	// options.add( option );
 
 	// Skeleton Helpers
 
@@ -82,7 +82,7 @@ function MenubarView( editor ) {
 
 	} ).toggleClass( 'toggle-on', states.skeletonHelpers );
 
-	options.add( option );
+	// options.add( option );
 
 	//
 

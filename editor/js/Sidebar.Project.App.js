@@ -16,8 +16,8 @@ function SidebarProjectApp( editor ) {
 	container.setId( 'app' );
 
 	const headerRow = new UIRow();
-	headerRow.add( new UIText( strings.getKey( 'sidebar/project/app' ).toUpperCase() ) );
-	container.add( headerRow );
+	// headerRow.add( new UIText( strings.getKey( 'sidebar/project/app' ).toUpperCase() ) );
+	// container.add( headerRow );
 
 	// Title
 
@@ -42,10 +42,10 @@ function SidebarProjectApp( editor ) {
 
 	} );
 
-	editableRow.add( new UIText( strings.getKey( 'sidebar/project/app/editable' ) ).setClass( 'Label' ) );
-	editableRow.add( editable );
+	// editableRow.add( new UIText( strings.getKey( 'sidebar/project/app/editable' ) ).setClass( 'Label' ) );
+	// editableRow.add( editable );
 
-	container.add( editableRow );
+	// container.add( editableRow );
 
 	// Play/Stop
 

@@ -141,6 +141,24 @@ function MenubarAdd( editor ) {
 	} );
 	options.add( option );
 
+	// plane
+
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/add/mesh/plane' ) );
+	option.onClick( function () {
+
+		const geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
+		const material = new THREE.MeshStandardMaterial();
+		const mesh = new THREE.Mesh( geometry, material );
+		mesh.name = 'Plane';
+		mesh.material.side = THREE.DoubleSide;
+
+		editor.execute( new AddObjectCommand( editor, mesh ) );
+
+	} );
+	options.add( option );
+
 	return container;
 
 }

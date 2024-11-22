@@ -16,6 +16,8 @@ import { SetScaleCommand } from './commands/SetScaleCommand.js';
 
 // import { SidebarObjectAnimation } from './Sidebar.Object.Animation.js';
 
+import { refreshUI } from "./Sidebar.Scene.js";
+
 function SidebarObject( editor ) {
 
 	const strings = editor.strings;
@@ -104,6 +106,8 @@ function SidebarObject( editor ) {
 	const objectName = new UIInput().setWidth( '150px' ).setFontSize( '12px' ).onChange( function () {
 
 		editor.execute( new SetValueCommand( editor, editor.selected, 'name', objectName.getValue() ) );
+		// console.log('objectName.getValue()', objectName.getValue());
+		refreshUI();
 
 	} );
 
@@ -459,6 +463,7 @@ function SidebarObject( editor ) {
 			const newScale = new THREE.Vector3( objectScaleX.getValue(), objectScaleY.getValue(), objectScaleZ.getValue() );
 			if ( object.scale.distanceTo( newScale ) >= 0.01 ) {
 
+				if (editor.selected.geometry.type == "ConeGeometry") return;
 				editor.execute( new SetScaleCommand( editor, object, newScale ) );
 
 			}

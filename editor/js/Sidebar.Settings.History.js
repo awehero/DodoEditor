@@ -15,7 +15,7 @@ function SidebarSettingsHistory( editor ) {
 
 	//
 
-	const persistent = new UIBoolean( config.getKey( 'settings/history' ), strings.getKey( 'sidebar/history/persistent' ) );
+	const persistent = new UIBoolean( config.getKey( 'settings/history', true ), strings.getKey( 'sidebar/history/persistent' ) );
 	persistent.setPosition( 'absolute' ).setRight( '8px' );
 	persistent.onChange( function () {
 

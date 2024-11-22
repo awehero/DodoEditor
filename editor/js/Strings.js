@@ -64,9 +64,9 @@ function Strings( config ) {
 			'menubar/add/group': 'Group',
 
 			// 'menubar/add/mesh': 'Mesh',
-			// 'menubar/add/mesh/plane': 'Plane',
+			'menubar/add/mesh/plane': 'Plane',
 			'menubar/add/box': 'Platform',
-			'menubar/add/end': 'End',
+			'menubar/add/end': 'Ending',
 			// 'menubar/add/mesh/circle': 'Circle',
 			'menubar/add/cylinder': 'Cylinder',
 			// 'menubar/add/mesh/ring': 'Ring',
@@ -97,7 +97,7 @@ function Strings( config ) {
 
 			'menubar/view': 'View',
 			'menubar/view/fullscreen': 'Fullscreen',
-			'menubar/view/gridHelper': 'Grid Helper',
+			'menubar/view/gridHelper': 'Grid',
 			'menubar/view/cameraHelpers': 'Camera Helpers',
 			'menubar/view/lightHelpers': 'Light Helpers',
 			'menubar/view/skeletonHelpers': 'Skeleton Helpers',

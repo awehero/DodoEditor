@@ -16,23 +16,23 @@ function SidebarProjectRenderer( editor ) {
 
 	// Antialias
 
-	const antialiasRow = new UIRow();
-	container.add( antialiasRow );
+	// const antialiasRow = new UIRow();
+	// container.add( antialiasRow );
 
-	antialiasRow.add( new UIText( strings.getKey( 'sidebar/project/antialias' ) ).setClass( 'Label' ) );
+	// antialiasRow.add( new UIText( strings.getKey( 'sidebar/project/antialias' ) ).setClass( 'Label' ) );
 
 	const antialiasBoolean = new UIBoolean( config.getKey( 'project/renderer/antialias' ) ).onChange( createRenderer );
-	antialiasRow.add( antialiasBoolean );
+	// antialiasRow.add( antialiasBoolean );
 
 	// Shadows
 
 	const shadowsRow = new UIRow();
-	container.add( shadowsRow );
+	// container.add( shadowsRow );
 
-	shadowsRow.add( new UIText( strings.getKey( 'sidebar/project/shadows' ) ).setClass( 'Label' ) );
+	// shadowsRow.add( new UIText( strings.getKey( 'sidebar/project/shadows' ) ).setClass( 'Label' ) );
 
 	const shadowsBoolean = new UIBoolean( config.getKey( 'project/renderer/shadows' ) ).onChange( updateShadows );
-	shadowsRow.add( shadowsBoolean );
+	// shadowsRow.add( shadowsBoolean );
 
 	const shadowTypeSelect = new UISelect().setOptions( {
 		0: 'Basic',
@@ -41,7 +41,7 @@ function SidebarProjectRenderer( editor ) {
 		//	3: 'VSM'
 	} ).setWidth( '125px' ).onChange( updateShadows );
 	shadowTypeSelect.setValue( config.getKey( 'project/renderer/shadowType' ) );
-	shadowsRow.add( shadowTypeSelect );
+	// shadowsRow.add( shadowTypeSelect );
 
 	function updateShadows() {
 
@@ -55,9 +55,9 @@ function SidebarProjectRenderer( editor ) {
 	// Tonemapping
 
 	const toneMappingRow = new UIRow();
-	container.add( toneMappingRow );
+	// container.add( toneMappingRow );
 
-	toneMappingRow.add( new UIText( strings.getKey( 'sidebar/project/toneMapping' ) ).setClass( 'Label' ) );
+	// toneMappingRow.add( new UIText( strings.getKey( 'sidebar/project/toneMapping' ) ).setClass( 'Label' ) );
 
 	const toneMappingSelect = new UISelect().setOptions( {
 		0: 'No',
