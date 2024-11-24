@@ -130,7 +130,6 @@ function SidebarSettingsShortcuts( editor ) {
 
 			case config.getKey( 'settings/shortcuts/scale' ):
 
-				if (editor.selected.geometry.type == "ConeGeometry") return;
 				signals.transformModeChanged.dispatch( 'scale' );
 
 				break;

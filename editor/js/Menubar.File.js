@@ -36,10 +36,10 @@ function MenubarFile( editor ) {
 		newProjectSubmenu.setDisplay( 'none' );
 
 	} );
-	options.add( newProjectSubmenuTitle );
+	// options.add( newProjectSubmenuTitle );
 
 	const newProjectSubmenu = new UIPanel().setPosition( 'fixed' ).addClass( 'options' ).setDisplay( 'none' );
-	newProjectSubmenuTitle.add( newProjectSubmenu );
+	// newProjectSubmenuTitle.add( newProjectSubmenu );
 
 	// New Project / Empty
 
@@ -53,7 +53,7 @@ function MenubarFile( editor ) {
 		}
 
 	} );
-	newProjectSubmenu.add( option );
+	options.add( option );
 
 	//
 
@@ -62,11 +62,11 @@ function MenubarFile( editor ) {
 	// New Project / ...
 
 	const examples = [
-		{ title: 'menubar/file/new/Arkanoid', file: 'arkanoid.app.json' },
+		// { title: 'menubar/file/new/Arkanoid', file: 'arkanoid.app.json' },
 		{ title: 'menubar/file/new/Camera', file: 'camera.app.json' },
-		{ title: 'menubar/file/new/Particles', file: 'particles.app.json' },
-		{ title: 'menubar/file/new/Pong', file: 'pong.app.json' },
-		{ title: 'menubar/file/new/Shaders', file: 'shaders.app.json' }
+		// { title: 'menubar/file/new/Particles', file: 'particles.app.json' },
+		// { title: 'menubar/file/new/Pong', file: 'pong.app.json' },
+		// { title: 'menubar/file/new/Shaders', file: 'shaders.app.json' }
 	];
 
 	const loader = new THREE.FileLoader();
@@ -94,7 +94,7 @@ function MenubarFile( editor ) {
 				}
 
 			} );
-			newProjectSubmenu.add( option );
+			options.add( option );
 
 		} )( i );
 
@@ -225,10 +225,10 @@ function MenubarFile( editor ) {
 		fileExportSubmenu.setDisplay( 'none' );
 
 	} );
-	options.add( fileExportSubmenuTitle );
+	// options.add( fileExportSubmenuTitle );
 
 	const fileExportSubmenu = new UIPanel().setPosition( 'fixed' ).addClass( 'options' ).setDisplay( 'none' );
-	fileExportSubmenuTitle.add( fileExportSubmenu );
+	// fileExportSubmenuTitle.add( fileExportSubmenu );
 
 	// Export DRC
 
@@ -353,7 +353,7 @@ function MenubarFile( editor ) {
 		saveString( exporter.parse( object ), 'model.obj' );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
 
 	// Export PLY (ASCII)
 
@@ -373,7 +373,7 @@ function MenubarFile( editor ) {
 		} );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
 
 	// Export PLY (BINARY)
 
@@ -393,7 +393,7 @@ function MenubarFile( editor ) {
 		}, { binary: true } );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
 
 	// Export STL (ASCII)
 
@@ -409,7 +409,7 @@ function MenubarFile( editor ) {
 		saveString( exporter.parse( editor.scene ), 'model.stl' );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
 
 	// Export STL (BINARY)
 
@@ -425,7 +425,7 @@ function MenubarFile( editor ) {
 		saveArrayBuffer( exporter.parse( editor.scene, { binary: true } ), 'model-binary.stl' );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
 
 	// Export USDZ
 
@@ -441,10 +441,158 @@ function MenubarFile( editor ) {
 		saveArrayBuffer( await exporter.parseAsync( editor.scene ), 'model.usdz' );
 
 	} );
-	fileExportSubmenu.add( option );
+	// fileExportSubmenu.add( option );
+
+	// Ice dodo exporter
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( 'Export to Ice Dodo' );
+	option.onClick( async function () {
+
+		// get file title
+		let title = editor.config.getKey( 'project/title' );
+		if ( title === '' ) title = 'Untitled';
+
+		// get all geomatry
+		const scene = editor.scene;
+		const meshes = [];
+		scene.traverse( function ( object ) {
+
+			// get all meshes
+			if ( object.isMesh ) meshes.push( object );
+
+		} );
+
+		const platforms = [];
+		const cylinders = [];
+		const cones = [];
+		const endings = [];
+		const planes = [];
+		const spheres = [];
+		let spawn = [];
+		let spawnRotation = 0;
+
+		// y rotation = dodo x rotation
+		console.log( meshes );
+		meshes.forEach( function ( mesh ) {
+
+			// console.log("ran")
+			switch ( mesh.geometry.type ) {
+
+				case 'BoxGeometry':
+					console.log( 'BoxGeometry' );
+					// push a.p([pos x, pos y, pos z],[-2.966,0.0,0.0],[8.13,0.5,14.349]);
+					platforms.push(
+						`a.p([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
+					);
+					break;
+
+				case 'SphereGeometry':
+					console.log( 'SphereGeometry' );
+					spheres.push(
+						`a.s([${mesh.position.x},${mesh.position.y},${mesh.position.z}],${mesh.geometry.parameters.radius});`
+					);
+					break;
+
+				case 'CylinderGeometry':
+					console.log( 'CylinderGeometry' );
+					cylinders.push(
+						`a.y([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.geometry.parameters.radiusTop},${mesh.geometry.parameters.radiusBottom},${mesh.scale.y},${mesh.geometry.parameters.radialSegments}]);`
+					);
+					break;
+
+				// TODO: I have no idea how these work
+				case 'PlaneGeometry':
+					console.log( 'PlaneGeometry' );
+					break;
+
+				case 'ConeGeometry':
+					if ( mesh.name !== 'Spawn (DO NOT RENAME)' ) {
+
+						console.log( 'ConeGeometry' );
+						cones.push(
+							`a.c([${mesh.position.x},${mesh.position.y},${mesh.position.z}]);`
+						);
+
+					}
+
+					break;
+
+				case 'CapsuleGeometry': // ending
+					console.log( 'ConeGeometry' );
+					endings.push(
+						`a.e([${mesh.position.x},${mesh.position.y},${mesh.position.z}]);`
+					);
+					break;
+				default:
+					alert( 'Unknown geometry' );
+					console.log( 'Unknown geometry' );
+					break;
+
+			}
+
+			if ( mesh.name === 'Spawn (DO NOT RENAME)' ) {
+
+				console.log( 'SpawnGeometry' );
+				if ( spawn.length > 0 ) {
+
+					alert( 'you can only have 1 spawn' );
+					return;
+
+				}
+
+				spawn = [ mesh.position.x, mesh.position.y, mesh.position.z ];
+				console.log( spawn );
+				spawnRotation = mesh.rotation.y + 90 * Math.PI / 180;
+
+			}
+
+		} );
+
+		if ( spawn.length === 0 ) {
+
+			alert( 'No Spawn Found, defaulting...' );
+			spawn = [ 0, 0, 0 ];
+
+		}
+
+		// TODO: maker
+		const script = `// Auto generated by Dodo Editor V0.0.2
+var map = {
+title: "${title}",
+song: "env2",
+maker: "Dododo73",
+spawn: [${spawn[0]},${spawn[1]},${spawn[2]}],
+
+init: function() {
+	// platforms
+	${platforms.join("\n\t")}
+	// cylinders
+	${cylinders.join("\n\t")}
+	// cones
+	${cones.join("\n\t")}
+	// endings
+	${endings.join("\n\t")}
+	// spheres
+	${spheres.join("\n\t")}
+	// planes
+	${planes.join("\n\t")}
+
+	rotation = ${spawnRotation};
+},
+post: function() {},
+section_id: 0,
+section_update: function() {let PZ = player.position.z;},
+reset: function() {this.section_id = 0;},
+physics_update: function() {},
+render_update: function() {}}`;
+
+		console.log( script );
+
+	} );
+	options.add( option );
 
 	//
-
 	function getAnimations( scene ) {
 
 		const animations = [];

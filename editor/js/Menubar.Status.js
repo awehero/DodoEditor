@@ -39,7 +39,7 @@ function MenubarStatus( editor ) {
 
 	} );
 
-	const version = new UIText( 'DodoEditor Alpha 0.0.1' );
+	const version = new UIText( 'DodoEditor Alpha 0.0.2' );
 	version.setClass( 'title' );
 	version.setOpacity( 0.65 );
 	container.add( version );

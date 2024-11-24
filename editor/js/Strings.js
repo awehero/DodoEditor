@@ -81,6 +81,7 @@ function Strings( config ) {
 			// 'menubar/add/mesh/lathe': 'Lathe',
 			// 'menubar/add/mesh/sprite': 'Sprite',
 			'menubar/add/cone': 'Cone',
+			'menubar/add/spawn': 'Spawn',
 
 			'menubar/add/light': 'Light',
 			'menubar/add/light/ambient': 'Ambient',

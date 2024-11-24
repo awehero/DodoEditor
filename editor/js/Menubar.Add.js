@@ -159,6 +159,26 @@ function MenubarAdd( editor ) {
 	} );
 	options.add( option );
 
+	// arrow
+
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/add/spawn' ) );
+	option.onClick( function () {
+
+		// make an arrow out of a cone
+		const geometry = new THREE.ConeGeometry( .1, .3, 16 );
+		const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		const mesh = new THREE.Mesh( geometry, material );
+		mesh.name = 'Spawn (DO NOT RENAME)';
+		mesh.rotation.x = Math.PI / -2;
+		// mesh.geometry.type = "SpawnGeometry";
+
+		editor.execute( new AddObjectCommand( editor, mesh ) );
+
+	} );
+	options.add( option );
+
 	return container;
 
 }
