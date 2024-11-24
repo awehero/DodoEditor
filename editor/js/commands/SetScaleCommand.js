@@ -36,7 +36,8 @@ class SetScaleCommand extends Command {
 	}
 
 	execute() {
-		if (editor.selected.geometry.type == "ConeGeometry") return;
+
+		if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
 		this.object.scale.copy( this.newScale );
 		this.object.updateMatrixWorld( true );
 		this.editor.signals.objectChanged.dispatch( this.object );
@@ -52,7 +53,8 @@ class SetScaleCommand extends Command {
 	}
 
 	update( command ) {
-		if (editor.selected.geometry.type == "ConeGeometry") return;
+
+		if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
 		this.newScale.copy( command.newScale );
 
 	}
