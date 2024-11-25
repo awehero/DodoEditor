@@ -82,9 +82,9 @@ function SidebarProjectApp( editor ) {
 	urlButton.setMarginLeft( '120px' );
 	urlButton.setMarginBottom( '10px' );
 	urlButton.onClick( function () {
-		getLinkOrMapfile(url);
+		getLinkOrMapfile('url');
 		});
-	function getLinkOrMapFile(which) {
+	function getLinkOrMapfile(which) {
                     var dataString = "";
                     editor.scene.children.forEach(function(object) {
                         if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
