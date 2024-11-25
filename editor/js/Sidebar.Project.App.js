@@ -189,7 +189,7 @@ function SidebarProjectApp( editor ) {
                         dataString = dataString.replace(new RegExp(pair.search, 'g'), pair.replace);
                     });
                     console.log(dataString);
-                }
+                });
                 function replaceMsgWithASCII(input) {
                         return input.replace(/msg=\{([^}]*)\}/g, (match, p1) => {
                             const asciiValues = Array.from(p1).map(char => char.charCodeAt(0));
