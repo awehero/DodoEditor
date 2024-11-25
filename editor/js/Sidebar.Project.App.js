@@ -194,6 +194,7 @@ function SidebarProjectApp( editor ) {
                     });
 		if (which == 'url') {
 			navigator.clipboard.writeText(dataString);
+			console.log(dataString);
 		} else {
 		  const hostname = 'icedodo-api.onionfist.com';
 		  const path = '/api/compile_long_map_url.js?longUrl=';
@@ -212,6 +213,7 @@ function SidebarProjectApp( editor ) {
 		  try {
 		    const response = await fetch(`https://${hostname}${path}${dataString}`);
 		    let mapfile = await response.text();
+		    console.log(mapfile);
 		    //mapfile = text.replace(/;/g, ';\n');
 		    //localStorage.setItem('mapfile') = mapfile; THIS CAN SAVE THE MAPFILE INTO LOCAL STORAGE IF YOU WANT TO USE IT THAT WAY INSTEAD
 		    return mapfile;
