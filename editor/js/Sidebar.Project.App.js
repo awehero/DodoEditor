@@ -199,7 +199,7 @@ function SidebarProjectApp( editor ) {
 		  const hostname = 'icedodo-api.onionfist.com';
 		  const path = '/api/compile_long_map_url.js?longUrl=';
 		
-		  const dollarIndex = queryString.indexOf('$');
+		  const dollarIndex = dataString.indexOf('$');
 		  if (dollarIndex !== -1) {
 		    let endIndex = dollarIndex - 1;
 		    while (endIndex >= 0 && !/[A-G]/.test(dataString[endIndex])) {
