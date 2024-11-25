@@ -75,6 +75,18 @@ function SidebarProjectApp( editor ) {
 
 	container.add( playButton );
 
+	// Get URL
+	const urlButton = new UIButton( strings.getKey( 'sidebar/project/app/play' ) );
+	playButton.setWidth( '170px' );
+	playButton.setMarginLeft( '120px' );
+	playButton.setMarginBottom( '10px' );
+	playButton.onClick( function () {
+
+		
+	} );
+
+	container.add( urlButton );
+	
 	// Publish
 
 	const publishButton = new UIButton( strings.getKey( 'sidebar/project/app/publish' ) );
