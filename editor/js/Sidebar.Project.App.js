@@ -76,11 +76,11 @@ function SidebarProjectApp( editor ) {
 	container.add( playButton );
 
 	// Get URL
-	const urlButton = new UIButton( strings.getKey( 'sidebar/project/app/play' ) );
-	playButton.setWidth( '170px' );
-	playButton.setMarginLeft( '120px' );
-	playButton.setMarginBottom( '10px' );
-	playButton.onClick( function () {
+	const urlButton = new UIButton( strings.getKey( 'sidebar/project/app/url' ) );
+	urlButton.setWidth( '170px' );
+	urlButton.setMarginLeft( '120px' );
+	urlButton.setMarginBottom( '10px' );
+	urlButton.onClick( function () {
 
 		
 	} );
