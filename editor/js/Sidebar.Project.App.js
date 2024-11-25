@@ -88,90 +88,92 @@ function SidebarProjectApp( editor ) {
                     var dataString = "";
                     editor.scene.children.forEach(function(object) {
                         if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
-                        var objectType;
-                                        if (object instanceof THREE.Mesh) {
-                                            if (object.geometry instanceof THREE.PlaneGeometry) {
-                                                objectType = "A";
-                                            } else if (object.geometry instanceof THREE.BoxGeometry) {
-                                                objectType = "B";
-                                            } else if (object.geometry instanceof THREE.ConeGeometry) {
-                                                objectType = "C";
-                                            } else if (object.geometry instanceof THREE.SphereGeometry) {
-                                                objectType = "D";
-                                            } else if (object.geometry instanceof THREE.CylinderGeometry) {
-                                                objectType = "E";
-                                            } else if (object.geometry instanceof THREE.IcosahedronGeometry) {
-                                                objectType = "F";
-                                            } else if (object.geometry instanceof THREE.OctahedronGeometry) {
-                                                objectType = "G";
-                                            }
-                                        } else {
-                                            objectType = "G";
-                                        }
-                                       var objectNameStart = object.name ? object.name : "none";
-                                        let inputString = objectNameStart;
-                                        const replacements = [
-                                            { search: ",t=", replace: ",turn=" },
-                                            { search: ", t=", replace: ", turn=" },
-                                            { search: "\\[t=", replace: "[turn=" },
-                                            { search: ",s=", replace: ",speed=" },
-                                            { search: ", s=", replace: ", speed=" },
-                                            { search: "\\[s=", replace: "[speed=" },
-                                            { search: ",j=", replace: ",jump=" },
-                                            { search: ", j=", replace: ", jump=" },
-                                            { search: "\\[j=", replace: "[jump=" },
-                                            { search: "mat=#", replace: "m=" },
-                                            { search: "mat=", replace: "m=" },
-                                            { search: "bg=#", replace: "bg=" },
-                                            { search: "amb=#", replace: "amb=" },
-                                            { search: "dif=#", replace: "dif=" },
-                                            { search: "spe=#", replace: "spe=" },
-                                            { search: "gro=#", replace: "gro=" },
-                                            { search: " ", replace: "" },
-                                            { search: "\\[", replace: "" },
-                                            { search: "\\]", replace: "" },
-                                            { search: ",", replace: "?" }
-                                        ];
-                                        replacements.forEach(pair => {
-                                            inputString = inputString.replace(new RegExp(pair.search, 'g'), pair.replace);
-                                        });
-                                        var objectName = inputString;
-                                        var position = object.position;
-                                        var roundedPosition = {
-                                            x: Math.round(position.x * 1000) / -10,
-                                            y: Math.round(position.z * 1000) / 10,
-                                            z: Math.round(position.y * 1000) / 10
-                                        };
-                                        var rotation = object.rotation;
-                                        if (object.geometry.type == "PlaneGeometry") {
-                                            var roundedRotation = {
-                                                x: 0,
-                                                y: 0,
-                                                z: 0
-                                            };
-                                        } else {
-                                            var roundedRotation = {
-                                                x: Math.round(rotation.x * 1000) / -1000,
-                                                y: Math.round(rotation.z * 1000) / 1000,
-                                                z: Math.round(rotation.y * 1000) / 1000
-                                            };
-                                        }
-                                        var scale = object.scale;
-                                        if (object.geometry.type == "PlaneGeometry") {
-                                             var roundedScale = {
-                                                  x: Math.round(scale.x * 1000) / 20,
-                                                  y: Math.round(scale.y * 1000) / 20,
-                                                  z: Math.round(scale.z * 1000) / 20
-                                             };
-                                        } else {
-                                             var roundedScale = {
-                                                  x: Math.round(scale.x * 1000) / 20,
-                                                  y: Math.round(scale.z * 1000) / 20,
-                                                  z: Math.round(scale.y * 1000) / 20
-                                             };
-                                        }
-                                        var objectData = objectType + (roundedPosition.x) + "$" + (roundedPosition.y) + "$" + (roundedPosition.z) + "$" + Math.round(roundedRotation.x * 100) + "$" + Math.round(roundedRotation.y * 100) + "$" + Math.round(roundedRotation.z * 100) + "$" + (roundedScale.x) + "$" + (roundedScale.y) + "$" + (roundedScale.z) + "$" + objectName;
-                                        dataString += objectData;
+                        	var objectType;
+				if (object.name != 'Spawn (DO NOT RENAME)') {
+					if (object instanceof THREE.Mesh) {
+						if (object.geometry instanceof THREE.PlaneGeometry) {
+							objectType = "A";
+					    	} else if (object.geometry instanceof THREE.BoxGeometry) {
+							objectType = "B";
+					    	} else if (object.geometry instanceof THREE.ConeGeometry) {
+							objectType = "C";
+					    	} else if (object.geometry instanceof THREE.CapsuleGeometry) {
+							objectType = "D";
+					    	} else if (object.geometry instanceof THREE.CylinderGeometry) {
+							objectType = "E";
+					    	} else if (object.geometry instanceof THREE.SphereGeometry) {
+							objectType = "F";
+					    	} else if (object.geometry instanceof THREE.OctahedronGeometry) {
+							objectType = "G";
+					    	}
+					} else {
+					    objectType = "G";
+					}
+				}
+                                var objectNameStart = object.name ? object.name : "none";
+                                let inputString = objectNameStart;
+                                const replacements = [
+				    { search: ",t=", replace: ",turn=" },
+				    { search: ", t=", replace: ", turn=" },
+				    { search: "\\[t=", replace: "[turn=" },
+				    { search: ",s=", replace: ",speed=" },
+				    { search: ", s=", replace: ", speed=" },
+				    { search: "\\[s=", replace: "[speed=" },
+				    { search: ",j=", replace: ",jump=" },
+				    { search: ", j=", replace: ", jump=" },
+				    { search: "\\[j=", replace: "[jump=" },
+				    { search: "mat=#", replace: "m=" },
+				    { search: "mat=", replace: "m=" },
+				    { search: "bg=#", replace: "bg=" },
+				    { search: "amb=#", replace: "amb=" },
+				    { search: "dif=#", replace: "dif=" },
+				    { search: "spe=#", replace: "spe=" },
+				    { search: "gro=#", replace: "gro=" },
+				    { search: " ", replace: "" },
+				    { search: "\\[", replace: "" },
+				    { search: "\\]", replace: "" },
+				    { search: ",", replace: "?" }
+                                ];
+                                replacements.forEach(pair => {
+                                    inputString = inputString.replace(new RegExp(pair.search, 'g'), pair.replace);
+                                });
+				var objectName = inputString;
+				var position = object.position;
+				var roundedPosition = {
+				    x: Math.round(position.x * 1000) / -10,
+				    y: Math.round(position.z * 1000) / 10,
+				    z: Math.round(position.y * 1000) / 10
+				};
+				var rotation = object.rotation;
+				if (object.geometry.type == "PlaneGeometry") {
+				    var roundedRotation = {
+					x: 0,
+					y: 0,
+					z: 0
+				    };
+				} else {
+				    var roundedRotation = {
+					x: Math.round(rotation.x * 1000) / -1000,
+					y: Math.round(rotation.z * 1000) / 1000,
+					z: Math.round(rotation.y * 1000) / 1000
+				    };
+				}
+				var scale = object.scale;
+				if (object.geometry.type == "PlaneGeometry") {
+				     var roundedScale = {
+					  x: Math.round(scale.x * 1000) / 20,
+					  y: Math.round(scale.y * 1000) / 20,
+					  z: Math.round(scale.z * 1000) / 20
+				     };
+				} else {
+				     var roundedScale = {
+					  x: Math.round(scale.x * 1000) / 20,
+					  y: Math.round(scale.z * 1000) / 20,
+					  z: Math.round(scale.y * 1000) / 20
+				     };
+                                }
+                                var objectData = objectType + (roundedPosition.x) + "$" + (roundedPosition.y) + "$" + (roundedPosition.z) + "$" + Math.round(roundedRotation.x * 100) + "$" + Math.round(roundedRotation.y * 100) + "$" + Math.round(roundedRotation.z * 100) + "$" + (roundedScale.x) + "$" + (roundedScale.y) + "$" + (roundedScale.z) + "$" + objectName;
+                                dataString += objectData;
                         }
                     });
                     dataString = replaceMsgWithASCII(dataString);
@@ -187,6 +189,12 @@ function SidebarProjectApp( editor ) {
                         { search: "\\.0F", replace: "F" },
                         { search: "\\.0G", replace: "G" },
                         { search: "none", replace: "_" },
+			{ search: "Box", replace: "_" },
+			{ search: "End", replace: "_" },
+			{ search: "Cylinder", replace: "_" },
+			{ search: "Sphere", replace: "_" },
+			{ search: "Plane", replace: "_" },
+			{ search: "Monkey", replace: "_" },
                     ];
                     
                     replacementsTwo.forEach(pair => {
