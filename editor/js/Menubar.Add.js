@@ -159,6 +159,23 @@ function MenubarAdd( editor ) {
 	} );
 	options.add( option );
 
+	//monkey
+	
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/add/monkey' ) );
+	option.onClick( function () {
+
+		const geometry = new THREE.OctahedronGeometry(3, 1);
+		const material = new THREE.MeshStandardMaterial();
+		const mesh = new THREE.Mesh( geometry, material );
+		mesh.name = 'Monkey';
+
+		editor.execute( new AddObjectCommand( editor, mesh ) );
+
+	} );
+	options.add( option );
+
 	// arrow
 
 	option = new UIRow();

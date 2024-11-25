@@ -58,7 +58,7 @@ function SidebarProjectApp( editor ) {
 	playButton.onClick( function () {
 
 		if ( isPlaying === false ) {
-
+			let mapfile = getLinkOrMapfile('mapfile');
 			isPlaying = true;
 			playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
 			signals.startPlayer.dispatch();
@@ -75,6 +75,177 @@ function SidebarProjectApp( editor ) {
 
 	container.add( playButton );
 
+	// Get URL and mapfile
+	
+	const urlButton = new UIButton( strings.getKey( 'sidebar/project/app/url' ) );
+	urlButton.setWidth( '170px' );
+	urlButton.setMarginLeft( '120px' );
+	urlButton.setMarginBottom( '10px' );
+	urlButton.onClick( function () {
+		getLinkOrMapfile('url');
+		});
+	function getLinkOrMapfile(which) {
+                    var dataString = "";
+                    editor.scene.children.forEach(function(object) {
+                        if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
+                        	var objectType;
+				if (object.name != 'Spawn (DO NOT RENAME)') {
+					if (object instanceof THREE.Mesh) {
+						if (object.geometry instanceof THREE.PlaneGeometry) {
+							objectType = "A";
+					    	} else if (object.geometry instanceof THREE.BoxGeometry) {
+							objectType = "B";
+					    	} else if (object.geometry instanceof THREE.ConeGeometry) {
+							objectType = "C";
+					    	} else if (object.geometry instanceof THREE.CapsuleGeometry) {
+							objectType = "D";
+					    	} else if (object.geometry instanceof THREE.CylinderGeometry) {
+							objectType = "E";
+					    	} else if (object.geometry instanceof THREE.SphereGeometry) {
+							objectType = "F";
+					    	} else if (object.geometry instanceof THREE.OctahedronGeometry) {
+							objectType = "G";
+					    	}
+					} else {
+					    objectType = "G";
+					}
+				}
+                                var objectNameStart = object.name ? object.name : "none";
+                                let inputString = objectNameStart;
+                                const replacements = [
+				    { search: ",t=", replace: ",turn=" },
+				    { search: ", t=", replace: ", turn=" },
+				    { search: "\\[t=", replace: "[turn=" },
+				    { search: ",s=", replace: ",speed=" },
+				    { search: ", s=", replace: ", speed=" },
+				    { search: "\\[s=", replace: "[speed=" },
+				    { search: ",j=", replace: ",jump=" },
+				    { search: ", j=", replace: ", jump=" },
+				    { search: "\\[j=", replace: "[jump=" },
+				    { search: "mat=#", replace: "m=" },
+				    { search: "mat=", replace: "m=" },
+				    { search: "bg=#", replace: "bg=" },
+				    { search: "amb=#", replace: "amb=" },
+				    { search: "dif=#", replace: "dif=" },
+				    { search: "spe=#", replace: "spe=" },
+				    { search: "gro=#", replace: "gro=" },
+				    { search: " ", replace: "" },
+				    { search: "\\[", replace: "" },
+				    { search: "\\]", replace: "" },
+				    { search: ",", replace: "?" }
+                                ];
+                                replacements.forEach(pair => {
+                                    inputString = inputString.replace(new RegExp(pair.search, 'g'), pair.replace);
+                                });
+				var objectName = inputString;
+				var position = object.position;
+				var roundedPosition = {
+				    x: Math.round(position.x * 1000) / -10,
+				    y: Math.round(position.z * 1000) / 10,
+				    z: Math.round(position.y * 1000) / 10
+				};
+				var rotation = object.rotation;
+				if (object.geometry.type == "PlaneGeometry") {
+				    var roundedRotation = {
+					x: 0,
+					y: 0,
+					z: 0
+				    };
+				} else {
+				    var roundedRotation = {
+					x: Math.round(rotation.x * 1000) / -1000,
+					y: Math.round(rotation.z * 1000) / 1000,
+					z: Math.round(rotation.y * 1000) / 1000
+				    };
+				}
+				var scale = object.scale;
+				if (object.geometry.type == "PlaneGeometry") {
+				     var roundedScale = {
+					  x: Math.round(scale.x * 1000) / 20,
+					  y: Math.round(scale.y * 1000) / 20,
+					  z: Math.round(scale.z * 1000) / 20
+				     };
+				} else {
+				     var roundedScale = {
+					  x: Math.round(scale.x * 1000) / 20,
+					  y: Math.round(scale.z * 1000) / 20,
+					  z: Math.round(scale.y * 1000) / 20
+				     };
+                                }
+                                var objectData = objectType + (roundedPosition.x) + "$" + (roundedPosition.y) + "$" + (roundedPosition.z) + "$" + Math.round(roundedRotation.x * 100) + "$" + Math.round(roundedRotation.y * 100) + "$" + Math.round(roundedRotation.z * 100) + "$" + (roundedScale.x) + "$" + (roundedScale.y) + "$" + (roundedScale.z) + "$" + objectName;
+                                dataString += objectData;
+                        }
+                    });
+                    dataString = replaceMsgWithASCII(dataString);
+                    dataString = "https://icedodo.onionfist.com/creative/?CompilerVersion=v9&CompilerOutput=" + dataString;
+                    const replacementsTwo = [
+                        { search: "\\.0\\?", replace: "?" },
+                        { search: "\\.0\\$", replace: "$" },
+                        { search: "\\.0A", replace: "A" },
+                        { search: "\\.0B", replace: "B" },
+                        { search: "\\.0C", replace: "C" },
+                        { search: "\\.0D", replace: "D" },
+                        { search: "\\.0E", replace: "E" },
+                        { search: "\\.0F", replace: "F" },
+                        { search: "\\.0G", replace: "G" },
+                        { search: "none", replace: "_" },
+			{ search: "Box", replace: "_" },
+			{ search: "End", replace: "_" },
+			{ search: "Cylinder", replace: "_" },
+			{ search: "Sphere", replace: "_" },
+			{ search: "Plane", replace: "_" },
+			{ search: "Monkey", replace: "_" },
+			{ search: "Cone", replace: "_" },
+                    ];
+                    
+                    replacementsTwo.forEach(pair => {
+                        dataString = dataString.replace(new RegExp(pair.search, 'g'), pair.replace);
+                    });
+		if (which == 'url') {
+			navigator.clipboard.writeText(dataString);
+			console.log(dataString);
+		} else {
+		  const hostname = 'icedodo-api.onionfist.com';
+		  const path = '/api/compile_long_map_url.js?longUrl=';
+		
+		  const dollarIndex = dataString.indexOf('$');
+		  if (dollarIndex !== -1) {
+		    let endIndex = dollarIndex - 1;
+		    while (endIndex >= 0 && !/[A-G]/.test(dataString[endIndex])) {
+		      endIndex--;
+		    }
+		    if (endIndex >= 0) {
+		      dataString = dataString.substring(endIndex);
+		    }
+		  }
+		      
+		  try {
+		    fetch(`https://${hostname}${path}${dataString}`)
+		    .then(response => response.text())
+		    .then(mapfile => {
+		      console.log(mapfile);
+		      return mapfile;
+		    })
+		    .catch(error => {
+		      console.error("Error fetching the map file:", error);
+		    });
+		    //mapfile = text.replace(/;/g, ';\n');
+		    //localStorage.setItem('mapfile') = mapfile; THIS CAN SAVE THE MAPFILE INTO LOCAL STORAGE IF YOU WANT TO USE IT THAT WAY INSTEAD
+		  } catch (error) {
+		    console.error('Error fetching data:', error);
+		  }
+		}
+                function replaceMsgWithASCII(input) {
+                        return input.replace(/msg=\{([^}]*)\}/g, (match, p1) => {
+                            const asciiValues = Array.from(p1).map(char => char.charCodeAt(0));
+                            const asciiString = asciiValues.join(':');
+                            return `msg=${asciiString}`;
+                        });
+                }
+	}
+
+	container.add( urlButton );
+	
 	// Publish
 
 	const publishButton = new UIButton( strings.getKey( 'sidebar/project/app/publish' ) );

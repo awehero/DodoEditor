@@ -73,7 +73,7 @@ function Strings( config ) {
 			'menubar/add/sphere': 'Sphere',
 			// 'menubar/add/mesh/dodecahedron': 'Dodecahedron',
 			// 'menubar/add/mesh/icosahedron': 'Icosahedron',
-			// 'menubar/add/mesh/octahedron': 'Octahedron',
+			'menubar/add/mesh/octahedron': 'Octahedron',
 			// 'menubar/add/mesh/tetrahedron': 'Tetrahedron',
 			// 'menubar/add/mesh/torus': 'Torus',
 			// 'menubar/add/mesh/tube': 'Tube',
@@ -366,6 +366,7 @@ function Strings( config ) {
 			'sidebar/project/app/title': 'Title',
 			'sidebar/project/app/editable': 'Editable',
 			'sidebar/project/app/publish': 'Publish',
+			'sidebar/project/app/url': 'Get URL',
 
 			'sidebar/project/image': 'Image',
 			'sidebar/project/image/samples': 'Samples',
