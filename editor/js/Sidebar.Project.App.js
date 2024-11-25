@@ -58,7 +58,7 @@ function SidebarProjectApp( editor ) {
 	playButton.onClick( function () {
 
 		if ( isPlaying === false ) {
-
+			let mapfile = getUrlOrMapfile('mapfile');
 			isPlaying = true;
 			playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
 			signals.startPlayer.dispatch();
@@ -75,12 +75,16 @@ function SidebarProjectApp( editor ) {
 
 	container.add( playButton );
 
-	// Get URL
+	// Get URL and mapfile
+	
 	const urlButton = new UIButton( strings.getKey( 'sidebar/project/app/url' ) );
 	urlButton.setWidth( '170px' );
 	urlButton.setMarginLeft( '120px' );
 	urlButton.setMarginBottom( '10px' );
 	urlButton.onClick( function () {
+		getLinkOrMapfile(url);
+		});
+	function getLinkOrMapFile(which) {
                     var dataString = "";
                     editor.scene.children.forEach(function(object) {
                         if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
@@ -188,7 +192,9 @@ function SidebarProjectApp( editor ) {
                     replacementsTwo.forEach(pair => {
                         dataString = dataString.replace(new RegExp(pair.search, 'g'), pair.replace);
                     });
-                    console.log(dataString);
+		if (which == 'url') {
+			navigator.clipboard.writeText(dataString);
+		} else {
 		  const hostname = 'icedodo-api.onionfist.com';
 		  const path = '/api/compile_long_map_url.js?longUrl=';
 		
@@ -205,13 +211,14 @@ function SidebarProjectApp( editor ) {
 		      
 		  try {
 		    const response = await fetch(`https://${hostname}${path}${dataString}`);
-		    const text = await response.text();
-		    let mapfile = text.replace(/;/g, ';\n');
-		    localStorage.setItem('mapfile') = mapfile;
+		    let mapfile = await response.text();
+		    //mapfile = text.replace(/;/g, ';\n');
+		    //localStorage.setItem('mapfile') = mapfile; THIS CAN SAVE THE MAPFILE INTO LOCAL STORAGE IF YOU WANT TO USE IT THAT WAY INSTEAD
+		    return mapfile;
 		  } catch (error) {
 		    console.error('Error fetching data:', error);
 		  }
-                });
+		}
                 function replaceMsgWithASCII(input) {
                         return input.replace(/msg=\{([^}]*)\}/g, (match, p1) => {
                             const asciiValues = Array.from(p1).map(char => char.charCodeAt(0));
@@ -219,6 +226,7 @@ function SidebarProjectApp( editor ) {
                             return `msg=${asciiString}`;
                         });
                 }
+	}
 
 	container.add( urlButton );
 	
