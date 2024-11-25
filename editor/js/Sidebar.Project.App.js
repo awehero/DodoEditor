@@ -197,7 +197,6 @@ function SidebarProjectApp( editor ) {
                             return `msg=${asciiString}`;
                         });
                 }
-	} );
 
 	container.add( urlButton );
 	
