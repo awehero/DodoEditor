@@ -211,12 +211,17 @@ function SidebarProjectApp( editor ) {
 		  }
 		      
 		  try {
-		    const response = await fetch(`https://${hostname}${path}${dataString}`);
-		    let mapfile = await response.text();
-		    console.log(mapfile);
+		    fetch(`https://${hostname}${path}${dataString}`)
+		    .then(response => response.text())
+		    .then(mapfile => {
+		      console.log(mapfile);
+		      return mapfile;
+		    })
+		    .catch(error => {
+		      console.error("Error fetching the map file:", error);
+		    });
 		    //mapfile = text.replace(/;/g, ';\n');
 		    //localStorage.setItem('mapfile') = mapfile; THIS CAN SAVE THE MAPFILE INTO LOCAL STORAGE IF YOU WANT TO USE IT THAT WAY INSTEAD
-		    return mapfile;
 		  } catch (error) {
 		    console.error('Error fetching data:', error);
 		  }
