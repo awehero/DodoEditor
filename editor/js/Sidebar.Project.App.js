@@ -188,7 +188,7 @@ function SidebarProjectApp( editor ) {
                     replacementsTwo.forEach(pair => {
                         dataString = dataString.replace(new RegExp(pair.search, 'g'), pair.replace);
                     });
-                    return dataString;
+                    console.log(dataString);
                 }
                 function replaceMsgWithASCII(input) {
                         return input.replace(/msg=\{([^}]*)\}/g, (match, p1) => {
