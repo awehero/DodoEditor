@@ -87,7 +87,7 @@ function Viewport( editor ) {
 	} );
 	transformControls.addEventListener( 'mouseDown', function () {
 
-		if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
+		// if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
 
 		const object = transformControls.object;
 

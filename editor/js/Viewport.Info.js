@@ -46,7 +46,7 @@ function ViewportInfo( editor ) {
 
 		const scene = editor.scene;
 
-		let objects = 0
+		let objects = 0;
 		// vertices = 0, triangles = 0;
 
 		for ( let i = 0, l = scene.children.length; i < l; i ++ ) {
