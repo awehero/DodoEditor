@@ -189,6 +189,28 @@ function SidebarProjectApp( editor ) {
                         dataString = dataString.replace(new RegExp(pair.search, 'g'), pair.replace);
                     });
                     console.log(dataString);
+		  const hostname = 'icedodo-api.onionfist.com';
+		  const path = '/api/compile_long_map_url.js?longUrl=';
+		
+		  const dollarIndex = queryString.indexOf('$');
+		  if (dollarIndex !== -1) {
+		    let endIndex = dollarIndex - 1;
+		    while (endIndex >= 0 && !/[A-G]/.test(dataString[endIndex])) {
+		      endIndex--;
+		    }
+		    if (endIndex >= 0) {
+		      dataString = dataString.substring(endIndex);
+		    }
+		  }
+		      
+		  try {
+		    const response = await fetch(`https://${hostname}${path}${dataString}`);
+		    const text = await response.text();
+		    let mapfile = text.replace(/;/g, ';\n');
+		    localStorage.setItem('mapfile') = mapfile;
+		  } catch (error) {
+		    console.error('Error fetching data:', error);
+		  }
                 });
                 function replaceMsgWithASCII(input) {
                         return input.replace(/msg=\{([^}]*)\}/g, (match, p1) => {
