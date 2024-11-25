@@ -471,6 +471,7 @@ function MenubarFile( editor ) {
 		const spheres = [];
 		let spawn = [];
 		let spawnRotation = 0;
+		const reset = [];
 
 		// y rotation = dodo x rotation
 		console.log( meshes );
@@ -485,19 +486,29 @@ function MenubarFile( editor ) {
 					platforms.push(
 						`a.p([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
 					);
+					reset.push(
+						`a.re("P${platforms.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
+					);
 					break;
 
 				case 'SphereGeometry':
 					console.log( 'SphereGeometry' );
+					const radius = ( mesh.scale.x + mesh.scale.y + mesh.scale.z ) / 3;
 					spheres.push(
-						`a.s([${mesh.position.x},${mesh.position.y},${mesh.position.z}],${mesh.geometry.parameters.radius});`
+						`a.s([${mesh.position.x},${mesh.position.y},${mesh.position.z}],${radius});`
+					);
+					reset.push(
+						`a.re("S${spheres.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[0,0,0],[${radius},${radius},${radius}]);`
 					);
 					break;
 
 				case 'CylinderGeometry':
 					console.log( 'CylinderGeometry' );
 					cylinders.push(
-						`a.y([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.geometry.parameters.radiusTop},${mesh.geometry.parameters.radiusBottom},${mesh.scale.y},${mesh.geometry.parameters.radialSegments}]);`
+						`a.y([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
+					);
+					reset.push(
+						`a.re("Y${cylinders.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
 					);
 					break;
 
@@ -513,17 +524,25 @@ function MenubarFile( editor ) {
 						cones.push(
 							`a.c([${mesh.position.x},${mesh.position.y},${mesh.position.z}]);`
 						);
+						reset.push(
+							`a.re("C${cones.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}]);`
+						);
 
 					}
 
 					break;
 
 				case 'CapsuleGeometry': // ending
+
 					console.log( 'ConeGeometry' );
 					endings.push(
 						`a.e([${mesh.position.x},${mesh.position.y},${mesh.position.z}]);`
 					);
+					reset.push(
+						`a.re("E${endings.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}], [0,0,0], [1,1,1]);`
+					);
 					break;
+
 				default:
 					alert( 'Unknown geometry' );
 					console.log( 'Unknown geometry' );
@@ -543,7 +562,7 @@ function MenubarFile( editor ) {
 
 				spawn = [ mesh.position.x, mesh.position.y, mesh.position.z ];
 				console.log( spawn );
-				spawnRotation = mesh.rotation.y + 90 * Math.PI / 180;
+				spawnRotation = - mesh.rotation.z;
 
 			}
 
@@ -580,12 +599,15 @@ init: function() {
 	// planes
 	${planes.join( '\n\t' )}
 
-	rotation = ${spawnRotation};
 },
-post: function() {},
+post: function() {rotation = ${spawnRotation};},
 section_id: 0,
 section_update: function() {let PZ = player.position.z;},
-reset: function() {this.section_id = 0;},
+reset: function() {
+	rotation = ${spawnRotation};
+	this.section_id = 0;
+	${reset.join( '\n\t' )}
+},
 physics_update: function() {},
 render_update: function() {}}`;
 
