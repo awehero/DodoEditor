@@ -58,7 +58,7 @@ function SidebarProjectApp( editor ) {
 	playButton.onClick( function () {
 
 		if ( isPlaying === false ) {
-			let mapfile = getUrlOrMapfile('mapfile');
+			let mapfile = getLinkOrMapfile('mapfile');
 			isPlaying = true;
 			playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
 			signals.startPlayer.dispatch();
