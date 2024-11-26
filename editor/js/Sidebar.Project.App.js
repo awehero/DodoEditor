@@ -89,7 +89,7 @@ function SidebarProjectApp( editor ) {
                     editor.scene.children.forEach(function(object) {
                         if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
                         	var objectType;
-				if (object.name != 'Spawn (DO NOT RENAME)') {
+				if (object.name != 'Spawn') {
 					if (object instanceof THREE.Mesh) {
 						if (object.geometry instanceof THREE.PlaneGeometry) {
 							objectType = "A";
@@ -196,7 +196,7 @@ function SidebarProjectApp( editor ) {
 			{ search: "Plane", replace: "_" },
 			{ search: "Monkey", replace: "_" },
 			{ search: "Cone", replace: "_" },
-			{ search: "Spawn (DO NOT RENAME)" },
+			{ search: "Spawn", replace: "_" },
                     ];
                     
                     replacementsTwo.forEach(pair => {
