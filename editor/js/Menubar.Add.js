@@ -187,7 +187,7 @@ function MenubarAdd( editor ) {
 		const geometry = new THREE.ConeGeometry( .1, .3, 16 );
 		const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		const mesh = new THREE.Mesh( geometry, material );
-		mesh.name = 'Spawn (DO NOT RENAME)';
+		mesh.name = 'Spawn';
 		mesh.rotation.x = Math.PI / -2;
 		// mesh.geometry.type = "SpawnGeometry";
 

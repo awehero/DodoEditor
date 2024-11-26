@@ -760,6 +760,11 @@ function SidebarObject( editor ) {
 
 		// objectUUID.setValue( object.uuid );
 		objectName.setValue( object.name );
+		if (object.name == "Spawn") {
+		    document.querySelectorAll('input')[5].disabled = true;
+		} else {
+		    document.querySelectorAll('input')[5].disabled = false;
+		}
 
 		objectPositionX.setValue( object.position.x );
 		objectPositionY.setValue( object.position.y );

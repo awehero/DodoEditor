@@ -518,7 +518,7 @@ function MenubarFile( editor ) {
 					break;
 
 				case 'ConeGeometry':
-					if ( mesh.name !== 'Spawn (DO NOT RENAME)' ) {
+					if ( mesh.name !== 'Spawn' ) {
 
 						console.log( 'ConeGeometry' );
 						cones.push(
@@ -550,7 +550,7 @@ function MenubarFile( editor ) {
 
 			}
 
-			if ( mesh.name === 'Spawn (DO NOT RENAME)' ) {
+			if ( mesh.name === 'Spawn' ) {
 
 				console.log( 'SpawnGeometry' );
 				if ( spawn.length > 0 ) {
