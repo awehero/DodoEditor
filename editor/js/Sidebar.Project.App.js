@@ -196,6 +196,7 @@ function SidebarProjectApp( editor ) {
 			{ search: "Plane", replace: "_" },
 			{ search: "Monkey", replace: "_" },
 			{ search: "Cone", replace: "_" },
+			{ search: "Spawn (DO NOT RENAME)" },
                     ];
                     
                     replacementsTwo.forEach(pair => {
