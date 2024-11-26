@@ -89,7 +89,7 @@ function SidebarProjectApp( editor ) {
                     editor.scene.children.forEach(function(object) {
                         if (!!object.scale.x || object.geometry.type == "PlaneGeometry") {
                         	var objectType;
-				if (object.name != 'Spawn (DO NOT RENAME)') {
+				if (object.name != 'Spawn') {
 					if (object instanceof THREE.Mesh) {
 						if (object.geometry instanceof THREE.PlaneGeometry) {
 							objectType = "A";
@@ -196,6 +196,7 @@ function SidebarProjectApp( editor ) {
 			{ search: "Plane", replace: "_" },
 			{ search: "Monkey", replace: "_" },
 			{ search: "Cone", replace: "_" },
+			{ search: "Spawn", replace: "_" },
                     ];
                     
                     replacementsTwo.forEach(pair => {
@@ -204,6 +205,7 @@ function SidebarProjectApp( editor ) {
 		if (which == 'url') {
 			navigator.clipboard.writeText(dataString);
 			console.log(dataString);
+			alert("Link copied to clipboard! Your map is " + dataString.length + " characters long!");
 		} else {
 		  const hostname = 'icedodo-api.onionfist.com';
 		  const path = '/api/compile_long_map_url.js?longUrl=';
