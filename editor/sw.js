@@ -82,6 +82,16 @@ const assets = [
 	'./images/rotate.svg',
 	'./images/scale.svg',
 	'./images/translate.svg',
+	'./images/textures/bright.png',
+	'./images/textures/dark.png',
+	'./images/textures/Ice1.png',
+	'./images/textures/Ice2.png',
+	'./images/textures/icedd.png',
+	'./images/textures/pm1.png',
+	'./images/textures/pm2.png',
+	'./images/textures/skybox4xupscale.png',
+	'./images/textures/NewSkybox.png',
+
 
 	'./js/libs/codemirror/codemirror.css',
 	'./js/libs/codemirror/theme/monokai.css',

@@ -45,6 +45,7 @@ function Strings( config ) {
 			'menubar/file/new/empty': 'Empty',
 			'menubar/file/new/Arkanoid': 'Arkanoid',
 			'menubar/file/new/Camera': 'Camera',
+			'menubar/file/new/Custom': 'New File',
 			'menubar/file/new/Particles': 'Particles',
 			'menubar/file/new/Pong': 'Pong',
 			'menubar/file/new/Shaders': 'Shaders',
@@ -82,6 +83,7 @@ function Strings( config ) {
 			// 'menubar/add/mesh/sprite': 'Sprite',
 			'menubar/add/cone': 'Cone',
 			'menubar/add/spawn': 'Spawn',
+			'menubar/add/monkey': 'Monkey',
 
 			'menubar/add/light': 'Light',
 			'menubar/add/light/ambient': 'Ambient',

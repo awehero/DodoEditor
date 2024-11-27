@@ -67,10 +67,18 @@ function MenubarAdd( editor ) {
 	option.onClick( function () {
 
 		const geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
-		const mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Box';
+		const loader = new THREE.TextureLoader();
+		loader.load( 'images/textures/bright.png', function ( texture ) {
 
-		editor.execute( new AddObjectCommand( editor, mesh ) );
+			texture.colorSpace = THREE.SRGBColorSpace;
+			const material = new THREE.MeshBasicMaterial( { map: texture } );
+			const mesh = new THREE.Mesh( geometry, material );
+			mesh.name = 'Box';
+			mesh.CustomTexture = [ 'images/textures/bright.png' ];
+
+			editor.execute( new AddObjectCommand( editor, mesh ) );
+
+		} );
 
 	} );
 	options.add( option );
@@ -83,9 +91,29 @@ function MenubarAdd( editor ) {
 	option.onClick( function () {
 
 		const geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
-		const material = new THREE.MeshStandardMaterial();
+
+		// const canvas = document.createElement( 'canvas' );
+		// canvas.width = 16;
+		// canvas.height = 16;
+		// const context = canvas.getContext( '2d' );
+		// context.fillStyle = 'rgba(36, 252, 3, 0.5)';
+		// context.fillRect( 0, 0, canvas.width, canvas.height );
+
+		// const texture = new THREE.CanvasTexture( canvas );
+		// const material = new THREE.MeshBasicMaterial( {
+		// 	map: texture,
+		// 	transparent: true,
+		// } );
+
+		const material = new THREE.MeshBasicMaterial( {
+			color: 0x24fc03,
+			opacity: 0.5,
+			transparent: true,
+		} );
+
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'End';
+		mesh.CustomTexture = [ 'hex', '24fc03', 0.5 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -99,9 +127,30 @@ function MenubarAdd( editor ) {
 	option.setTextContent( strings.getKey( 'menubar/add/cylinder' ) );
 	option.onClick( function () {
 
-		const geometry = new THREE.CylinderGeometry( 1, 1, 1, 32, 1, false, 0, Math.PI * 2 );
-		const mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+		const geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
+
+		// const canvas = document.createElement( 'canvas' );
+		// canvas.width = 16;
+		// canvas.height = 16;
+		// const context = canvas.getContext( '2d' );
+		// context.fillStyle = 'rgba(0, 0, 255, 0.8)';
+		// context.fillRect( 0, 0, canvas.width, canvas.height );
+
+		// const texture = new THREE.CanvasTexture( canvas );
+		// const material = new THREE.MeshBasicMaterial( {
+		// 	map: texture,
+		// 	transparent: true,
+		// } );
+
+		const material = new THREE.MeshBasicMaterial( {
+			color: 0x0000ff,
+			opacity: 0.8,
+			transparent: true,
+		} );
+
+		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cylinder';
+		mesh.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -116,8 +165,25 @@ function MenubarAdd( editor ) {
 	option.onClick( function () {
 
 		const geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
-		const mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+
+		// const canvas = document.createElement( 'canvas' );
+		// canvas.width = 16;
+		// canvas.height = 16;
+		// const context = canvas.getContext( '2d' );
+		// context.fillStyle = 'rgba(0, 0, 255, 0.8)';
+		// context.fillRect( 0, 0, canvas.width, canvas.height );
+
+		// const texture = new THREE.CanvasTexture( canvas );
+		// const material = new THREE.MeshBasicMaterial( { map: texture, transparent: true } );
+		const material = new THREE.MeshBasicMaterial( {
+			color: 0x0000ff,
+			opacity: .8,
+			transparent: true,
+		} );
+
+		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Sphere';
+		mesh.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -132,9 +198,10 @@ function MenubarAdd( editor ) {
 	option.onClick( function () {
 
 		const geometry = new THREE.ConeGeometry( .5, 1, 16 );
-		const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		const material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cone';
+		mesh.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -160,13 +227,13 @@ function MenubarAdd( editor ) {
 	options.add( option );
 
 	//monkey
-	
+
 	option = new UIRow();
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/add/monkey' ) );
 	option.onClick( function () {
 
-		const geometry = new THREE.OctahedronGeometry(3, 1);
+		const geometry = new THREE.OctahedronGeometry( 3, 1 );
 		const material = new THREE.MeshStandardMaterial();
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Monkey';
@@ -188,7 +255,7 @@ function MenubarAdd( editor ) {
 		const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Spawn';
-		mesh.rotation.x = Math.PI / -2;
+		mesh.rotation.x = Math.PI / - 2;
 		// mesh.geometry.type = "SpawnGeometry";
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );

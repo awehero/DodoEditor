@@ -157,9 +157,8 @@ function SidebarScene( editor ) {
 	const backgroundType = new UISelect().setOptions( {
 
 		'None': '',
+		'Default': 'Default',
 		'Color': 'Color',
-		'Texture': 'Texture',
-		'Equirectangular': 'Equirect'
 
 	} ).setWidth( '150px' );
 	backgroundType.onChange( function () {
@@ -202,15 +201,39 @@ function SidebarScene( editor ) {
 
 	function onBackgroundChanged() {
 
-		signals.sceneBackgroundChanged.dispatch(
-			backgroundType.getValue(),
-			backgroundColor.getHexValue(),
-			backgroundTexture.getValue(),
-			backgroundEquirectangularTexture.getValue(),
-			backgroundBlurriness.getValue(),
-			backgroundIntensity.getValue(),
-			backgroundRotation.getValue()
-		);
+		const type = backgroundType.getValue();
+		console.log( type );
+
+		if ( type === 'Default' ) {
+
+			const loader = new THREE.TextureLoader();
+			loader.load(
+				'images/textures/NewSkybox.png',
+				function ( texture ) {
+
+					texture.mapping = THREE.EquirectangularReflectionMapping;
+					texture.magFilter = THREE.LinearFilter;
+					texture.minFilter = THREE.LinearMipMapLinearFilter;
+					editor.scene.background = texture;
+					console.log( 'Skybox texture loaded and applied' );
+					editor.signals.sceneGraphChanged.dispatch(); // Ensure the scene is re-rendered
+
+				}
+			);
+
+		} else if ( type === 'Color' ) {
+
+			editor.scene.background = new THREE.Color( backgroundColor.getHexValue() );
+			editor.signals.sceneGraphChanged.dispatch();
+
+		} else {
+
+			editor.scene.background = null;
+			editor.signals.sceneGraphChanged.dispatch();
+
+		}
+
+		signals.sceneBackgroundChanged.dispatch( type );
 
 	}
 
