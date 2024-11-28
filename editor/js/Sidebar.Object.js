@@ -1077,14 +1077,27 @@ function SidebarObject( editor ) {
 		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
 		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
 
-		/*if (object.geometry.type == 'PlaneGeometry') {
-		    document.querySelectorAll('input')[5].disabled = true;
-		} else {
-		    document.querySelectorAll('input')[5].disabled = false;
-		}*/
 		objectScaleX.setValue( object.scale.x );
 		objectScaleY.setValue( object.scale.y );
 		objectScaleZ.setValue( object.scale.z );
+		
+		if (object.geometry.type == 'PlaneGeometry') {
+		    	document.getElementById('PosX').disabled = true;
+			document.getElementById('PosY').disabled = true;
+			document.getElementById('RotX').disabled = true;
+			document.getElementById('RotY').disabled = true;
+			document.getElementById('RotZ').disabled = true;
+			document.getElementById('SizeX').disabled = true;
+			document.getElementById('SizeZ').disabled = true;
+		} else {
+		    	document.getElementById('PosX').disabled = false;
+			document.getElementById('PosY').disabled = false;
+			document.getElementById('RotX').disabled = false;
+			document.getElementById('RotY').disabled = false;
+			document.getElementById('RotZ').disabled = false;
+			document.getElementById('SizeX').disabled = false;
+			document.getElementById('SizeZ').disabled = false;
+		}
 
 		// if ( object.fov !== undefined ) {
 
