@@ -1,6 +1,7 @@
 import { UITabbedPanel } from './libs/ui.js';
 
 import { SidebarObject } from './Sidebar.Object.js';
+//import { SidebarEffecrs } from './Sidebar.Effects.js';
 import { SidebarGeometry } from './Sidebar.Geometry.js';
 import { SidebarMaterial } from './Sidebar.Material.js';
 // import { SidebarScript } from './Sidebar.Script.js';
@@ -13,6 +14,7 @@ function SidebarProperties( editor ) {
 	container.setId( 'properties' );
 
 	container.addTab( 'objectTab', strings.getKey( 'sidebar/properties/object' ), new SidebarObject( editor ) );
+	container.addTab( 'effectsTab', strings.getKey( 'sidebar/properties/effects' ), new SidebarEffects( editor ) );
 	// container.addTab( 'geometryTab', strings.getKey( 'sidebar/properties/geometry' ), new SidebarGeometry( editor ) );
 	// container.addTab( 'materialTab', strings.getKey( 'sidebar/properties/material' ), new SidebarMaterial( editor ) );
 	// container.addTab( 'scriptTab', strings.getKey( 'sidebar/properties/script' ), new SidebarScript( editor ) );
@@ -31,6 +33,7 @@ function SidebarProperties( editor ) {
 	// const geometryTab = getTabByTabId( container.tabs, 'geometryTab' );
 	// const materialTab = getTabByTabId( container.tabs, 'materialTab' );
 	// const scriptTab = getTabByTabId( container.tabs, 'scriptTab' );
+	const effectsTab = getTabByTabId( container.tabs, 'effectsTab' );
 
 	function toggleTabs( object ) {
 
@@ -38,6 +41,8 @@ function SidebarProperties( editor ) {
 
 		if ( object === null ) return;
 
+		effectsTab.setHidden( !object.effectsEnabled );
+		
 		// geometryTab.setHidden( ! object.geometry );
 
 		// materialTab.setHidden( ! object.material );
