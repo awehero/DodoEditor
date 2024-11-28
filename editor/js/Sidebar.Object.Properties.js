@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+/*import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput,
 	  UIColor, UISelect,
@@ -102,7 +102,7 @@ function SidebarObjectProperties( editor ) {
 
 	// name
 
-	const objectNameRow = new UIRow();
+	/*const objectNameRow = new UIRow();
 	const objectName = new UIInput()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
@@ -1243,4 +1243,4 @@ function SidebarObjectProperties( editor ) {
 
 }
 
-export { SidebarObjectProperties };
+export { SidebarObjectProperties };*/
