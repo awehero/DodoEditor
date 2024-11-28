@@ -220,6 +220,9 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Plane';
 		mesh.material.side = THREE.DoubleSide;
+		mesh.position.y = -20;
+		mesh.rotation.x = 90;
+		mesh.scale.x = 1000;
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
