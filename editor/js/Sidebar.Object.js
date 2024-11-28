@@ -1089,6 +1089,13 @@ function SidebarObject( editor ) {
 			document.getElementById('RotZ').disabled = true;
 			document.getElementById('SizeX').disabled = true;
 			document.getElementById('SizeZ').disabled = true;
+			document.getElementById('PosX').style.color = 'gray';
+			document.getElementById('PosY').style.color = 'gray';
+			document.getElementById('RotX').style.color = 'gray';
+			document.getElementById('RotY').style.color = 'gray';
+			document.getElementById('RotZ').style.color = 'gray';
+			document.getElementById('SizeX').style.color = 'gray';
+			document.getElementById('SizeZ').style.color = 'gray';
 		} else {
 		    	document.getElementById('PosX').disabled = false;
 			document.getElementById('PosY').disabled = false;
@@ -1097,6 +1104,13 @@ function SidebarObject( editor ) {
 			document.getElementById('RotZ').disabled = false;
 			document.getElementById('SizeX').disabled = false;
 			document.getElementById('SizeZ').disabled = false;
+			document.getElementById('PosX').style.color = '';
+			document.getElementById('PosY').style.color = '';
+			document.getElementById('RotX').style.color = '';
+			document.getElementById('RotY').style.color = '';
+			document.getElementById('RotZ').style.color = '';
+			document.getElementById('SizeX').style.color = '';
+			document.getElementById('SizeZ').style.color = '';
 		}
 
 		// if ( object.fov !== undefined ) {
