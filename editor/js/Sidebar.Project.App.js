@@ -161,7 +161,7 @@ function SidebarProjectApp( editor ) {
 					inputString = inputString.replace( new RegExp( pair.search, 'g' ), pair.replace );
 
 				} );
-				if (!inputString.includes('m=')) {
+				if (!inputString.includes('m=') && object.name != 'Spawn' && object.geometry.type != 'PlaneGeometry' && object.geometry.type != 'CapsuleGeometry' && object.geometry.type != 'OctahedronGeometry') {
 					let matAdd = "";
 					switch (object.CustomTexture[0]) {
 						case "./images/textures/bright.png":
