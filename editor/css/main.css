@@ -290,7 +290,7 @@ input, textarea {
 }
 
 input.Number {
-	color: #08f!important;
+	color: #08f;
 	font-size: 12px;
 	border: 0px;
 	padding: 2px;
