@@ -765,15 +765,20 @@ function SidebarObject( editor ) {
 		} else {
 		    document.querySelectorAll('input')[5].disabled = false;
 		}
-
+		
 		objectPositionX.setValue( object.position.x );
 		objectPositionY.setValue( object.position.y );
 		objectPositionZ.setValue( object.position.z );
-
+		
 		objectRotationX.setValue( object.rotation.x * THREE.MathUtils.RAD2DEG );
 		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
 		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
 
+		/*if (object.geometry.type == 'PlaneGeometry') {
+		    document.querySelectorAll('input')[5].disabled = true;
+		} else {
+		    document.querySelectorAll('input')[5].disabled = false;
+		}*/
 		objectScaleX.setValue( object.scale.x );
 		objectScaleY.setValue( object.scale.y );
 		objectScaleZ.setValue( object.scale.z );
