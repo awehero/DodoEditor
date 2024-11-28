@@ -81,6 +81,7 @@ function Strings( config ) {
 			// 'menubar/add/mesh/torusknot': 'TorusKnot',
 			// 'menubar/add/mesh/lathe': 'Lathe',
 			// 'menubar/add/mesh/sprite': 'Sprite',
+			'menubar/add/monkey': 'Monkey',
 			'menubar/add/cone': 'Cone',
 			'menubar/add/spawn': 'Spawn',
 			'menubar/add/monkey': 'Monkey',

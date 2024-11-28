@@ -246,7 +246,7 @@ function SidebarObject( editor ) {
 	dropdownRow.add( platformBoxDropdown );
 
 	// Color picker
-	const colorPickerRow = new UIRow().setDisplay( 'none' );
+	const colorPickerRow = new UIRow().setDisplay( 'none' ).setId('colorPickerRow');
 	const colorPicker = new UIColor()
 		.setWidth( '150px' )
 		.setId( 'TextureColor' )
@@ -254,7 +254,7 @@ function SidebarObject( editor ) {
 	colorPickerRow.add( colorPicker );
 
 	// Alpha
-	const alphaRow = new UIRow().setDisplay( 'none' );
+	const alphaRow = new UIRow().setDisplay( 'none' ).setId('alphaRow');
 	alphaRow.add( new UIText( 'Alpha' ).setClass( 'Label' ) );
 	const alphaInput = new UINumber( 1 )
 		.setPrecision( 2 )
@@ -1068,11 +1068,11 @@ function SidebarObject( editor ) {
 		    document.querySelectorAll( 'input' )[ 5 ].disabled = false;
 
 		}
-
+		
 		objectPositionX.setValue( object.position.x );
 		objectPositionY.setValue( object.position.y );
 		objectPositionZ.setValue( object.position.z );
-
+		
 		objectRotationX.setValue( object.rotation.x * THREE.MathUtils.RAD2DEG );
 		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
 		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
@@ -1080,6 +1080,24 @@ function SidebarObject( editor ) {
 		objectScaleX.setValue( object.scale.x );
 		objectScaleY.setValue( object.scale.y );
 		objectScaleZ.setValue( object.scale.z );
+		
+		if (object.geometry.type == 'PlaneGeometry') {
+		    	document.getElementById('PosX').disabled = true;
+			document.getElementById('PosY').disabled = true;
+			document.getElementById('RotX').disabled = true;
+			document.getElementById('RotY').disabled = true;
+			document.getElementById('RotZ').disabled = true;
+			document.getElementById('SizeX').disabled = true;
+			document.getElementById('SizeZ').disabled = true;
+		} else {
+		    	document.getElementById('PosX').disabled = false;
+			document.getElementById('PosY').disabled = false;
+			document.getElementById('RotX').disabled = false;
+			document.getElementById('RotY').disabled = false;
+			document.getElementById('RotZ').disabled = false;
+			document.getElementById('SizeX').disabled = false;
+			document.getElementById('SizeZ').disabled = false;
+		}
 
 		// if ( object.fov !== undefined ) {
 
