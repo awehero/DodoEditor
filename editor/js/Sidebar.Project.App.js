@@ -134,7 +134,7 @@ function SidebarProjectApp( editor ) {
 
 				var objectNameStart = object.name.includes('[') ? object.name : '_';
 				let inputString = objectNameStart;
-				const replacements = [
+				const replacements = [ //This whole section might not be needed in the future, keep for now
 				    { search: ',t=', replace: ',turn=' },
 				    { search: ', t=', replace: ', turn=' },
 				    { search: '\\[t=', replace: '[turn=' },
@@ -161,6 +161,31 @@ function SidebarProjectApp( editor ) {
 					inputString = inputString.replace( new RegExp( pair.search, 'g' ), pair.replace );
 
 				} );
+				if (!inputString.includes('m=')) {
+					let matAdd = "";
+					switch (object.CustomTexture[0]) {
+						case "./images/textures/bright.png":
+				        		matAdd = 'm=0';
+				        		break;
+				        	case "./images/textures/pm1.png":
+				            		matAdd = 'm=1';
+				            		break;
+				        	case "./images/textures/pm2.png":
+				            		matAdd = 'm=2';
+				            		break;
+				        	case 'hex':
+				            		matAdd = 'm=' + object.CustomTexture[1];
+				            		if (object.CustomTexture[2] != 1) {
+				                		matAdd = matAdd + '?' + object.CustomTexture[2];
+				            		}
+				           		 break;
+				    	}
+					if (inputString == '_') {
+						inputString = matAdd;
+					} else {
+						inputString = inputString + '?' + matAdd;
+					}
+				}
 				var objectName = inputString;
 				var position = object.position;
 				var roundedPosition = {
