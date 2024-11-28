@@ -221,7 +221,7 @@ function MenubarAdd( editor ) {
 		mesh.name = 'Plane';
 		mesh.material.side = THREE.DoubleSide;
 		mesh.position.y = -20;
-		mesh.rotation.x = 90;
+		mesh.rotation.x = 1.57079633;
 		mesh.scale.x = 1000;
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
