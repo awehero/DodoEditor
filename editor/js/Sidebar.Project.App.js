@@ -126,18 +126,13 @@ function SidebarProjectApp( editor ) {
 						} else if ( object.geometry instanceof THREE.OctahedronGeometry ) {
 
 							objectType = 'G';
-
 						}
-
 					} else {
-
 					    objectType = 'G';
-
 					}
-
 				}
 
-				var objectNameStart = object.name ? object.name : 'none';
+				var objectNameStart = object.name.includes('[') ? object.name : '_';
 				let inputString = objectNameStart;
 				const replacements = [
 				    { search: ',t=', replace: ',turn=' },
@@ -175,45 +170,34 @@ function SidebarProjectApp( editor ) {
 				};
 				var rotation = object.rotation;
 				if ( object.geometry.type == 'PlaneGeometry' ) {
-
 				    var roundedRotation = {
-						x: 0,
-						y: 0,
-						z: 0
+					x: 0,
+					y: 0,
+					z: 0
 				    };
-
 				} else {
-
 				    var roundedRotation = {
-						x: Math.round( rotation.x * 1000 ) / - 1000,
-						y: Math.round( rotation.z * 1000 ) / 1000,
-						z: Math.round( rotation.y * 1000 ) / 1000
+					x: Math.round( rotation.x * 1000 ) / - 1000,
+					y: Math.round( rotation.z * 1000 ) / 1000,
+					z: Math.round( rotation.y * 1000 ) / 1000
 				    };
-
 				}
-
 				var scale = object.scale;
 				if ( object.geometry.type == 'PlaneGeometry' ) {
-
 				     var roundedScale = {
 					  x: Math.round( scale.x * 1000 ) / 20,
 					  y: Math.round( scale.y * 1000 ) / 20,
 					  z: Math.round( scale.z * 1000 ) / 20
 				     };
-
 				} else {
-
 				     var roundedScale = {
 					  x: Math.round( scale.x * 1000 ) / 20,
 					  y: Math.round( scale.z * 1000 ) / 20,
 					  z: Math.round( scale.y * 1000 ) / 20
 				     };
-
 				}
-
 				var objectData = objectType + ( roundedPosition.x ) + '$' + ( roundedPosition.y ) + '$' + ( roundedPosition.z ) + '$' + Math.round( roundedRotation.x * 100 ) + '$' + Math.round( roundedRotation.y * 100 ) + '$' + Math.round( roundedRotation.z * 100 ) + '$' + ( roundedScale.x ) + '$' + ( roundedScale.y ) + '$' + ( roundedScale.z ) + '$' + objectName;
 				dataString += objectData;
-
 			}
 
 		} );
@@ -260,29 +244,19 @@ function SidebarProjectApp( editor ) {
 		  if ( dollarIndex !== - 1 ) {
 
 		    let endIndex = dollarIndex - 1;
-		    while ( endIndex >= 0 && ! /[A-G]/.test( dataString[ endIndex ] ) ) {
-
+		    while (endIndex >= 0 && ! /[A-G]/.test(dataString[endIndex])) {
 		      endIndex --;
-
-				}
-
-		    if ( endIndex >= 0 ) {
-
-		      dataString = dataString.substring( endIndex );
-
-				}
-
 			}
-
+		    if ( endIndex >= 0 ) {
+		      dataString = dataString.substring( endIndex );
+				}
+			}
 		  try {
-
 		    fetch( `https://${hostname}${path}${dataString}` )
 		    .then( response => response.text() )
 		    .then( mapfile => {
-
 		      console.log( mapfile );
 		      return mapfile;
-
 					} )
 		    .catch( error => {
 
