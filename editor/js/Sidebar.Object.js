@@ -233,14 +233,14 @@ function SidebarObject( editor ) {
 	dropdownRow.add( platformBoxDropdown );
 
 	// Color picker
-	const colorPickerRow = new UIRow().setDisplay( 'none' );
+	const colorPickerRow = new UIRow().setDisplay( 'none' ).setId('colorPickerRow');
 	const colorPicker = new UIColor()
 		.setWidth( '150px' )
 		.onChange( handleColorChange );
 	colorPickerRow.add( colorPicker );
 
 	// Alpha
-	const alphaRow = new UIRow().setDisplay( 'none' );
+	const alphaRow = new UIRow().setDisplay( 'none' ).setId('alphaRow');
 	alphaRow.add( new UIText( 'Alpha' ).setClass( 'Label' ) );
 	const alphaInput = new UINumber( 1 )
 		.setPrecision( 2 )
