@@ -41,7 +41,10 @@ function SidebarProperties( editor ) {
 
 		if ( object === null ) return;
 
-		effectsTab.setHidden( !object.effectsEnabled );
+		const effectsPanel = effectsTab.panel;
+	        if ( effectsPanel.setContentHidden ) {
+	            effectsPanel.setContentHidden( !object.effectsEnabled );
+	        }
 		
 		// geometryTab.setHidden( ! object.geometry );
 
