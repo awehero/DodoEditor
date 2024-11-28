@@ -13,8 +13,8 @@ function SidebarProperties( editor ) {
 	container.setId( 'properties' );
 
 	container.addTab( 'objectTab', strings.getKey( 'sidebar/properties/object' ), new SidebarObject( editor ) );
-	container.addTab( 'geometryTab', strings.getKey( 'sidebar/properties/geometry' ), new SidebarGeometry( editor ) );
-	container.addTab( 'materialTab', strings.getKey( 'sidebar/properties/material' ), new SidebarMaterial( editor ) );
+	// container.addTab( 'geometryTab', strings.getKey( 'sidebar/properties/geometry' ), new SidebarGeometry( editor ) );
+	// container.addTab( 'materialTab', strings.getKey( 'sidebar/properties/material' ), new SidebarMaterial( editor ) );
 	// container.addTab( 'scriptTab', strings.getKey( 'sidebar/properties/script' ), new SidebarScript( editor ) );
 	container.select( 'objectTab' );
 
@@ -28,8 +28,8 @@ function SidebarProperties( editor ) {
 
 	}
 
-	const geometryTab = getTabByTabId( container.tabs, 'geometryTab' );
-	const materialTab = getTabByTabId( container.tabs, 'materialTab' );
+	// const geometryTab = getTabByTabId( container.tabs, 'geometryTab' );
+	// const materialTab = getTabByTabId( container.tabs, 'materialTab' );
 	// const scriptTab = getTabByTabId( container.tabs, 'scriptTab' );
 
 	function toggleTabs( object ) {
@@ -38,23 +38,23 @@ function SidebarProperties( editor ) {
 
 		if ( object === null ) return;
 
-		geometryTab.setHidden( ! object.geometry );
+		// geometryTab.setHidden( ! object.geometry );
 
-		materialTab.setHidden( ! object.material );
+		// materialTab.setHidden( ! object.material );
 
 		// scriptTab.setHidden( object === editor.camera );
 
 		// set active tab
 
-		if ( container.selected === 'geometryTab' ) {
+		// if ( container.selected === 'geometryTab' ) {
 
-			container.select( geometryTab.isHidden() ? 'objectTab' : 'geometryTab' );
+		// 	container.select( geometryTab.isHidden() ? 'objectTab' : 'geometryTab' );
 
-		} else if ( container.selected === 'materialTab' ) {
+		// }  else if ( container.selected === 'materialTab' ) {
 
-			container.select( materialTab.isHidden() ? 'objectTab' : 'materialTab' );
+		// 	container.select( materialTab.isHidden() ? 'objectTab' : 'materialTab' );
 
-		} // else if ( container.selected === 'scriptTab' ) {
+		// } // else if ( container.selected === 'scriptTab' ) {
 
 		// 	container.select( scriptTab.isHidden() ? 'objectTab' : 'scriptTab' );
 

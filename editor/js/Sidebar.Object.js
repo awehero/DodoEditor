@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput,
-	//  UIButton, UIColor, UICheckbox, UIInteger, UITextArea,
+	  UIColor, UISelect,
 	  UIText, UINumber
 	 } from './libs/ui.js';
 // import { UIBoolean } from './libs/ui.three.js';
@@ -103,15 +103,27 @@ function SidebarObject( editor ) {
 	// name
 
 	const objectNameRow = new UIRow();
-	const objectName = new UIInput().setWidth( '150px' ).setFontSize( '12px' ).onChange( function () {
+	const objectName = new UIInput()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.onChange( function () {
 
-		editor.execute( new SetValueCommand( editor, editor.selected, 'name', objectName.getValue() ) );
-		// console.log('objectName.getValue()', objectName.getValue());
-		refreshUI();
+			editor.execute(
+				new SetValueCommand(
+					editor,
+					editor.selected,
+					'name',
+					objectName.getValue()
+				)
+			);
+			// console.log('objectName.getValue()', objectName.getValue());
+			refreshUI();
 
-	} );
+		} );
 
-	objectNameRow.add( new UIText( strings.getKey( 'sidebar/object/name' ) ).setClass( 'Label' ) );
+	objectNameRow.add(
+		new UIText( strings.getKey( 'sidebar/object/name' ) ).setClass( 'Label' )
+	);
 	objectNameRow.add( objectName );
 
 	container.add( objectNameRow );
@@ -119,11 +131,22 @@ function SidebarObject( editor ) {
 	// position
 
 	const objectPositionRow = new UIRow();
-	const objectPositionX = new UINumber().setPrecision( 3 ).setWidth( '50px' ).onChange( update );
-	const objectPositionY = new UINumber().setPrecision( 3 ).setWidth( '50px' ).onChange( update );
-	const objectPositionZ = new UINumber().setPrecision( 3 ).setWidth( '50px' ).onChange( update );
+	const objectPositionX = new UINumber()
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectPositionY = new UINumber()
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectPositionZ = new UINumber()
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
 
-	objectPositionRow.add( new UIText( strings.getKey( 'sidebar/object/position' ) ).setClass( 'Label' ) );
+	objectPositionRow.add(
+		new UIText( strings.getKey( 'sidebar/object/position' ) ).setClass( 'Label' )
+	);
 	objectPositionRow.add( objectPositionX, objectPositionY, objectPositionZ );
 
 	container.add( objectPositionRow );
@@ -131,11 +154,28 @@ function SidebarObject( editor ) {
 	// rotation
 
 	const objectRotationRow = new UIRow();
-	const objectRotationX = new UINumber().setStep( 10 ).setNudge( 0.1 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
-	const objectRotationY = new UINumber().setStep( 10 ).setNudge( 0.1 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
-	const objectRotationZ = new UINumber().setStep( 10 ).setNudge( 0.1 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
+	const objectRotationX = new UINumber()
+		.setStep( 10 )
+		.setNudge( 0.1 )
+		.setUnit( '°' )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectRotationY = new UINumber()
+		.setStep( 10 )
+		.setNudge( 0.1 )
+		.setUnit( '°' )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectRotationZ = new UINumber()
+		.setStep( 10 )
+		.setNudge( 0.1 )
+		.setUnit( '°' )
+		.setWidth( '50px' )
+		.onChange( update );
 
-	objectRotationRow.add( new UIText( strings.getKey( 'sidebar/object/rotation' ) ).setClass( 'Label' ) );
+	objectRotationRow.add(
+		new UIText( strings.getKey( 'sidebar/object/rotation' ) ).setClass( 'Label' )
+	);
 	objectRotationRow.add( objectRotationX, objectRotationY, objectRotationZ );
 
 	container.add( objectRotationRow );
@@ -143,15 +183,244 @@ function SidebarObject( editor ) {
 	// scale
 
 	const objectScaleRow = new UIRow();
-	const objectScaleX = new UINumber( 1 ).setPrecision( 3 ).setWidth( '50px' ).onChange( update );
-	const objectScaleY = new UINumber( 1 ).setPrecision( 3 ).setWidth( '50px' ).onChange( update );
-	const objectScaleZ = new UINumber( 1 ).setPrecision( 3 ).setWidth( '50px' ).onChange( update );
+	const objectScaleX = new UINumber( 1 )
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectScaleY = new UINumber( 1 )
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
+	const objectScaleZ = new UINumber( 1 )
+		.setPrecision( 3 )
+		.setWidth( '50px' )
+		.onChange( update );
 
-	objectScaleRow.add( new UIText( strings.getKey( 'sidebar/object/scale' ) ).setClass( 'Label' ) );
+	objectScaleRow.add(
+		new UIText( strings.getKey( 'sidebar/object/scale' ) ).setClass( 'Label' )
+	);
 	objectScaleRow.add( objectScaleX, objectScaleY, objectScaleZ );
 
 	container.add( objectScaleRow );
 
+	// texture
+
+	// Dropdown menu
+	const dropdownRow = new UIRow();
+	dropdownRow.add( new UIText( 'Texture' ).setClass( 'Label' ) );
+
+	// Dropdowns for different conditions
+	const sphereCylinderDropdown = new UISelect()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.setOptions( { 3: 'Color' } )
+		.onChange( handleSelectionChange );
+
+	const coneDropdown = new UISelect()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.setOptions( { 4: 'Texture 1', 5: 'Texture 2' } )
+		.onChange( handleSelectionChange );
+
+	const platformBoxDropdown = new UISelect()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.setOptions( { 0: 'Texture 1', 1: 'Texture 2', 2: 'Texture 3', 3: 'Color' } )
+		.onChange( handleSelectionChange );
+
+	dropdownRow.add( sphereCylinderDropdown );
+	dropdownRow.add( coneDropdown );
+	dropdownRow.add( platformBoxDropdown );
+
+	// Color picker
+	const colorPickerRow = new UIRow().setDisplay( 'none' );
+	const colorPicker = new UIColor()
+		.setWidth( '150px' )
+		.onChange( handleColorChange );
+	colorPickerRow.add( colorPicker );
+
+	// Alpha
+	const alphaRow = new UIRow().setDisplay( 'none' );
+	alphaRow.add( new UIText( 'Alpha' ).setClass( 'Label' ) );
+	const alphaInput = new UINumber( 1 )
+		.setPrecision( 2 )
+		.setWidth( '50px' )
+		.setRange( 0, 1 )
+		.onChange( handleAlphaChange );
+	alphaRow.add( alphaInput );
+
+	container.add( dropdownRow );
+	container.add( colorPickerRow );
+	container.add( alphaRow );
+
+	// change functions
+	function handleSelectionChange() {
+
+		if ( editor.selected === null ) return;
+
+		const selectedObject = editor.selected;
+
+		// Hide all dropdowns initially
+		sphereCylinderDropdown.setDisplay( 'none' );
+		coneDropdown.setDisplay( 'none' );
+		platformBoxDropdown.setDisplay( 'none' );
+		colorPickerRow.setDisplay( 'none' );
+		alphaRow.setDisplay( 'none' );
+
+		if ( selectedObject.geometry.type == 'SphereGeometry' || selectedObject.geometry.type == 'CylinderGeometry' ) {
+
+			sphereCylinderDropdown.setDisplay( '' );
+			colorPickerRow.setDisplay( '' );
+			alphaRow.setDisplay( '' );
+
+		} else if ( selectedObject.geometry.type == 'ConeGeometry' && selectedObject.name !== 'Spawn' ) {
+
+			coneDropdown.setDisplay( '' );
+
+		} else if ( selectedObject.geometry.type == 'BoxGeometry' ) {
+
+			platformBoxDropdown.setDisplay( '' );
+			colorPickerRow.setDisplay( '' );
+			alphaRow.setDisplay( '' );
+
+		}
+
+		afterSelection();
+
+	}
+
+	function handleColorChange() {
+
+		// const colorValue = colorPicker.getValue();
+		// console.log( 'Color changed to:', colorValue );
+		updateTexture();
+
+	}
+
+	function handleAlphaChange() {
+
+		// const alphaValue = alphaInput.getValue();
+		// console.log( 'Alpha changed to:', alphaValue );
+		updateTexture();
+
+	}
+
+	function afterSelection() {
+
+		// Function to run after a selection occurs
+		// console.log( 'Selection changed' );
+		updateTexture();
+
+	}
+
+	function updateTexture() {
+
+		const selectedObject = editor.selected;
+		let selectedValue;
+
+		// get value
+		if ( selectedObject.geometry.type == 'SphereGeometry' || selectedObject.geometry.type == 'CylinderGeometry' ) {
+
+			selectedValue = sphereCylinderDropdown.getValue();
+
+		} else if ( selectedObject.geometry.type == 'ConeGeometry' && selectedObject.name !== 'Spawn' ) {
+
+			selectedValue = coneDropdown.getValue();
+
+		} else if ( selectedObject.geometry.type == 'BoxGeometry' ) {
+
+			selectedValue = platformBoxDropdown.getValue();
+
+		}
+
+		// correspond
+		if ( selectedObject.geometry.type == 'ConeGeometry' && ( selectedValue === '4' || selectedValue === '5' ) ) {
+
+			const colors = [ 0xd52b2b, 0x41AED9 ];
+			const alphaValue = alphaInput.getValue();
+
+			const newMaterial = new THREE.MeshBasicMaterial( {
+				color: colors[ selectedValue - 4 ],
+				opacity: alphaValue,
+				transparent: true,
+			} );
+
+			selectedObject.material = newMaterial;
+			selectedObject.CustomTexture = [ 'hex', colors[ selectedValue - 4 ].toString().substring( 2 ), parseFloat( alphaValue ) ];
+
+			editor.signals.materialChanged.dispatch( selectedObject.material );
+			editor.signals.objectChanged.dispatch( selectedObject );
+
+		} else if ( selectedObject.geometry.type == 'BoxGeometry' && ( selectedValue === '0' || selectedValue === '1' || selectedValue === '2' || selectedValue === '3' ) ) {
+
+			const textureLoader = new THREE.TextureLoader();
+			const texturePaths = {
+				'0': './images/textures/bright.png',
+				'1': './images/textures/pm1.png',
+				'2': './images/textures/pm2.png',
+			};
+			if ( selectedValue !== '3' ) {
+
+				textureLoader.load( texturePaths[ selectedValue ], function ( texture ) {
+
+					texture.encoding = THREE.sRGBEncoding;
+					texture.colorSpace = THREE.SRGBColorSpace;
+					const newMaterial = new THREE.MeshBasicMaterial( {
+						map: texture,
+						color: 0xffffff, // Set color to white to ensure texture colors are not altered
+						transparent: false, // Ensure transparency is disabled
+						opacity: 1, // Ensure opacity is set to 1
+					} );
+					selectedObject.material = newMaterial;
+					selectedObject.CustomTexture = [ texturePaths[ selectedValue ] ];
+
+					editor.signals.materialChanged.dispatch( selectedObject.material );
+					editor.signals.objectChanged.dispatch( selectedObject );
+
+				} );
+
+			} else {
+
+				const colorValue = colorPicker.getValue();
+				const alphaValue = alphaInput.getValue();
+
+				const newMaterial = new THREE.MeshBasicMaterial( {
+					color: colorValue,
+					opacity: alphaValue,
+					transparent: true,
+				} );
+
+				// Assign the new material to the selected object
+				selectedObject.material = newMaterial; // may be a problem that it's a sting and not 0x int
+				selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+
+			}
+
+		} else if ( ( selectedObject.geometry.type == 'SphereGeometry' || selectedObject.geometry.type == 'CylinderGeometry' ) && selectedValue === '3' ) {
+
+			const colorValue = colorPicker.getValue();
+			const alphaValue = alphaInput.getValue();
+
+			const newMaterial = new THREE.MeshBasicMaterial( {
+				color: colorValue,
+				opacity: alphaValue,
+				transparent: true,
+			} );
+
+			// Assign the new material to the selected object
+			selectedObject.material = newMaterial;
+			selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+
+			// Signal the editor to update the material and render the changes
+			editor.signals.materialChanged.dispatch( selectedObject.material );
+			editor.signals.objectChanged.dispatch( selectedObject );
+
+		}
+
+	}
+
+	// Ensure handleSelectionChange is called when a new object is selected
+	editor.signals.objectSelected.add( handleSelectionChange );
 	// fov
 
 	// const objectFovRow = new UIRow();
@@ -428,7 +697,6 @@ function SidebarObject( editor ) {
 
 	// 	}
 
-
 	// 	editor.utils.save( new Blob( [ output ] ), `${ objectName.getValue() || 'object' }.json` );
 
 	// } );
@@ -446,21 +714,37 @@ function SidebarObject( editor ) {
 
 		if ( object !== null ) {
 
-			const newPosition = new THREE.Vector3( objectPositionX.getValue(), objectPositionY.getValue(), objectPositionZ.getValue() );
+			const newPosition = new THREE.Vector3(
+				objectPositionX.getValue(),
+				objectPositionY.getValue(),
+				objectPositionZ.getValue()
+			);
 			if ( object.position.distanceTo( newPosition ) >= 0.01 ) {
 
 				editor.execute( new SetPositionCommand( editor, object, newPosition ) );
 
 			}
 
-			const newRotation = new THREE.Euler( objectRotationX.getValue() * THREE.MathUtils.DEG2RAD, objectRotationY.getValue() * THREE.MathUtils.DEG2RAD, objectRotationZ.getValue() * THREE.MathUtils.DEG2RAD );
-			if ( new THREE.Vector3().setFromEuler( object.rotation ).distanceTo( new THREE.Vector3().setFromEuler( newRotation ) ) >= 0.01 ) {
+			const newRotation = new THREE.Euler(
+				objectRotationX.getValue() * THREE.MathUtils.DEG2RAD,
+				objectRotationY.getValue() * THREE.MathUtils.DEG2RAD,
+				objectRotationZ.getValue() * THREE.MathUtils.DEG2RAD
+			);
+			if (
+				new THREE.Vector3()
+					.setFromEuler( object.rotation )
+					.distanceTo( new THREE.Vector3().setFromEuler( newRotation ) ) >= 0.01
+			) {
 
 				editor.execute( new SetRotationCommand( editor, object, newRotation ) );
 
 			}
 
-			const newScale = new THREE.Vector3( objectScaleX.getValue(), objectScaleY.getValue(), objectScaleZ.getValue() );
+			const newScale = new THREE.Vector3(
+				objectScaleX.getValue(),
+				objectScaleY.getValue(),
+				objectScaleZ.getValue()
+			);
 			if ( object.scale.distanceTo( newScale ) >= 0.01 ) {
 
 				if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
@@ -760,10 +1044,14 @@ function SidebarObject( editor ) {
 
 		// objectUUID.setValue( object.uuid );
 		objectName.setValue( object.name );
-		if (object.name == "Spawn") {
-		    document.querySelectorAll('input')[5].disabled = true;
+		if ( object.name == 'Spawn' ) {
+
+		    document.querySelectorAll( 'input' )[ 5 ].disabled = true;
+
 		} else {
-		    document.querySelectorAll('input')[5].disabled = false;
+
+		    document.querySelectorAll( 'input' )[ 5 ].disabled = false;
+
 		}
 		
 		objectPositionX.setValue( object.position.x );
