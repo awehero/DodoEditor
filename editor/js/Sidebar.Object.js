@@ -106,6 +106,7 @@ function SidebarObject( editor ) {
 	const objectName = new UIInput()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
+		.setId( 'Name' )
 		.onChange( function () {
 
 			editor.execute(
@@ -134,14 +135,17 @@ function SidebarObject( editor ) {
 	const objectPositionX = new UINumber()
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'PosX' )
 		.onChange( update );
 	const objectPositionY = new UINumber()
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'PosY' )
 		.onChange( update );
 	const objectPositionZ = new UINumber()
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'PosZ' )
 		.onChange( update );
 
 	objectPositionRow.add(
@@ -159,18 +163,21 @@ function SidebarObject( editor ) {
 		.setNudge( 0.1 )
 		.setUnit( '°' )
 		.setWidth( '50px' )
+		.setId( 'RotX' )
 		.onChange( update );
 	const objectRotationY = new UINumber()
 		.setStep( 10 )
 		.setNudge( 0.1 )
 		.setUnit( '°' )
 		.setWidth( '50px' )
+		.setId( 'RotY' )
 		.onChange( update );
 	const objectRotationZ = new UINumber()
 		.setStep( 10 )
 		.setNudge( 0.1 )
 		.setUnit( '°' )
 		.setWidth( '50px' )
+		.setId( 'RotZ' )
 		.onChange( update );
 
 	objectRotationRow.add(
@@ -186,14 +193,17 @@ function SidebarObject( editor ) {
 	const objectScaleX = new UINumber( 1 )
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'SizeX' )
 		.onChange( update );
 	const objectScaleY = new UINumber( 1 )
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'SizeY' )
 		.onChange( update );
 	const objectScaleZ = new UINumber( 1 )
 		.setPrecision( 3 )
 		.setWidth( '50px' )
+		.setId( 'SizeZ' )
 		.onChange( update );
 
 	objectScaleRow.add(
@@ -214,18 +224,21 @@ function SidebarObject( editor ) {
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
 		.setOptions( { 3: 'Color' } )
+		.setId( 'SphereCylinderTexture' )
 		.onChange( handleSelectionChange );
 
 	const coneDropdown = new UISelect()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
 		.setOptions( { 4: 'Texture 1', 5: 'Texture 2' } )
+		.setId( 'ConeTexture' )
 		.onChange( handleSelectionChange );
 
 	const platformBoxDropdown = new UISelect()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
 		.setOptions( { 0: 'Texture 1', 1: 'Texture 2', 2: 'Texture 3', 3: 'Color' } )
+		.setId( 'PlatformTexture' )
 		.onChange( handleSelectionChange );
 
 	dropdownRow.add( sphereCylinderDropdown );
@@ -236,6 +249,7 @@ function SidebarObject( editor ) {
 	const colorPickerRow = new UIRow().setDisplay( 'none' ).setId('colorPickerRow');
 	const colorPicker = new UIColor()
 		.setWidth( '150px' )
+		.setId( 'TextureColor' )
 		.onChange( handleColorChange );
 	colorPickerRow.add( colorPicker );
 
@@ -246,6 +260,7 @@ function SidebarObject( editor ) {
 		.setPrecision( 2 )
 		.setWidth( '50px' )
 		.setRange( 0, 1 )
+		.setId( 'TextureAlpha' )
 		.onChange( handleAlphaChange );
 	alphaRow.add( alphaInput );
 
