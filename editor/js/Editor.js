@@ -665,51 +665,41 @@ Editor.prototype = {
 
 	toJSON: function () {
 
-		// scripts clean up
-
-		var scene = this.scene;
-		var scripts = this.scripts;
-
-		for ( var key in scripts ) {
-
-			var script = scripts[ key ];
-
-			if ( script.length === 0 || scene.getObjectByProperty( 'uuid', key ) === undefined ) {
-
-				delete scripts[ key ];
-
-			}
-
-		}
-
-		// honor modelviewer environment
-
-		let environment = null;
-
-		if ( this.scene.environment !== null && this.scene.environment.isRenderTargetTexture === true ) {
-
-			environment = 'ModelViewer';
-
-		}
-
-		//
-
-		return {
-
+		const output = {
 			metadata: {},
-			project: {
-				shadows: this.config.getKey( 'project/renderer/shadows' ),
-				shadowType: this.config.getKey( 'project/renderer/shadowType' ),
-				toneMapping: this.config.getKey( 'project/renderer/toneMapping' ),
-				toneMappingExposure: this.config.getKey( 'project/renderer/toneMappingExposure' )
-			},
-			camera: this.viewportCamera.toJSON(),
-			scene: this.scene.toJSON(),
-			scripts: this.scripts,
-			history: this.history.toJSON(),
-			environment: environment
-
+			project: {},
+			geometries: {},
+			materials: {},
+			textures: {},
+			images: {},
+			shapes: {},
+			skeletons: {},
+			animations: {},
+			nodes: {},
+			scenes: {},
+			customProperties: {},
 		};
+
+		// Serialize custom properties
+		this.scene.traverse(function (object) {
+			if (object.isMesh) {
+				const data = {
+					uuid: object.uuid,
+					type: object.type,
+					name: object.name,
+					position: object.position.toArray(),
+					rotation: object.rotation.toArray(),
+					scale: object.scale.toArray(),
+					material: object.material.uuid,
+					geometry: object.geometry.uuid,
+					// Add CustomTexture property
+					CustomTexture: object.CustomTexture || null,
+				};
+				output.customProperties[object.uuid] = data;
+			}
+		});
+
+		return output;
 
 	},
 

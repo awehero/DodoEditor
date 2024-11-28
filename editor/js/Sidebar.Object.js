@@ -246,7 +246,7 @@ function SidebarObject( editor ) {
 	dropdownRow.add( platformBoxDropdown );
 
 	// Color picker
-	const colorPickerRow = new UIRow().setDisplay( 'none' ).setId('colorPickerRow');
+	const colorPickerRow = new UIRow().setDisplay( 'none' ).setId( 'colorPickerRow' );
 	const colorPicker = new UIColor()
 		.setWidth( '150px' )
 		.setId( 'TextureColor' )
@@ -254,7 +254,7 @@ function SidebarObject( editor ) {
 	colorPickerRow.add( colorPicker );
 
 	// Alpha
-	const alphaRow = new UIRow().setDisplay( 'none' ).setId('alphaRow');
+	const alphaRow = new UIRow().setDisplay( 'none' ).setId( 'alphaRow' );
 	alphaRow.add( new UIText( 'Alpha' ).setClass( 'Label' ) );
 	const alphaInput = new UINumber( 1 )
 		.setPrecision( 2 )
@@ -269,8 +269,10 @@ function SidebarObject( editor ) {
 	container.add( alphaRow );
 
 	// change functions
+	let LastSelected = null;
 	function handleSelectionChange() {
 
+		LastSelected = editor.selected;
 		if ( editor.selected === null ) return;
 
 		const selectedObject = editor.selected;
@@ -329,6 +331,9 @@ function SidebarObject( editor ) {
 	}
 
 	function updateTexture() {
+
+		if ( editor.selected === null ) return;
+		if ( editor.selected !== LastSelected ) return;
 
 		const selectedObject = editor.selected;
 		let selectedValue;
@@ -431,6 +436,12 @@ function SidebarObject( editor ) {
 			editor.signals.objectChanged.dispatch( selectedObject );
 
 		}
+
+		selectedValue = null;
+		// set all dropdowns and inputs to null
+		sphereCylinderDropdown.setValue( null );
+		coneDropdown.setValue( null );
+		platformBoxDropdown.setValue( null );
 
 	}
 
@@ -1068,11 +1079,11 @@ function SidebarObject( editor ) {
 		    document.querySelectorAll( 'input' )[ 5 ].disabled = false;
 
 		}
-		
+
 		objectPositionX.setValue( object.position.x );
 		objectPositionY.setValue( object.position.y );
 		objectPositionZ.setValue( object.position.z );
-		
+
 		objectRotationX.setValue( object.rotation.x * THREE.MathUtils.RAD2DEG );
 		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
 		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
