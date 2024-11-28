@@ -25,6 +25,7 @@ function SidebarEffects( editor ) {
 	const signals = editor.signals;
 
 	const container = new UIPanel();
+	container.setId( 'effects' );
 	container.setBorderTop( '0' );
 	container.setPaddingTop( '20px' );
 	container.setDisplay( 'none' );
@@ -1238,7 +1239,9 @@ function SidebarEffects( editor ) {
 		updateTransformRows( object );
 
 	}
-
+	container.setContentHidden = function ( hidden ) {
+        	content.setHidden( hidden );
+    	};
 	return container;
 
 }
