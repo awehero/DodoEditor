@@ -1565,7 +1565,7 @@ function SidebarEffects( editor ) {
 
 			// }
 
-		}
+		//} Finally, I found the problem
 
 	}
 
@@ -1863,9 +1863,9 @@ function SidebarEffects( editor ) {
 		updateTransformRows( object );
 
 	}
-	/*container.setContentHidden = function ( hidden ) {
+	container.setContentHidden = function ( hidden ) {
         	content.setHidden( hidden );
-    	}; I THINK THIS BREAKS IT*/
+    	};
 	return container;
 
 }
