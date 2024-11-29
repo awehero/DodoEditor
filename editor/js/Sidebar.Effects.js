@@ -1350,7 +1350,7 @@ function SidebarEffects( editor ) {
 
 	function update() {
 
-		const object = editor.selected;
+		/*const object = editor.selected;
 
 		if ( object !== null ) {
 
@@ -1390,7 +1390,7 @@ function SidebarEffects( editor ) {
 				if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
 				editor.execute( new SetScaleCommand( editor, object, newScale ) );
 
-			}
+			}*/
 
 			// if ( object.fov !== undefined && Math.abs( object.fov - objectFov.getValue() ) >= 0.01 ) {
 
@@ -1629,7 +1629,7 @@ function SidebarEffects( editor ) {
 
 	function updateTransformRows( object ) {
 
-		if ( object.isLight ) {
+		/*if ( object.isLight ) {
 
 			objectRotationRow.setDisplay( 'none' );
 			objectScaleRow.setDisplay( 'none' );
@@ -1639,7 +1639,7 @@ function SidebarEffects( editor ) {
 			objectRotationRow.setDisplay( '' );
 			objectScaleRow.setDisplay( '' );
 
-		}
+		}*/
 
 	}
 
@@ -1683,7 +1683,7 @@ function SidebarEffects( editor ) {
 		// objectType.setValue( object.type );
 
 		// objectUUID.setValue( object.uuid );
-		objectName.setValue( object.name );
+		/*objectName.setValue( object.name );
 		if ( object.name == 'Spawn' ) {
 
 		    document.querySelectorAll( 'input' )[ 5 ].disabled = true;
@@ -1736,7 +1736,7 @@ function SidebarEffects( editor ) {
 			document.getElementById('RotZ').style.color = '';
 			document.getElementById('SizeX').style.color = '';
 			document.getElementById('SizeZ').style.color = '';
-		}
+		}*/
 
 		// if ( object.fov !== undefined ) {
 
