@@ -101,6 +101,44 @@ function SidebarEffects( editor ) {
 
 	// container.add( objectUUIDRow );
 
+	//id
+	
+	const objectIdRow = new UIRow();
+	const objectId = new UIInput()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.setId( 'id' )
+		.setAttribute( 'type', 'number' )
+		.onChange( function () {
+			//Put stuff here if you need it
+		} );
+
+	objectIdRow.add(
+		new UIText( strings.getKey( 'sidebar/effects/id' ) ).setClass( 'Label' )
+	);
+	objectIdRow.add( objectId );
+
+	container.add( objectIdRow );
+
+	//id
+	
+	const objectIdRow = new UIRow();
+	const objectId = new UIInput()
+		.setWidth( '150px' )
+		.setFontSize( '12px' )
+		.setId( 'id' )
+		.setAttribute( 'type', 'number' )
+		.onChange( function () {
+			//Put stuff here if you need it
+		} );
+
+	objectIdRow.add(
+		new UIText( strings.getKey( 'sidebar/effects/id' ) ).setClass( 'Label' )
+	);
+	objectIdRow.add( objectId );
+
+	container.add( objectIdRow );
+	
 	// name
 
 	const objectNameRow = new UIRow();
