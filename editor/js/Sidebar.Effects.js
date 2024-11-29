@@ -1866,7 +1866,7 @@ function SidebarEffects( editor ) {
 	container.setContentHidden = function ( hidden ) {
         	content.setHidden( hidden );
     	};
-	return container;
+return container;
 
 }
 
