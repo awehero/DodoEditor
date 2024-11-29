@@ -185,7 +185,7 @@ function SidebarProjectApp( editor ) {
 							matAdd = 'm=' + object.userData.CustomTexture[ 1 ];
 							if ( object.userData.CustomTexture[ 2 ] != 1 ) {
 
-								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ];
+								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ].toLowerCase();
 
 							}
 
