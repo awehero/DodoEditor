@@ -116,9 +116,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 1)); // 1 digit limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectUseRow.add(
 	    new UIText(strings.getKey('sidebar/effects/use')).setClass('Label')
@@ -136,9 +134,7 @@ function SidebarEffects( editor ) {
 	    .setId('drift')
 	    .setOptions({ off: 'Off', on: 'On' })
 	    .setValue('off') // Default to 'off'
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDriftRow.add(
 	    new UIText(strings.getKey('sidebar/effects/drift')).setClass('Label')
@@ -156,9 +152,7 @@ function SidebarEffects( editor ) {
 	    .setId('jump')
 	    .setOptions({ off: 'Off', on: 'On' })
 	    .setValue('off') // Default to 'off'
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectJumpRow.add(
 	    new UIText(strings.getKey('sidebar/effects/jump')).setClass('Label')
@@ -180,9 +174,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectJhRow.add(
 	    new UIText(strings.getKey('sidebar/effects/jh')).setClass('Label')
@@ -204,9 +196,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectJsRow.add(
 	    new UIText(strings.getKey('sidebar/effects/js')).setClass('Label')
@@ -228,9 +218,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectTurnRow.add(
 	    new UIText(strings.getKey('sidebar/effects/turn')).setClass('Label')
@@ -252,9 +240,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectSpeedRow.add(
 	    new UIText(strings.getKey('sidebar/effects/speed')).setClass('Label')
@@ -276,9 +262,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDxRow.add(
 	    new UIText(strings.getKey('sidebar/effects/dx')).setClass('Label')
@@ -300,9 +284,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDyRow.add(
 	    new UIText(strings.getKey('sidebar/effects/dy')).setClass('Label')
@@ -324,9 +306,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDzRow.add(
 	    new UIText(strings.getKey('sidebar/effects/dz')).setClass('Label')
@@ -344,9 +324,7 @@ function SidebarEffects( editor ) {
 	    .setId('sl')
 	    .setOptions({ off: 'Off', on: 'On' })
 	    .setValue('off') // Default to 'off'
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectSlRow.add(
 	    new UIText(strings.getKey('sidebar/effects/sl')).setClass('Label')
@@ -368,9 +346,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectSrRow.add(
 	    new UIText(strings.getKey('sidebar/effects/sr')).setClass('Label')
@@ -392,9 +368,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 1)); // 1 digit limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectIdRow.add(
 	    new UIText(strings.getKey('sidebar/effects/id')).setClass('Label')
@@ -416,9 +390,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectMxRow.add(
 	    new UIText(strings.getKey('sidebar/effects/mx')).setClass('Label')
@@ -440,9 +412,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectMyRow.add(
 	    new UIText(strings.getKey('sidebar/effects/my')).setClass('Label')
@@ -464,9 +434,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectMzRow.add(
 	    new UIText(strings.getKey('sidebar/effects/mz')).setClass('Label')
@@ -487,9 +455,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectRxRow.add(
 	    new UIText(strings.getKey('sidebar/effects/rx')).setClass('Label')
@@ -511,9 +477,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectRyRow.add(
 	    new UIText(strings.getKey('sidebar/effects/ry')).setClass('Label')
@@ -535,9 +499,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectRzRow.add(
 	    new UIText(strings.getKey('sidebar/effects/rz')).setClass('Label')
@@ -559,9 +521,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectGxRow.add(
 	    new UIText(strings.getKey('sidebar/effects/gx')).setClass('Label')
@@ -583,9 +543,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectGyRow.add(
 	    new UIText(strings.getKey('sidebar/effects/gy')).setClass('Label')
@@ -607,9 +565,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectGzRow.add(
 	    new UIText(strings.getKey('sidebar/effects/gz')).setClass('Label')
@@ -631,9 +587,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectBouRow.add(
 	    new UIText(strings.getKey('sidebar/effects/bou')).setClass('Label')
@@ -655,9 +609,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectMassRow.add(
 	    new UIText(strings.getKey('sidebar/effects/mass')).setClass('Label')
@@ -679,9 +631,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectFrRow.add(
 	    new UIText(strings.getKey('sidebar/effects/fr')).setClass('Label')
@@ -699,9 +649,7 @@ function SidebarEffects( editor ) {
 	    .setId('air')
 	    .setOptions({ on: 'On', off: 'Off' })
 	    .setValue('on') // Default value is "on"
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectAirRow.add(
 	    new UIText(strings.getKey('sidebar/effects/air')).setClass('Label')
@@ -724,9 +672,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectToprRow.add(
 	    new UIText(strings.getKey('sidebar/effects/topr')).setClass('Label')
@@ -744,9 +690,7 @@ function SidebarEffects( editor ) {
 	    .setId('k')
 	    .setOptions({ on: 'On', off: 'Off' })
 	    .setValue('off') // Default value is "off"
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectKRow.add(
 	    new UIText(strings.getKey('sidebar/effects/k')).setClass('Label')
@@ -768,9 +712,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDRow.add(
 	    new UIText(strings.getKey('sidebar/effects/d')).setClass('Label')
@@ -792,9 +734,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectEyeRow.add(
 	    new UIText(strings.getKey('sidebar/effects/eye')).setClass('Label')
@@ -816,9 +756,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectFovRow.add(
 	    new UIText(strings.getKey('sidebar/effects/fov')).setClass('Label')
@@ -840,9 +778,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectTxRow.add(
 	    new UIText(strings.getKey('sidebar/effects/tx')).setClass('Label')
@@ -863,9 +799,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectTyRow.add(
 	    new UIText(strings.getKey('sidebar/effects/ty')).setClass('Label')
@@ -887,9 +821,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectTzRow.add(
 	    new UIText(strings.getKey('sidebar/effects/tz')).setClass('Label')
@@ -911,9 +843,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectCdRow.add(
 	    new UIText(strings.getKey('sidebar/effects/cd')).setClass('Label')
@@ -935,9 +865,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectCrRow.add(
 	    new UIText(strings.getKey('sidebar/effects/cr')).setClass('Label')
@@ -953,9 +881,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('msg')
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectMsgRow.add(
 	    new UIText(strings.getKey('sidebar/effects/msg')).setClass('Label')
@@ -977,9 +903,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectBrRow.add(
 	    new UIText(strings.getKey('sidebar/effects/br')).setClass('Label')
@@ -1001,9 +925,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectBgRow.add(
 	    new UIText(strings.getKey('sidebar/effects/bg')).setClass('Label')
@@ -1024,9 +946,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectAmbRow.add(
 	    new UIText(strings.getKey('sidebar/effects/amb')).setClass('Label')
@@ -1048,9 +968,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectDifRow.add(
 	    new UIText(strings.getKey('sidebar/effects/dif')).setClass('Label')
@@ -1072,9 +990,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectSpeRow.add(
 	    new UIText(strings.getKey('sidebar/effects/spe')).setClass('Label')
@@ -1096,9 +1012,7 @@ function SidebarEffects( editor ) {
 	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
 	        }
 	    })
-	    .onChange(function () {
-	        // Put code here if you need it
-	    });
+	    .onChange(update);
 	
 	objectGroRow.add(
 	    new UIText(strings.getKey('sidebar/effects/gro')).setClass('Label')
