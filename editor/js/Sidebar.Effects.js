@@ -1863,10 +1863,10 @@ function SidebarEffects( editor ) {
 		updateTransformRows( object );
 
 	}
-	container.setContentHidden = function ( hidden ) {
+	/*container.setContentHidden = function ( hidden ) {
         	content.setHidden( hidden );
-    	};
-return container;
+    	}; I THINK THIS BREAKS IT*/
+	return container;
 
 }
 
