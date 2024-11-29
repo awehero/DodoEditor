@@ -230,7 +230,7 @@ function SidebarObject( editor ) {
 	const coneDropdown = new UISelect()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
-		.setOptions( { 4: 'Texture 1', 5: 'Texture 2' } )
+		.setOptions( { 4: 'Texture 1', 5: 'Texture 2', 3: 'Color' } )
 		.setId( 'ConeTexture' )
 		.onChange( handleSelectionChange );
 
@@ -293,6 +293,8 @@ function SidebarObject( editor ) {
 		} else if ( selectedObject.geometry.type == 'ConeGeometry' && selectedObject.name !== 'Spawn' ) {
 
 			coneDropdown.setDisplay( '' );
+			colorPickerRow.setDisplay( '' );
+			alphaRow.setDisplay( '' );
 
 		} else if ( selectedObject.geometry.type == 'BoxGeometry' ) {
 
@@ -354,19 +356,37 @@ function SidebarObject( editor ) {
 		}
 
 		// correspond
-		if ( selectedObject.geometry.type == 'ConeGeometry' && ( selectedValue === '4' || selectedValue === '5' ) ) {
+		if ( selectedObject.geometry.type == 'ConeGeometry' && ( selectedValue === '4' || selectedValue === '5' || selectedValue === '3' ) ) {
 
-			const colors = [ 0xd52b2b, 0x41AED9 ];
+			const colors = [0xd52b2b, 0x41aed9];
+			let newMaterial;
 			const alphaValue = alphaInput.getValue();
 
-			const newMaterial = new THREE.MeshBasicMaterial( {
-				color: colors[ selectedValue - 4 ],
-				opacity: alphaValue,
-				transparent: true,
-			} );
+			if ( selectedValue !== '3' ) {
+
+
+				newMaterial = new THREE.MeshBasicMaterial( {
+					color: colors[ selectedValue - 4 ],
+					opacity: 1,
+					transparent: true,
+				} );
+				selectedObject.userData.CustomTexture = [ 'hex', colors[ selectedValue - 4 ].toString().substring( 2 ), parseFloat( alphaValue ) ];
+
+			} else {
+
+				const colorValue = colorPicker.getValue();
+				const alphaValue = alphaInput.getValue();
+
+				newMaterial = new THREE.MeshBasicMaterial( {
+					color: colorValue,
+					opacity: alphaValue,
+					transparent: true,
+				} );
+				selectedObject.userData.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+
+			}
 
 			selectedObject.material = newMaterial;
-			selectedObject.CustomTexture = [ 'hex', colors[ selectedValue - 4 ].toString().substring( 2 ), parseFloat( alphaValue ) ];
 
 			editor.signals.materialChanged.dispatch( selectedObject.material );
 			editor.signals.objectChanged.dispatch( selectedObject );
@@ -374,14 +394,10 @@ function SidebarObject( editor ) {
 		} else if ( selectedObject.geometry.type == 'BoxGeometry' && ( selectedValue === '0' || selectedValue === '1' || selectedValue === '2' || selectedValue === '3' ) ) {
 
 			const textureLoader = new THREE.TextureLoader();
-			const texturePaths = {
-				'0': './images/textures/bright.png',
-				'1': './images/textures/pm1.png',
-				'2': './images/textures/pm2.png',
-			};
+			const texturePaths = [ './images/textures/bright.png', './images/textures/pm1.png', './images/textures/pm2.png' ];
 			if ( selectedValue !== '3' ) {
 
-				textureLoader.load( texturePaths[ selectedValue ], function ( texture ) {
+				textureLoader.load( texturePaths[ parseInt( selectedValue ) ], function ( texture ) {
 
 					texture.encoding = THREE.sRGBEncoding;
 					texture.colorSpace = THREE.SRGBColorSpace;
@@ -392,12 +408,12 @@ function SidebarObject( editor ) {
 						opacity: 1, // Ensure opacity is set to 1
 					} );
 					selectedObject.material = newMaterial;
-					selectedObject.CustomTexture = [ texturePaths[ selectedValue ] ];
 
 					editor.signals.materialChanged.dispatch( selectedObject.material );
 					editor.signals.objectChanged.dispatch( selectedObject );
 
 				} );
+				selectedObject.userData.CustomTexture = [ texturePaths[ parseInt( selectedValue ) ] ];
 
 			} else {
 
@@ -412,7 +428,7 @@ function SidebarObject( editor ) {
 
 				// Assign the new material to the selected object
 				selectedObject.material = newMaterial; // may be a problem that it's a sting and not 0x int
-				selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+				selectedObject.userData.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
 
 			}
 
@@ -429,7 +445,7 @@ function SidebarObject( editor ) {
 
 			// Assign the new material to the selected object
 			selectedObject.material = newMaterial;
-			selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+			selectedObject.userData.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
 
 			// Signal the editor to update the material and render the changes
 			editor.signals.materialChanged.dispatch( selectedObject.material );
@@ -442,6 +458,8 @@ function SidebarObject( editor ) {
 		sphereCylinderDropdown.setValue( null );
 		coneDropdown.setValue( null );
 		platformBoxDropdown.setValue( null );
+		editor.signals.materialChanged.dispatch( selectedObject.material );
+		editor.signals.objectChanged.dispatch( selectedObject );
 
 	}
 
@@ -1091,37 +1109,41 @@ function SidebarObject( editor ) {
 		objectScaleX.setValue( object.scale.x );
 		objectScaleY.setValue( object.scale.y );
 		objectScaleZ.setValue( object.scale.z );
-		
-		if (object.geometry.type == 'PlaneGeometry') {
-		    	document.getElementById('PosX').disabled = true;
-			document.getElementById('PosY').disabled = true;
-			document.getElementById('RotX').disabled = true;
-			document.getElementById('RotY').disabled = true;
-			document.getElementById('RotZ').disabled = true;
-			document.getElementById('SizeX').disabled = true;
-			document.getElementById('SizeZ').disabled = true;
-			document.getElementById('PosX').style.color = 'gray';
-			document.getElementById('PosY').style.color = 'gray';
-			document.getElementById('RotX').style.color = 'gray';
-			document.getElementById('RotY').style.color = 'gray';
-			document.getElementById('RotZ').style.color = 'gray';
-			document.getElementById('SizeX').style.color = 'gray';
-			document.getElementById('SizeZ').style.color = 'gray';
+
+		if ( object.geometry.type == 'PlaneGeometry' ) {
+
+		    	document.getElementById( 'PosX' ).disabled = true;
+			document.getElementById( 'PosY' ).disabled = true;
+			document.getElementById( 'RotX' ).disabled = true;
+			document.getElementById( 'RotY' ).disabled = true;
+			document.getElementById( 'RotZ' ).disabled = true;
+			document.getElementById( 'SizeX' ).disabled = true;
+			document.getElementById( 'SizeZ' ).disabled = true;
+			document.getElementById( 'PosX' ).style.color = 'gray';
+			document.getElementById( 'PosY' ).style.color = 'gray';
+			document.getElementById( 'RotX' ).style.color = 'gray';
+			document.getElementById( 'RotY' ).style.color = 'gray';
+			document.getElementById( 'RotZ' ).style.color = 'gray';
+			document.getElementById( 'SizeX' ).style.color = 'gray';
+			document.getElementById( 'SizeZ' ).style.color = 'gray';
+
 		} else {
-		    	document.getElementById('PosX').disabled = false;
-			document.getElementById('PosY').disabled = false;
-			document.getElementById('RotX').disabled = false;
-			document.getElementById('RotY').disabled = false;
-			document.getElementById('RotZ').disabled = false;
-			document.getElementById('SizeX').disabled = false;
-			document.getElementById('SizeZ').disabled = false;
-			document.getElementById('PosX').style.color = '';
-			document.getElementById('PosY').style.color = '';
-			document.getElementById('RotX').style.color = '';
-			document.getElementById('RotY').style.color = '';
-			document.getElementById('RotZ').style.color = '';
-			document.getElementById('SizeX').style.color = '';
-			document.getElementById('SizeZ').style.color = '';
+
+		    	document.getElementById( 'PosX' ).disabled = false;
+			document.getElementById( 'PosY' ).disabled = false;
+			document.getElementById( 'RotX' ).disabled = false;
+			document.getElementById( 'RotY' ).disabled = false;
+			document.getElementById( 'RotZ' ).disabled = false;
+			document.getElementById( 'SizeX' ).disabled = false;
+			document.getElementById( 'SizeZ' ).disabled = false;
+			document.getElementById( 'PosX' ).style.color = '';
+			document.getElementById( 'PosY' ).style.color = '';
+			document.getElementById( 'RotX' ).style.color = '';
+			document.getElementById( 'RotY' ).style.color = '';
+			document.getElementById( 'RotZ' ).style.color = '';
+			document.getElementById( 'SizeX' ).style.color = '';
+			document.getElementById( 'SizeZ' ).style.color = '';
+
 		}
 
 		// if ( object.fov !== undefined ) {

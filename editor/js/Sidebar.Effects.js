@@ -362,7 +362,7 @@ function SidebarEffects( editor ) {
 			} );
 
 			selectedObject.material = newMaterial;
-			selectedObject.CustomTexture = [ 'hex', colors[ selectedValue - 4 ].toString().substring( 2 ), parseFloat( alphaValue ) ];
+			selectedObject.userData.CustomTexture = [ 'hex', colors[ selectedValue - 4 ].toString().substring( 2 ), parseFloat( alphaValue ) ];
 
 			editor.signals.materialChanged.dispatch( selectedObject.material );
 			editor.signals.objectChanged.dispatch( selectedObject );
@@ -388,7 +388,7 @@ function SidebarEffects( editor ) {
 						opacity: 1, // Ensure opacity is set to 1
 					} );
 					selectedObject.material = newMaterial;
-					selectedObject.CustomTexture = [ texturePaths[ selectedValue ] ];
+					selectedObject.userData.CustomTexture = [ texturePaths[ selectedValue ] ];
 
 					editor.signals.materialChanged.dispatch( selectedObject.material );
 					editor.signals.objectChanged.dispatch( selectedObject );
@@ -408,7 +408,7 @@ function SidebarEffects( editor ) {
 
 				// Assign the new material to the selected object
 				selectedObject.material = newMaterial; // may be a problem that it's a sting and not 0x int
-				selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+				selectedObject.userData.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
 
 			}
 
@@ -425,7 +425,7 @@ function SidebarEffects( editor ) {
 
 			// Assign the new material to the selected object
 			selectedObject.material = newMaterial;
-			selectedObject.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
+			selectedObject.userData.CustomTexture = [ 'hex', colorValue.substring( 1 ), parseFloat( alphaValue ) ];
 
 			// Signal the editor to update the material and render the changes
 			editor.signals.materialChanged.dispatch( selectedObject.material );

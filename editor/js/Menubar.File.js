@@ -53,7 +53,7 @@ function MenubarFile( editor ) {
 		}
 
 	} );
-	options.add( option );
+	// options.add( option );
 
 	//
 
@@ -485,7 +485,7 @@ function MenubarFile( editor ) {
 					console.log( 'BoxGeometry' );
 					// push a.p([pos x, pos y, pos z],[-2.966,0.0,0.0],[8.13,0.5,14.349]);
 					platforms.push(
-						`a.p([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]${( mesh.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.CustomTexture[ 1 ] + ',' + mesh.CustomTexture[ 2 ] + '"' : ''});`
+						`a.p([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]${( mesh.userData.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.userData.CustomTexture[ 1 ] + ',' + mesh.userData.CustomTexture[ 2 ] + '"' : ''});`
 					);
 					reset.push(
 						`a.re("P${platforms.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`
@@ -496,7 +496,7 @@ function MenubarFile( editor ) {
 					console.log( 'SphereGeometry' );
 					const radius = ( mesh.scale.x + mesh.scale.y + mesh.scale.z ) / 3;
 					spheres.push(
-						`a.s([${mesh.position.x},${mesh.position.y},${mesh.position.z}],${radius}${( mesh.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.CustomTexture[ 1 ] + ',' + mesh.CustomTexture[ 2 ] + '"' : ''});`
+						`a.s([${mesh.position.x},${mesh.position.y},${mesh.position.z}],${radius}${( mesh.userData.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.userData.CustomTexture[ 1 ] + ',' + mesh.userData.CustomTexture[ 2 ] + '"' : ''});`
 					);
 					reset.push(
 						`a.re("S${spheres.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[0,0,0],[${radius},${radius},${radius}]);`
@@ -506,7 +506,7 @@ function MenubarFile( editor ) {
 				case 'CylinderGeometry':
 					console.log( 'CylinderGeometry' );
 					cylinders.push(
-						`a.y([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]${( mesh.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.CustomTexture[ 1 ] + ',' + mesh.CustomTexture[ 2 ] + '"' : ''});`
+						`a.y([${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]${( mesh.userData.CustomTexture[ 0 ] == 'hex' ) ? ',"' + mesh.userData.CustomTexture[ 1 ] + ',' + mesh.userData.CustomTexture[ 2 ] + '"' : ''});`
 					);
 					reset.push(
 						`a.re("Y${cylinders.length - 1}",[${mesh.position.x},${mesh.position.y},${mesh.position.z}],[${mesh.rotation.y},${mesh.rotation.x},${mesh.rotation.z}],[${mesh.scale.x},${mesh.scale.y},${mesh.scale.z}]);`

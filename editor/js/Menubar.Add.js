@@ -74,7 +74,7 @@ function MenubarAdd( editor ) {
 			const material = new THREE.MeshBasicMaterial( { map: texture } );
 			const mesh = new THREE.Mesh( geometry, material );
 			mesh.name = 'Box';
-			mesh.CustomTexture = [ 'images/textures/bright.png' ];
+			mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
 
 			editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -113,7 +113,7 @@ function MenubarAdd( editor ) {
 
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'End';
-		mesh.CustomTexture = [ 'hex', '24fc03', 0.5 ];
+		mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -150,7 +150,7 @@ function MenubarAdd( editor ) {
 
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cylinder';
-		mesh.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -183,7 +183,7 @@ function MenubarAdd( editor ) {
 
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Sphere';
-		mesh.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -201,7 +201,7 @@ function MenubarAdd( editor ) {
 		const material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cone';
-		mesh.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
+		mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 

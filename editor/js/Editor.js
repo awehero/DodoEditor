@@ -665,41 +665,51 @@ Editor.prototype = {
 
 	toJSON: function () {
 
-		const output = {
-			metadata: {},
-			project: {},
-			geometries: {},
-			materials: {},
-			textures: {},
-			images: {},
-			shapes: {},
-			skeletons: {},
-			animations: {},
-			nodes: {},
-			scenes: {},
-			customProperties: {},
-		};
+		// scripts clean up
 
-		// Serialize custom properties
-		this.scene.traverse(function (object) {
-			if (object.isMesh) {
-				const data = {
-					uuid: object.uuid,
-					type: object.type,
-					name: object.name,
-					position: object.position.toArray(),
-					rotation: object.rotation.toArray(),
-					scale: object.scale.toArray(),
-					material: object.material.uuid,
-					geometry: object.geometry.uuid,
-					// Add CustomTexture property
-					CustomTexture: object.CustomTexture || null,
-				};
-				output.customProperties[object.uuid] = data;
+		var scene = this.scene;
+		var scripts = this.scripts;
+
+		for ( var key in scripts ) {
+
+			var script = scripts[ key ];
+
+			if ( script.length === 0 || scene.getObjectByProperty( 'uuid', key ) === undefined ) {
+
+				delete scripts[ key ];
+
 			}
-		});
 
-		return output;
+		}
+
+		// honor modelviewer environment
+
+		let environment = null;
+
+		if ( this.scene.environment !== null && this.scene.environment.isRenderTargetTexture === true ) {
+
+			environment = 'ModelViewer';
+
+		}
+
+		//
+
+		return {
+
+			metadata: {},
+			project: {
+				shadows: this.config.getKey( 'project/renderer/shadows' ),
+				shadowType: this.config.getKey( 'project/renderer/shadowType' ),
+				toneMapping: this.config.getKey( 'project/renderer/toneMapping' ),
+				toneMappingExposure: this.config.getKey( 'project/renderer/toneMappingExposure' )
+			},
+			camera: this.viewportCamera.toJSON(),
+			scene: this.scene.toJSON(),
+			scripts: this.scripts,
+			history: this.history.toJSON(),
+			environment: environment
+
+		};
 
 	},
 

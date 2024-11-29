@@ -170,7 +170,7 @@ function SidebarProjectApp( editor ) {
 
 					let matAdd = '';
 					console.log( object.name );
-					switch ( object.CustomTexture[ 0 ] ) {
+					switch ( object.userData.CustomTexture[ 0 ] ) {
 
 						case './images/textures/bright.png':
 				        		matAdd = 'm=0';
@@ -182,10 +182,10 @@ function SidebarProjectApp( editor ) {
 							matAdd = 'm=2';
 							break;
 						case 'hex':
-							matAdd = 'm=' + object.CustomTexture[ 1 ];
-							if ( object.CustomTexture[ 2 ] != 1 ) {
+							matAdd = 'm=' + object.userData.CustomTexture[ 1 ];
+							if ( object.userData.CustomTexture[ 2 ] != 1 ) {
 
-								matAdd = matAdd + '?' + object.CustomTexture[ 2 ];
+								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ];
 
 							}
 
