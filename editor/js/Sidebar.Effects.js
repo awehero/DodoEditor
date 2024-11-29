@@ -995,7 +995,6 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('bg')
-	    .setMaxLength(6) // Limit to 6 characters
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -1019,7 +1018,6 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('amb')
-	    .setMaxLength(6) // Limit to 6 characters
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -1044,7 +1042,6 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('dif')
-	    .setMaxLength(6) // Limit to 6 characters
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -1069,7 +1066,6 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('spe')
-	    .setMaxLength(6) // Limit to 6 characters
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -1094,7 +1090,6 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('gro')
-	    .setMaxLength(6) // Limit to 6 characters
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
