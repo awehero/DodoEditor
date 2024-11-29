@@ -238,17 +238,17 @@ function SidebarProjectApp( editor ) {
 				if ( object.geometry.type == 'PlaneGeometry' ) {
 
 				     var roundedScale = {
-					  x: Math.round( scale.x * 1000 ) / 20,
-					  y: Math.round( scale.y * 1000 ) / 20,
-					  z: Math.round( scale.z * 1000 ) / 20
+					  x: Math.round( scale.x * 1000 ) / 10,
+					  y: Math.round( scale.y * 1000 ) / 10,
+					  z: Math.round( scale.z * 1000 ) / 10
 				     };
 
 				} else {
 
 				     var roundedScale = {
-					  x: Math.round( scale.x * 1000 ) / 20,
-					  y: Math.round( scale.z * 1000 ) / 20,
-					  z: Math.round( scale.y * 1000 ) / 20
+					  x: Math.round( scale.x * 1000 ) / 10,
+					  y: Math.round( scale.z * 1000 ) / 10,
+					  z: Math.round( scale.y * 1000 ) / 10
 				     };
 
 				}
