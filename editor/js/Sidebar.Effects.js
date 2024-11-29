@@ -108,9 +108,9 @@ function SidebarEffects( editor ) {
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
 		.setId( 'id' )
-		.setAttribute( 'type', 'number' )
+		//.setAttribute( 'type', 'number' )
 		.onChange( function () {
-			//Put stuff here if you need it
+			//Put code here if you need it
 		} );
 
 	objectIdRow.add(
@@ -127,9 +127,9 @@ function SidebarEffects( editor ) {
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
 		.setId( 'speed' )
-		.setAttribute( 'type', 'number' )
+		//.setAttribute( 'type', 'number' )
 		.onChange( function () {
-			//Put stuff here if you need it
+			//Put code here if you need it
 		} );
 
 	objectSpeedRow.add(
