@@ -122,22 +122,22 @@ function SidebarEffects( editor ) {
 
 	//id
 	
-	const objectIdRow = new UIRow();
-	const objectId = new UIInput()
+	const objectSpeedRow = new UIRow();
+	const objectSpeed = new UIInput()
 		.setWidth( '150px' )
 		.setFontSize( '12px' )
-		.setId( 'id' )
+		.setId( 'speed' )
 		.setAttribute( 'type', 'number' )
 		.onChange( function () {
 			//Put stuff here if you need it
 		} );
 
-	objectIdRow.add(
-		new UIText( strings.getKey( 'sidebar/effects/id' ) ).setClass( 'Label' )
+	objectSpeedRow.add(
+		new UIText( strings.getKey( 'sidebar/effects/speed' ) ).setClass( 'Label' )
 	);
-	objectIdRow.add( objectId );
+	objectSpeedRow.add( objectSpeed );
 
-	container.add( objectIdRow );
+	container.add( objectSpeedRow );
 	
 	// name
 
