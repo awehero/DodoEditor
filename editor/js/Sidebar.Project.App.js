@@ -358,6 +358,83 @@ function SidebarProjectApp( editor ) {
 
 	container.add( urlButton );
 
+	// Load URL
+
+	const loadURLButton = new UIButton( strings.getKey( 'sidebar/project/app/loadurl' ) );
+	loadURLButton.setWidth( '170px' );
+	loadURLButton.setMarginLeft( '120px' );
+	loadURLButton.setMarginBottom( '10px' );
+	loadURLButton.onClick( function () {
+		let input = prompt("Paste your map link here:");
+		if (input) return;
+		var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
+		if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
+		var deleteNumber = editor.scene.children.length;
+		for (let i = 0; i < deleteNumber; i++) {
+				editor.scene.remove(editor.scene.children[0]);
+		}
+		input = input.replace(/msg=([\d:]+)/g, (match, p1) => {
+			const asciiValues = p1.split(':');
+			const characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
+			const originalString = characters.join('');
+			return `msg=${originalString}`;
+		});
+		let dollarIndex = input.indexOf('$');
+		if (dollarIndex !== -1) {
+				let endIndex = dollarIndex - 1;
+				while (endIndex >= 0 && !/[A-G]/.test(input[endIndex])) {
+					endIndex--;
+				}
+				if (endIndex >= 0) {
+				input = input.substring(endIndex);
+				}
+		}
+		const index = input.indexOf('&');
+		if (index !== -1) {
+				input = input.substring(0, index);
+		}
+		const objectDataArray = input.split(/(?=[A-Z])/);
+		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
+			switch (type) {
+				case 'A':
+					
+					break;
+				case 'B':
+					
+					break;
+				case 'C':
+					
+					break;
+				case 'D':
+					
+					break;
+				case 'E':
+					
+					break;
+				case 'F':
+					
+					break;
+				case 'G':
+					
+					break;
+				default:
+                                        console.error('Unknown object type:', type);
+			}
+		}
+		objectDataArray.forEach(objData => {
+			const type = objData.charAt(0);
+			const rest = objData.slice(1);
+			const [type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
+			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
+		}
+		if (object) {
+			editor.scene.add(object);
+		}
+		});
+	});
+
+	container.add( loadURLButton );
+
 	// Publish
 
 	const publishButton = new UIButton( strings.getKey( 'sidebar/project/app/publish' ) );
