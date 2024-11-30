@@ -224,6 +224,7 @@ function MenubarAdd( editor ) {
 		mesh.rotation.x = 1.57079633;
 		mesh.scale.x = 1000;
 
+		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -241,6 +242,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Monkey';
 
+		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -261,6 +263,7 @@ function MenubarAdd( editor ) {
 		mesh.rotation.x = Math.PI / - 2;
 		// mesh.geometry.type = "SpawnGeometry";
 
+		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );

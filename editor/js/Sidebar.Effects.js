@@ -102,7 +102,7 @@ function SidebarEffects( editor ) {
 	// container.add( objectUUIDRow );
 
 	//id
-	
+
 	// use
 
 	const objectUseRow = new UIRow();
@@ -113,57 +113,60 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d?$/.test(value)) {
-	            this.setValue(value.slice(0, 1)); // 1 digit limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d?$/.test( value ) ) {
+
+	            this.setValue( value.slice( 0, 1 ) ); // 1 digit limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectUseRow.add(
-	    new UIText(strings.getKey('sidebar/effects/use')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/use' ) ).setClass( 'Label' )
 	);
-	objectUseRow.add(objectUse);
-	container.add(objectUseRow);
-	
-	
+	objectUseRow.add( objectUse );
+	container.add( objectUseRow );
+
+
 	// drift
-	
+
 	const objectDriftRow = new UIRow();
 	const objectDrift = new UISelect()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('drift')
-	    .setOptions({ off: 'Off', on: 'On' })
-	    .setValue('off') // Default to 'off'
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'drift' )
+	    .setOptions( { off: 'Off', on: 'On' } )
+	    .setValue( 'off' ) // Default to 'off'
+	    .onChange( update );
+
 	objectDriftRow.add(
-	    new UIText(strings.getKey('sidebar/effects/drift')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/drift' ) ).setClass( 'Label' )
 	);
-	objectDriftRow.add(objectDrift);
-	container.add(objectDriftRow);
-	
-	
+	objectDriftRow.add( objectDrift );
+	container.add( objectDriftRow );
+
+
 	// jump
-	
+
 	const objectJumpRow = new UIRow();
 	const objectJump = new UISelect()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('jump')
-	    .setOptions({ off: 'Off', on: 'On' })
-	    .setValue('off') // Default to 'off'
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'jump' )
+	    .setOptions( { off: 'Off', on: 'On' } )
+	    .setValue( 'off' ) // Default to 'off'
+	    .onChange( update );
+
 	objectJumpRow.add(
-	    new UIText(strings.getKey('sidebar/effects/jump')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/jump' ) ).setClass( 'Label' )
 	);
-	objectJumpRow.add(objectJump);
-	container.add(objectJumpRow);
-	
-	
+	objectJumpRow.add( objectJump );
+	container.add( objectJumpRow );
+
+
 	// jh
-	
+
 	const objectJhRow = new UIRow();
 	const objectJh = new UIInput()
 	    .setWidth('150px')
@@ -172,21 +175,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectJhRow.add(
-	    new UIText(strings.getKey('sidebar/effects/jh')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/jh' ) ).setClass( 'Label' )
 	);
-	objectJhRow.add(objectJh);
-	container.add(objectJhRow);
-	
-	
+	objectJhRow.add( objectJh );
+	container.add( objectJhRow );
+
+
 	// js
-	
+
 	const objectJsRow = new UIRow();
 	const objectJs = new UIInput()
 	    .setWidth('150px')
@@ -195,21 +201,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectJsRow.add(
-	    new UIText(strings.getKey('sidebar/effects/js')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/js' ) ).setClass( 'Label' )
 	);
-	objectJsRow.add(objectJs);
-	container.add(objectJsRow);
-	
-	
+	objectJsRow.add( objectJs );
+	container.add( objectJsRow );
+
+
 	// turn
-	
+
 	const objectTurnRow = new UIRow();
 	const objectTurn = new UIInput()
 	    .setWidth('150px')
@@ -218,21 +227,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectTurnRow.add(
-	    new UIText(strings.getKey('sidebar/effects/turn')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/turn' ) ).setClass( 'Label' )
 	);
-	objectTurnRow.add(objectTurn);
-	container.add(objectTurnRow);
-	
-	
+	objectTurnRow.add( objectTurn );
+	container.add( objectTurnRow );
+
+
 	// speed
-	
+
 	const objectSpeedRow = new UIRow();
 	const objectSpeed = new UIInput()
 	    .setWidth('150px')
@@ -241,21 +253,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectSpeedRow.add(
-	    new UIText(strings.getKey('sidebar/effects/speed')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/speed' ) ).setClass( 'Label' )
 	);
-	objectSpeedRow.add(objectSpeed);
-	container.add(objectSpeedRow);
-	
-	
+	objectSpeedRow.add( objectSpeed );
+	container.add( objectSpeedRow );
+
+
 	// dx
-	
+
 	const objectDxRow = new UIRow();
 	const objectDx = new UIInput()
 	    .setWidth('150px')
@@ -264,19 +279,22 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectDxRow.add(
-	    new UIText(strings.getKey('sidebar/effects/dx')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/dx' ) ).setClass( 'Label' )
 	);
-	objectDxRow.add(objectDx);
-	container.add(objectDxRow);
-	
-	
+	objectDxRow.add( objectDx );
+	container.add( objectDxRow );
+
+
 	// dy
 
 	const objectDyRow = new UIRow();
@@ -287,21 +305,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectDyRow.add(
-	    new UIText(strings.getKey('sidebar/effects/dy')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/dy' ) ).setClass( 'Label' )
 	);
-	objectDyRow.add(objectDy);
-	container.add(objectDyRow);
-	
-	
+	objectDyRow.add( objectDy );
+	container.add( objectDyRow );
+
+
 	// dz
-	
+
 	const objectDzRow = new UIRow();
 	const objectDz = new UIInput()
 	    .setWidth('150px')
@@ -310,21 +331,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectDzRow.add(
-	    new UIText(strings.getKey('sidebar/effects/dz')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/dz' ) ).setClass( 'Label' )
 	);
-	objectDzRow.add(objectDz);
-	container.add(objectDzRow);
-	
-	
+	objectDzRow.add( objectDz );
+	container.add( objectDzRow );
+
+
 	// sl
-	
+
 	const objectSlRow = new UIRow();
 	const objectSl = new UISelect()
 	    .setWidth('150px')
@@ -336,14 +360,14 @@ function SidebarEffects( editor ) {
 	    .onChange(update);
 	
 	objectSlRow.add(
-	    new UIText(strings.getKey('sidebar/effects/sl')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/sl' ) ).setClass( 'Label' )
 	);
-	objectSlRow.add(objectSl);
-	container.add(objectSlRow);
-	
-	
+	objectSlRow.add( objectSl );
+	container.add( objectSlRow );
+
+
 	// sr
-	
+
 	const objectSrRow = new UIRow();
 	const objectSr = new UIInput()
 	    .setWidth('150px')
@@ -352,21 +376,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectSrRow.add(
-	    new UIText(strings.getKey('sidebar/effects/sr')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/sr' ) ).setClass( 'Label' )
 	);
-	objectSrRow.add(objectSr);
-	container.add(objectSrRow);
-	
-	
+	objectSrRow.add( objectSr );
+	container.add( objectSrRow );
+
+
 	// id
-	
+
 	const objectIdRow = new UIRow();
 	const objectId = new UIInput()
 	    .setWidth('150px')
@@ -375,21 +402,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d?$/.test(value)) {
-	            this.setValue(value.slice(0, 1)); // 1 digit limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d?$/.test( value ) ) {
+
+	            this.setValue( value.slice( 0, 1 ) ); // 1 digit limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectIdRow.add(
-	    new UIText(strings.getKey('sidebar/effects/id')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/id' ) ).setClass( 'Label' )
 	);
-	objectIdRow.add(objectId);
-	container.add(objectIdRow);
-	
-	
+	objectIdRow.add( objectId );
+	container.add( objectIdRow );
+
+
 	// mx
-	
+
 	const objectMxRow = new UIRow();
 	const objectMx = new UIInput()
 	    .setWidth('150px')
@@ -398,21 +428,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectMxRow.add(
-	    new UIText(strings.getKey('sidebar/effects/mx')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/mx' ) ).setClass( 'Label' )
 	);
-	objectMxRow.add(objectMx);
-	container.add(objectMxRow);
-	
-	
+	objectMxRow.add( objectMx );
+	container.add( objectMxRow );
+
+
 	// my
-	
+
 	const objectMyRow = new UIRow();
 	const objectMy = new UIInput()
 	    .setWidth('150px')
@@ -421,21 +454,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectMyRow.add(
-	    new UIText(strings.getKey('sidebar/effects/my')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/my' ) ).setClass( 'Label' )
 	);
-	objectMyRow.add(objectMy);
-	container.add(objectMyRow);
-	
-	
+	objectMyRow.add( objectMy );
+	container.add( objectMyRow );
+
+
 	// mz
-	
+
 	const objectMzRow = new UIRow();
 	const objectMz = new UIInput()
 	    .setWidth('150px')
@@ -444,17 +480,20 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectMzRow.add(
-	    new UIText(strings.getKey('sidebar/effects/mz')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/mz' ) ).setClass( 'Label' )
 	);
-	objectMzRow.add(objectMz);
-	container.add(objectMzRow);
+	objectMzRow.add( objectMz );
+	container.add( objectMzRow );
 
 	// rx
 
@@ -466,21 +505,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectRxRow.add(
-	    new UIText(strings.getKey('sidebar/effects/rx')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/rx' ) ).setClass( 'Label' )
 	);
-	objectRxRow.add(objectRx);
-	container.add(objectRxRow);
-	
-	
+	objectRxRow.add( objectRx );
+	container.add( objectRxRow );
+
+
 	// ry
-	
+
 	const objectRyRow = new UIRow();
 	const objectRy = new UIInput()
 	    .setWidth('150px')
@@ -489,21 +531,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectRyRow.add(
-	    new UIText(strings.getKey('sidebar/effects/ry')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/ry' ) ).setClass( 'Label' )
 	);
-	objectRyRow.add(objectRy);
-	container.add(objectRyRow);
-	
-	
+	objectRyRow.add( objectRy );
+	container.add( objectRyRow );
+
+
 	// rz
-	
+
 	const objectRzRow = new UIRow();
 	const objectRz = new UIInput()
 	    .setWidth('150px')
@@ -512,21 +557,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectRzRow.add(
-	    new UIText(strings.getKey('sidebar/effects/rz')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/rz' ) ).setClass( 'Label' )
 	);
-	objectRzRow.add(objectRz);
-	container.add(objectRzRow);
-	
-	
+	objectRzRow.add( objectRz );
+	container.add( objectRzRow );
+
+
 	// gx
-	
+
 	const objectGxRow = new UIRow();
 	const objectGx = new UIInput()
 	    .setWidth('150px')
@@ -535,21 +583,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectGxRow.add(
-	    new UIText(strings.getKey('sidebar/effects/gx')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/gx' ) ).setClass( 'Label' )
 	);
-	objectGxRow.add(objectGx);
-	container.add(objectGxRow);
-	
-	
+	objectGxRow.add( objectGx );
+	container.add( objectGxRow );
+
+
 	// gy
-	
+
 	const objectGyRow = new UIRow();
 	const objectGy = new UIInput()
 	    .setWidth('150px')
@@ -558,21 +609,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectGyRow.add(
-	    new UIText(strings.getKey('sidebar/effects/gy')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/gy' ) ).setClass( 'Label' )
 	);
-	objectGyRow.add(objectGy);
-	container.add(objectGyRow);
-	
-	
+	objectGyRow.add( objectGy );
+	container.add( objectGyRow );
+
+
 	// gz
-	
+
 	const objectGzRow = new UIRow();
 	const objectGz = new UIInput()
 	    .setWidth('150px')
@@ -581,21 +635,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectGzRow.add(
-	    new UIText(strings.getKey('sidebar/effects/gz')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/gz' ) ).setClass( 'Label' )
 	);
-	objectGzRow.add(objectGz);
-	container.add(objectGzRow);
-	
-	
+	objectGzRow.add( objectGz );
+	container.add( objectGzRow );
+
+
 	// bou
-	
+
 	const objectBouRow = new UIRow();
 	const objectBou = new UIInput()
 	    .setWidth('150px')
@@ -604,21 +661,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectBouRow.add(
-	    new UIText(strings.getKey('sidebar/effects/bou')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/bou' ) ).setClass( 'Label' )
 	);
-	objectBouRow.add(objectBou);
-	container.add(objectBouRow);
-	
-	
+	objectBouRow.add( objectBou );
+	container.add( objectBouRow );
+
+
 	// mass
-	
+
 	const objectMassRow = new UIRow();
 	const objectMass = new UIInput()
 	    .setWidth('150px')
@@ -627,17 +687,20 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectMassRow.add(
-	    new UIText(strings.getKey('sidebar/effects/mass')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/mass' ) ).setClass( 'Label' )
 	);
-	objectMassRow.add(objectMass);
-	container.add(objectMassRow);
+	objectMassRow.add( objectMass );
+	container.add( objectMassRow );
 
 	// fr
 
@@ -649,39 +712,42 @@ function SidebarEffects( editor ) {
 	    .setValue(1)
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectFrRow.add(
-	    new UIText(strings.getKey('sidebar/effects/fr')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/fr' ) ).setClass( 'Label' )
 	);
-	objectFrRow.add(objectFr);
-	container.add(objectFrRow);
-	
-	
+	objectFrRow.add( objectFr );
+	container.add( objectFrRow );
+
+
 	// air
-	
+
 	const objectAirRow = new UIRow();
 	const objectAir = new UISelect()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('air')
-	    .setOptions({ on: 'On', off: 'Off' })
-	    .setValue('on') // Default value is "on"
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'air' )
+	    .setOptions( { on: 'On', off: 'Off' } )
+	    .setValue( 'on' ) // Default value is "on"
+	    .onChange( update );
+
 	objectAirRow.add(
-	    new UIText(strings.getKey('sidebar/effects/air')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/air' ) ).setClass( 'Label' )
 	);
-	objectAirRow.add(objectAir);
-	container.add(objectAirRow);
-	
-	
+	objectAirRow.add( objectAir );
+	container.add( objectAirRow );
+
+
 	// topr
-	
+
 	const objectToprRow = new UIRow();
 	const objectTopr = new UIInput()
 	    .setWidth('150px')
@@ -690,39 +756,42 @@ function SidebarEffects( editor ) {
 	    .setValue(1)
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectToprRow.add(
-	    new UIText(strings.getKey('sidebar/effects/topr')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/topr' ) ).setClass( 'Label' )
 	);
-	objectToprRow.add(objectTopr);
-	container.add(objectToprRow);
-	
-	
+	objectToprRow.add( objectTopr );
+	container.add( objectToprRow );
+
+
 	// k
-	
+
 	const objectKRow = new UIRow();
 	const objectK = new UISelect()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('k')
-	    .setOptions({ on: 'On', off: 'Off' })
-	    .setValue('off') // Default value is "off"
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'k' )
+	    .setOptions( { on: 'On', off: 'Off' } )
+	    .setValue( 'off' ) // Default value is "off"
+	    .onChange( update );
+
 	objectKRow.add(
-	    new UIText(strings.getKey('sidebar/effects/k')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/k' ) ).setClass( 'Label' )
 	);
-	objectKRow.add(objectK);
-	container.add(objectKRow);
-	
-	
+	objectKRow.add( objectK );
+	container.add( objectKRow );
+
+
 	// d
-	
+
 	const objectDRow = new UIRow();
 	const objectD = new UIInput()
 	    .setWidth('150px')
@@ -731,21 +800,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectDRow.add(
-	    new UIText(strings.getKey('sidebar/effects/d')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/d' ) ).setClass( 'Label' )
 	);
-	objectDRow.add(objectD);
-	container.add(objectDRow);
-	
-	
+	objectDRow.add( objectD );
+	container.add( objectDRow );
+
+
 	// eye
-	
+
 	const objectEyeRow = new UIRow();
 	const objectEye = new UIInput()
 	    .setWidth('150px')
@@ -754,21 +826,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectEyeRow.add(
-	    new UIText(strings.getKey('sidebar/effects/eye')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/eye' ) ).setClass( 'Label' )
 	);
-	objectEyeRow.add(objectEye);
-	container.add(objectEyeRow);
-	
-	
+	objectEyeRow.add( objectEye );
+	container.add( objectEyeRow );
+
+
 	// fov
-	
+
 	const objectFovRow = new UIRow();
 	const objectFov = new UIInput()
 	    .setWidth('150px')
@@ -777,21 +852,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectFovRow.add(
-	    new UIText(strings.getKey('sidebar/effects/fov')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/fov' ) ).setClass( 'Label' )
 	);
-	objectFovRow.add(objectFov);
-	container.add(objectFovRow);
-	
-	
+	objectFovRow.add( objectFov );
+	container.add( objectFovRow );
+
+
 	// tx
-	
+
 	const objectTxRow = new UIRow();
 	const objectTx = new UIInput()
 	    .setWidth('150px')
@@ -800,17 +878,20 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectTxRow.add(
-	    new UIText(strings.getKey('sidebar/effects/tx')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/tx' ) ).setClass( 'Label' )
 	);
-	objectTxRow.add(objectTx);
-	container.add(objectTxRow);
+	objectTxRow.add( objectTx );
+	container.add( objectTxRow );
 
 	// ty
 
@@ -822,21 +903,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectTyRow.add(
-	    new UIText(strings.getKey('sidebar/effects/ty')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/ty' ) ).setClass( 'Label' )
 	);
-	objectTyRow.add(objectTy);
-	container.add(objectTyRow);
-	
-	
+	objectTyRow.add( objectTy );
+	container.add( objectTyRow );
+
+
 	// tz
-	
+
 	const objectTzRow = new UIRow();
 	const objectTz = new UIInput()
 	    .setWidth('150px')
@@ -845,21 +929,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectTzRow.add(
-	    new UIText(strings.getKey('sidebar/effects/tz')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/tz' ) ).setClass( 'Label' )
 	);
-	objectTzRow.add(objectTz);
-	container.add(objectTzRow);
-	
-	
+	objectTzRow.add( objectTz );
+	container.add( objectTzRow );
+
+
 	// cd
-	
+
 	const objectCdRow = new UIRow();
 	const objectCd = new UIInput()
 	    .setWidth('150px')
@@ -868,21 +955,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectCdRow.add(
-	    new UIText(strings.getKey('sidebar/effects/cd')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/cd' ) ).setClass( 'Label' )
 	);
-	objectCdRow.add(objectCd);
-	container.add(objectCdRow);
-	
-	
+	objectCdRow.add( objectCd );
+	container.add( objectCdRow );
+
+
 	// cr
-	
+
 	const objectCrRow = new UIRow();
 	const objectCr = new UIInput()
 	    .setWidth('150px')
@@ -891,21 +981,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectCrRow.add(
-	    new UIText(strings.getKey('sidebar/effects/cr')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/cr' ) ).setClass( 'Label' )
 	);
-	objectCrRow.add(objectCr);
-	container.add(objectCrRow);
-	
-	
+	objectCrRow.add( objectCr );
+	container.add( objectCrRow );
+
+
 	// msg
-	
+
 	const objectMsgRow = new UIRow();
 	const objectMsg = new UIInput()
 	    .setWidth('150px')
@@ -915,14 +1008,14 @@ function SidebarEffects( editor ) {
 	    .onChange(update);
 	
 	objectMsgRow.add(
-	    new UIText(strings.getKey('sidebar/effects/msg')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/msg' ) ).setClass( 'Label' )
 	);
-	objectMsgRow.add(objectMsg);
-	container.add(objectMsgRow);
-	
-	
+	objectMsgRow.add( objectMsg );
+	container.add( objectMsgRow );
+
+
 	// br
-	
+
 	const objectBrRow = new UIRow();
 	const objectBr = new UIInput()
 	    .setWidth('150px')
@@ -931,21 +1024,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (!/^\d*$/.test(value)) {
-	            this.setValue(value.replace(/\D/g, '')); // Allow only digits
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( ! /^\d*$/.test( value ) ) {
+
+	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectBrRow.add(
-	    new UIText(strings.getKey('sidebar/effects/br')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/br' ) ).setClass( 'Label' )
 	);
-	objectBrRow.add(objectBr);
-	container.add(objectBrRow);
-	
-	
+	objectBrRow.add( objectBr );
+	container.add( objectBrRow );
+
+
 	// bg
-	
+
 	const objectBgRow = new UIRow();
 	const objectBg = new UIInput()
 	    .setWidth('150px')
@@ -954,17 +1050,20 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (value.length > 6) {
-	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( value.length > 6 ) {
+
+	            this.setValue( value.slice( 0, 6 ) ); // Enforce 6-character limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectBgRow.add(
-	    new UIText(strings.getKey('sidebar/effects/bg')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/bg' ) ).setClass( 'Label' )
 	);
-	objectBgRow.add(objectBg);
-	container.add(objectBgRow);
+	objectBgRow.add( objectBg );
+	container.add( objectBgRow );
 
 	// amb
 
@@ -976,21 +1075,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (value.length > 6) {
-	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( value.length > 6 ) {
+
+	            this.setValue( value.slice( 0, 6 ) ); // Enforce 6-character limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectAmbRow.add(
-	    new UIText(strings.getKey('sidebar/effects/amb')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/amb' ) ).setClass( 'Label' )
 	);
-	objectAmbRow.add(objectAmb);
-	container.add(objectAmbRow);
-	
-	
+	objectAmbRow.add( objectAmb );
+	container.add( objectAmbRow );
+
+
 	// dif
-	
+
 	const objectDifRow = new UIRow();
 	const objectDif = new UIInput()
 	    .setWidth('150px')
@@ -999,21 +1101,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (value.length > 6) {
-	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( value.length > 6 ) {
+
+	            this.setValue( value.slice( 0, 6 ) ); // Enforce 6-character limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectDifRow.add(
-	    new UIText(strings.getKey('sidebar/effects/dif')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/dif' ) ).setClass( 'Label' )
 	);
-	objectDifRow.add(objectDif);
-	container.add(objectDifRow);
-	
-	
+	objectDifRow.add( objectDif );
+	container.add( objectDifRow );
+
+
 	// spe
-	
+
 	const objectSpeRow = new UIRow();
 	const objectSpe = new UIInput()
 	    .setWidth('150px')
@@ -1022,21 +1127,24 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (value.length > 6) {
-	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
-	        }
-	    })
-	    .onChange(update);
-	
+	        if ( value.length > 6 ) {
+
+	            this.setValue( value.slice( 0, 6 ) ); // Enforce 6-character limit
+
+			}
+
+		} )
+	    .onChange( update );
+
 	objectSpeRow.add(
-	    new UIText(strings.getKey('sidebar/effects/spe')).setClass('Label')
+	    new UIText( strings.getKey( 'sidebar/effects/spe' ) ).setClass( 'Label' )
 	);
-	objectSpeRow.add(objectSpe);
-	container.add(objectSpeRow);
-	
-	
+	objectSpeRow.add( objectSpe );
+	container.add( objectSpeRow );
+
+
 	// gro
-	
+
 	const objectGroRow = new UIRow();
 	const objectGro = new UIInput()
 	    .setWidth('150px')
@@ -1045,20 +1153,23 @@ function SidebarEffects( editor ) {
 	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
-	        if (value.length > 6) {
-	            this.setValue(value.slice(0, 6)); // Enforce 6-character limit
-	        }
-	    })
-	    .onChange(update);
-	
-	objectGroRow.add(
-	    new UIText(strings.getKey('sidebar/effects/gro')).setClass('Label')
-	);
-	objectGroRow.add(objectGro);
-	container.add(objectGroRow);
+	        if ( value.length > 6 ) {
 
-	
-	
+	            this.setValue( value.slice( 0, 6 ) ); // Enforce 6-character limit
+
+			}
+
+		} )
+	    .onChange( update );
+
+	objectGroRow.add(
+	    new UIText( strings.getKey( 'sidebar/effects/gro' ) ).setClass( 'Label' )
+	);
+	objectGroRow.add( objectGro );
+	container.add( objectGroRow );
+
+
+
 
 	// change functions
 	/*function handleSelectionChange() { MIGHT NEED THIS LATER IDK
@@ -1429,178 +1540,178 @@ function SidebarEffects( editor ) {
 
 			}*/
 
-			// if ( object.fov !== undefined && Math.abs( object.fov - objectFov.getValue() ) >= 0.01 ) {
+		// if ( object.fov !== undefined && Math.abs( object.fov - objectFov.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'fov', objectFov.getValue() ) );
-			// 	object.updateProjectionMatrix();
+		// 	editor.execute( new SetValueCommand( editor, object, 'fov', objectFov.getValue() ) );
+		// 	object.updateProjectionMatrix();
 
-			// }
+		// }
 
-			// if ( object.left !== undefined && Math.abs( object.left - objectLeft.getValue() ) >= 0.01 ) {
+		// if ( object.left !== undefined && Math.abs( object.left - objectLeft.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'left', objectLeft.getValue() ) );
-			// 	object.updateProjectionMatrix();
+		// 	editor.execute( new SetValueCommand( editor, object, 'left', objectLeft.getValue() ) );
+		// 	object.updateProjectionMatrix();
 
-			// }
+		// }
 
-			// if ( object.right !== undefined && Math.abs( object.right - objectRight.getValue() ) >= 0.01 ) {
+		// if ( object.right !== undefined && Math.abs( object.right - objectRight.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'right', objectRight.getValue() ) );
-			// 	object.updateProjectionMatrix();
+		// 	editor.execute( new SetValueCommand( editor, object, 'right', objectRight.getValue() ) );
+		// 	object.updateProjectionMatrix();
 
-			// }
+		// }
 
-			// if ( object.top !== undefined && Math.abs( object.top - objectTop.getValue() ) >= 0.01 ) {
+		// if ( object.top !== undefined && Math.abs( object.top - objectTop.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'top', objectTop.getValue() ) );
-			// 	object.updateProjectionMatrix();
+		// 	editor.execute( new SetValueCommand( editor, object, 'top', objectTop.getValue() ) );
+		// 	object.updateProjectionMatrix();
 
-			// }
+		// }
 
-			// if ( object.bottom !== undefined && Math.abs( object.bottom - objectBottom.getValue() ) >= 0.01 ) {
+		// if ( object.bottom !== undefined && Math.abs( object.bottom - objectBottom.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'bottom', objectBottom.getValue() ) );
-			// 	object.updateProjectionMatrix();
+		// 	editor.execute( new SetValueCommand( editor, object, 'bottom', objectBottom.getValue() ) );
+		// 	object.updateProjectionMatrix();
 
-			// }
+		// }
 
-			// if ( object.near !== undefined && Math.abs( object.near - objectNear.getValue() ) >= 0.01 ) {
+		// if ( object.near !== undefined && Math.abs( object.near - objectNear.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'near', objectNear.getValue() ) );
-			// 	if ( object.isOrthographicCamera ) {
+		// 	editor.execute( new SetValueCommand( editor, object, 'near', objectNear.getValue() ) );
+		// 	if ( object.isOrthographicCamera ) {
 
-			// 		object.updateProjectionMatrix();
+		// 		object.updateProjectionMatrix();
 
-			// 	}
+		// 	}
 
-			// }
+		// }
 
-			// if ( object.far !== undefined && Math.abs( object.far - objectFar.getValue() ) >= 0.01 ) {
+		// if ( object.far !== undefined && Math.abs( object.far - objectFar.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'far', objectFar.getValue() ) );
-			// 	if ( object.isOrthographicCamera ) {
+		// 	editor.execute( new SetValueCommand( editor, object, 'far', objectFar.getValue() ) );
+		// 	if ( object.isOrthographicCamera ) {
 
-			// 		object.updateProjectionMatrix();
+		// 		object.updateProjectionMatrix();
 
-			// 	}
+		// 	}
 
-			// }
+		// }
 
-			// if ( object.intensity !== undefined && Math.abs( object.intensity - objectIntensity.getValue() ) >= 0.01 ) {
+		// if ( object.intensity !== undefined && Math.abs( object.intensity - objectIntensity.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'intensity', objectIntensity.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'intensity', objectIntensity.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.color !== undefined && object.color.getHex() !== objectColor.getHexValue() ) {
+		// if ( object.color !== undefined && object.color.getHex() !== objectColor.getHexValue() ) {
 
-			// 	editor.execute( new SetColorCommand( editor, object, 'color', objectColor.getHexValue() ) );
+		// 	editor.execute( new SetColorCommand( editor, object, 'color', objectColor.getHexValue() ) );
 
-			// }
+		// }
 
-			// if ( object.groundColor !== undefined && object.groundColor.getHex() !== objectGroundColor.getHexValue() ) {
+		// if ( object.groundColor !== undefined && object.groundColor.getHex() !== objectGroundColor.getHexValue() ) {
 
-			// 	editor.execute( new SetColorCommand( editor, object, 'groundColor', objectGroundColor.getHexValue() ) );
+		// 	editor.execute( new SetColorCommand( editor, object, 'groundColor', objectGroundColor.getHexValue() ) );
 
-			// }
+		// }
 
-			// if ( object.distance !== undefined && Math.abs( object.distance - objectDistance.getValue() ) >= 0.01 ) {
+		// if ( object.distance !== undefined && Math.abs( object.distance - objectDistance.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'distance', objectDistance.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'distance', objectDistance.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.angle !== undefined && Math.abs( object.angle - objectAngle.getValue() ) >= 0.01 ) {
+		// if ( object.angle !== undefined && Math.abs( object.angle - objectAngle.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'angle', objectAngle.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'angle', objectAngle.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.penumbra !== undefined && Math.abs( object.penumbra - objectPenumbra.getValue() ) >= 0.01 ) {
+		// if ( object.penumbra !== undefined && Math.abs( object.penumbra - objectPenumbra.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'penumbra', objectPenumbra.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'penumbra', objectPenumbra.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.decay !== undefined && Math.abs( object.decay - objectDecay.getValue() ) >= 0.01 ) {
+		// if ( object.decay !== undefined && Math.abs( object.decay - objectDecay.getValue() ) >= 0.01 ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'decay', objectDecay.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'decay', objectDecay.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.visible !== objectVisible.getValue() ) {
+		// if ( object.visible !== objectVisible.getValue() ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'visible', objectVisible.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'visible', objectVisible.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.frustumCulled !== objectFrustumCulled.getValue() ) {
+		// if ( object.frustumCulled !== objectFrustumCulled.getValue() ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'frustumCulled', objectFrustumCulled.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'frustumCulled', objectFrustumCulled.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.renderOrder !== objectRenderOrder.getValue() ) {
+		// if ( object.renderOrder !== objectRenderOrder.getValue() ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'renderOrder', objectRenderOrder.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'renderOrder', objectRenderOrder.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.castShadow !== undefined && object.castShadow !== objectCastShadow.getValue() ) {
+		// if ( object.castShadow !== undefined && object.castShadow !== objectCastShadow.getValue() ) {
 
-			// 	editor.execute( new SetValueCommand( editor, object, 'castShadow', objectCastShadow.getValue() ) );
+		// 	editor.execute( new SetValueCommand( editor, object, 'castShadow', objectCastShadow.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.receiveShadow !== objectReceiveShadow.getValue() ) {
+		// if ( object.receiveShadow !== objectReceiveShadow.getValue() ) {
 
-			// 	if ( object.material !== undefined ) object.material.needsUpdate = true;
-			// 	editor.execute( new SetValueCommand( editor, object, 'receiveShadow', objectReceiveShadow.getValue() ) );
+		// 	if ( object.material !== undefined ) object.material.needsUpdate = true;
+		// 	editor.execute( new SetValueCommand( editor, object, 'receiveShadow', objectReceiveShadow.getValue() ) );
 
-			// }
+		// }
 
-			// if ( object.shadow !== undefined ) {
+		// if ( object.shadow !== undefined ) {
 
-			// 	if ( object.shadow.intensity !== objectShadowIntensity.getValue() ) {
+		// 	if ( object.shadow.intensity !== objectShadowIntensity.getValue() ) {
 
-			// 		editor.execute( new SetShadowValueCommand( editor, object, 'intensity', objectShadowIntensity.getValue() ) );
+		// 		editor.execute( new SetShadowValueCommand( editor, object, 'intensity', objectShadowIntensity.getValue() ) );
 
-			// 	}
+		// 	}
 
-			// 	if ( object.shadow.bias !== objectShadowBias.getValue() ) {
+		// 	if ( object.shadow.bias !== objectShadowBias.getValue() ) {
 
-			// 		editor.execute( new SetShadowValueCommand( editor, object, 'bias', objectShadowBias.getValue() ) );
+		// 		editor.execute( new SetShadowValueCommand( editor, object, 'bias', objectShadowBias.getValue() ) );
 
-			// 	}
+		// 	}
 
-			// 	if ( object.shadow.normalBias !== objectShadowNormalBias.getValue() ) {
+		// 	if ( object.shadow.normalBias !== objectShadowNormalBias.getValue() ) {
 
-			// 		editor.execute( new SetShadowValueCommand( editor, object, 'normalBias', objectShadowNormalBias.getValue() ) );
+		// 		editor.execute( new SetShadowValueCommand( editor, object, 'normalBias', objectShadowNormalBias.getValue() ) );
 
-			// 	}
+		// 	}
 
-			// 	if ( object.shadow.radius !== objectShadowRadius.getValue() ) {
+		// 	if ( object.shadow.radius !== objectShadowRadius.getValue() ) {
 
-			// 		editor.execute( new SetShadowValueCommand( editor, object, 'radius', objectShadowRadius.getValue() ) );
+		// 		editor.execute( new SetShadowValueCommand( editor, object, 'radius', objectShadowRadius.getValue() ) );
 
-			// 	}
+		// 	}
 
-			// }
+		// }
 
-			// try {
+		// try {
 
-			// 	const userData = JSON.parse( objectUserData.getValue() );
-			// 	if ( JSON.stringify( object.userData ) != JSON.stringify( userData ) ) {
+		// 	const userData = JSON.parse( objectUserData.getValue() );
+		// 	if ( JSON.stringify( object.userData ) != JSON.stringify( userData ) ) {
 
-			// 		editor.execute( new SetValueCommand( editor, object, 'userData', userData ) );
+		// 		editor.execute( new SetValueCommand( editor, object, 'userData', userData ) );
 
-			// 	}
+		// 	}
 
-			// } catch ( exception ) {
+		// } catch ( exception ) {
 
-			// 	console.warn( exception );
+		// 	console.warn( exception );
 
-			// }
+		// }
 
 		//} Finally, I found the problem
 
@@ -1793,11 +1904,11 @@ function SidebarEffects( editor ) {
 		    document.querySelectorAll( 'input' )[ 5 ].disabled = false;
 
 		}
-		
+
 		objectPositionX.setValue( object.position.x );
 		objectPositionY.setValue( object.position.y );
 		objectPositionZ.setValue( object.position.z );
-		
+
 		objectRotationX.setValue( object.rotation.x * THREE.MathUtils.RAD2DEG );
 		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
 		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
@@ -1805,7 +1916,7 @@ function SidebarEffects( editor ) {
 		objectScaleX.setValue( object.scale.x );
 		objectScaleY.setValue( object.scale.y );
 		objectScaleZ.setValue( object.scale.z );
-		
+
 		if (object.geometry.type == 'PlaneGeometry') {
 		    	document.getElementById('PosX').disabled = true;
 			document.getElementById('PosY').disabled = true;
@@ -1963,9 +2074,13 @@ function SidebarEffects( editor ) {
 		updateTransformRows( object );
 
 	}
+
 	container.setContentHidden = function ( hidden ) {
+
         	content.setHidden( hidden );
-    	};
+
+	};
+
 	return container;
 
 }

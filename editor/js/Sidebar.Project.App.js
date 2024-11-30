@@ -57,20 +57,23 @@ function SidebarProjectApp( editor ) {
 	playButton.setMarginBottom( '10px' );
 	playButton.onClick( function () {
 
-		if ( isPlaying === false ) {
+		// if ( isPlaying === false ) {
 
-			const mapfile = getLinkOrMapfile( 'mapfile' );
-			isPlaying = true;
-			playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
-			signals.startPlayer.dispatch();
+		// 	const mapfile = getLinkOrMapfile( 'mapfile' );
+		// 	isPlaying = true;
+		// 	playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
+		// 	signals.startPlayer.dispatch();
 
-		} else {
+		// } else {
 
-			isPlaying = false;
-			playButton.setTextContent( strings.getKey( 'sidebar/project/app/play' ) );
-			signals.stopPlayer.dispatch();
+		// 	isPlaying = false;
+		// 	playButton.setTextContent( strings.getKey( 'sidebar/project/app/play' ) );
+		// 	signals.stopPlayer.dispatch();
 
-		}
+		// }
+
+		// I made this play the map
+		window.open( getLinkOrMapfile( 'url' ), '_blank' );
 
 	} );
 
@@ -94,7 +97,7 @@ function SidebarProjectApp( editor ) {
 
 			if ( !! object.scale.x || object.geometry.type == 'PlaneGeometry' ) {
 
-                        	var objectType;
+				var objectType;
 				if ( object.name != 'Spawn' ) {
 
 					if ( object instanceof THREE.Mesh ) {
@@ -185,7 +188,7 @@ function SidebarProjectApp( editor ) {
 							matAdd = 'm=' + object.userData.CustomTexture[ 1 ];
 							if ( object.userData.CustomTexture[ 2 ] != 1 ) {
 
-								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ].toLowerCase();
+								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ];
 
 							}
 
@@ -291,7 +294,9 @@ function SidebarProjectApp( editor ) {
 
 			navigator.clipboard.writeText( dataString );
 			console.log( dataString );
-			alert( 'Link copied to clipboard! Your map is ' + dataString.length + ' characters long!' );
+			console.log( 'success, ' + dataString.length + ' characters' );
+			// alert( 'Link copied to clipboard! Your map is ' + dataString.length + ' characters long!' );
+			return dataString;
 
 		} else {
 
