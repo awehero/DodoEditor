@@ -110,6 +110,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('use')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d?$/.test(value)) {
@@ -168,6 +169,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('jh')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -190,6 +192,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('js')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -212,6 +215,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('turn')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -234,6 +238,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('speed')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -256,6 +261,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('dx')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -278,6 +284,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('dy')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -300,6 +307,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('dz')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -322,6 +330,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('sl')
+	    .setValue('')
 	    .setOptions({ off: 'Off', on: 'On' })
 	    .setValue('off') // Default to 'off'
 	    .onChange(update);
@@ -340,6 +349,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('sr')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -362,6 +372,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('id')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d?$/.test(value)) {
@@ -384,6 +395,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('mx')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -406,6 +418,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('my')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -428,6 +441,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('mz')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -449,6 +463,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('rx')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -471,6 +486,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('ry')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -493,6 +509,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('rz')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -515,6 +532,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('gx')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -537,6 +555,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('gy')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -559,6 +578,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('gz')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -581,6 +601,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('bou')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -603,6 +624,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('mass')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -624,7 +646,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('fr')
-	    .setValue(1) // Default value is 1
+	    .setValue(1)
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -665,7 +687,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('topr')
-	    .setValue(1) // Default value is 1
+	    .setValue(1)
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -706,6 +728,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('d')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -728,6 +751,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('eye')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -750,6 +774,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('fov')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -772,6 +797,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('tx')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -793,6 +819,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('ty')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -815,6 +842,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('tz')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -837,6 +865,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('cd')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -859,6 +888,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('cr')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -881,6 +911,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('msg')
+	    .setValue('')
 	    .onChange(update);
 	
 	objectMsgRow.add(
@@ -897,6 +928,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('br')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (!/^\d*$/.test(value)) {
@@ -919,6 +951,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('bg')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -940,6 +973,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('amb')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -962,6 +996,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('dif')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -984,6 +1019,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('spe')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
@@ -1006,6 +1042,7 @@ function SidebarEffects( editor ) {
 	    .setWidth('150px')
 	    .setFontSize('12px')
 	    .setId('gro')
+	    .setValue('')
 	    .onInput(function () {
 	        const value = this.getValue();
 	        if (value.length > 6) {
