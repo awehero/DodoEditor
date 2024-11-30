@@ -1677,8 +1677,71 @@ function SidebarEffects( editor ) {
 		updateUI( object );
 
 	} );
-
+	
+	function applySettings(geometryType) {
+		const geometries = ['PlaneGeometry', 'BoxGeometry', 'ConeGeometry', 'CapsuleGeometry', 'CylinderGeometry', 'SphereGeometry', 'OctahedronGeometry'];
+		const effects = {
+		    use: [1,0,0,0,0,0,1],
+		    drift: [0,1,0,0,0,0,0],
+		    jump: [0,1,0,0,0,0,0],
+		    jh: [1,0,0,0,0,0,1],
+		    js: [1,0,0,0,0,0,1],
+		    turn: [1,0,0,0,0,0,1],
+		    speed: [1,0,0,0,0,0,1],
+		    dx: [1,0,0,0,0,0,1],
+		    dy: [1,0,0,0,0,0,1],
+		    dz: [1,0,0,0,0,0,1],
+		    sl: [1,0,0,0,0,0,0],
+		    sr: [1,0,0,0,0,0,0],
+		    id: [1,1,1,1,1,1,1],
+		    mx: [0,1,1,1,1,1,0],
+		    my: [0,1,1,1,1,1,0],
+		    mz: [0,1,1,1,1,1,0],
+		    rx: [0,1,1,1,1,1,0],
+		    ry: [0,1,1,1,1,1,0],
+		    rz: [0,1,1,1,1,1,0],
+		    gx: [1,0,0,0,0,0,1],
+		    gy: [1,0,0,0,0,0,1],
+		    gz: [1,0,0,0,0,0,1],
+		    bou: [0,1,0,0,1,1,0],
+		    mass: [0,1,0,0,1,1,0],
+		    fr: [0,1,0,0,1,1,0],
+		    air: [0,1,0,0,1,1,0],
+		    topr: [0,0,0,0,1,0,0],
+		    k: [0,1,0,0,1,1,0],
+		    d: [1,0,0,0,0,0,1],
+		    eye: [1,0,0,0,0,0,1],
+		    fov: [1,0,0,0,0,0,1],
+		    tx: [1,0,0,0,0,0,1],
+		    ty: [1,0,0,0,0,0,1],
+		    tz: [1,0,0,0,0,0,1],
+		    cd: [1,0,0,0,0,0,1],
+		    cr: [1,0,0,0,0,0,1],
+		    msg: [1,0,0,0,0,0,0],
+		    br: [1,0,0,0,0,0,1],
+		    bg: [1,0,0,0,0,0,1],
+		    amb: [1,0,0,0,0,0,1],
+		    dif: [1,0,0,0,0,0,1],
+		    spe: [1,0,0,0,0,0,1],
+		    gro: [1,0,0,0,0,0,1],
+		};
+		const geometryIndex = geometries.indexOf(geometryType);
+		if (geometryIndex === -1) {
+			console.warn(`No settings found for geometry type: ${geometryType}`); //THIS LINE CAN BE REMOVED LATER
+			return;
+		}
+		
+		for (const [effect, settings] of Object.entries(effects)) {
+			const hidden = settings[geometryIndex] === 0; // 0 means hidden, 1 means visible
+		        const element = document.getElementById(effect);
+		        if (element) {
+		            element.parentElement.hidden = hidden;
+		        }
+		}
+	}
+	
 	function updateUI( object ) {
+		applySettings(object.geometry.type);
 
 		// objectType.setValue( object.type );
 
