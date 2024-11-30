@@ -424,7 +424,7 @@ function SidebarProjectApp( editor ) {
 		objectDataArray.forEach(objData => {
 			const type = objData.charAt(0);
 			const rest = objData.slice(1);
-			const [type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
+			const [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
 		}
 		if (object) {
