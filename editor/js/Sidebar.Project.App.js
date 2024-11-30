@@ -395,12 +395,21 @@ function SidebarProjectApp( editor ) {
 		}
 		const objectDataArray = input.split(/(?=[A-Z])/);
 		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
+			let mesh;
 			switch (type) {
 				case 'A':
 					
 					break;
 				case 'B':
-					
+					const geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
+					const loader = new THREE.TextureLoader();
+					loader.load( 'images/textures/bright.png', function ( texture ) {
+						texture.colorSpace = THREE.SRGBColorSpace;
+						const material = new THREE.MeshBasicMaterial( { map: texture } );
+						mesh = new THREE.Mesh( geometry, material );
+						mesh.name = 'Box';
+						mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
+					} );
 					break;
 				case 'C':
 					
