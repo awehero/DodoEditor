@@ -415,6 +415,7 @@ function Strings( config ) {
 			'sidebar/project/app/editable': 'Editable',
 			'sidebar/project/app/publish': 'Publish',
 			'sidebar/project/app/url': 'Get URL',
+			'sidebar/project/app/loadurl': 'Load URL',
 
 			'sidebar/project/image': 'Image',
 			'sidebar/project/image/samples': 'Samples',
