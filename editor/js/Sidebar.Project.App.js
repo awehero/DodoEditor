@@ -395,7 +395,6 @@ function SidebarProjectApp( editor ) {
 		}
 		let objectDataArray = input.split(/(?=[A-Z])/);
 		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
-			let mesh;
 			let geometry;
 			let loader;
 			let material;
