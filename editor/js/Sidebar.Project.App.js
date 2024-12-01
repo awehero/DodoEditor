@@ -499,7 +499,7 @@ function SidebarProjectApp( editor ) {
 			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
 		if (object) {
-			editor.scene.add(object);
+			editor.execute( new AddObjectCommand( editor, object ) );
 		}
 		});
 	});
