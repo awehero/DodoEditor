@@ -435,7 +435,6 @@ function SidebarProjectApp( editor ) {
 			const rest = objData.slice(1);
 			const [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
-		}
 		if (object) {
 			editor.scene.add(object);
 		}
