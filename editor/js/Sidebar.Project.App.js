@@ -471,6 +471,27 @@ function SidebarProjectApp( editor ) {
 				default:
                                         console.error('Unknown object type:', type);
 			}
+			mesh.position.x = Math.round(posX * 1000) / 100000;
+	                mesh.position.y = Math.round(posZ * 1000) / 100000;
+	                mesh.position.z = Math.round(posY * 1000) / 100000;
+	                mesh.rotation.x = Math.round((rotX / 100) / (Math.PI / 180));
+	                mesh.rotation.y = Math.round((rotY / 100) / (Math.PI / 180));
+	                mesh.rotation.z = Math.round((rotZ / 100) / (Math.PI / 180));
+	                if (mesh.geometry.type == "OctahedronGeometry" || mesh.geometry.type == "ConeGeometry" || mesh.geometry.type == "CapsuleGeometry") {
+	                	mesh.scale.x = 1;
+	                        mesh.scale.y = 1;
+	                        mesh.scale.z = 1;
+	                } else if (mesh.geometry.type == "PlaneGeometry") {
+	                        mesh.scale.x = scaleX / 100;
+	                        mesh.scale.y = scaleY / 100;
+	                        mesh.scale.y = scaleZ / 100;
+	                } else {
+				mesh.scale.x = scaleX / 100;
+	                        mesh.scale.y = scaleZ / 100;
+	                        mesh.scale.y = scaleY / 100;
+			}
+	                mesh.name = effects;
+			return mesh;
 		}
 		objectDataArray.forEach(objData => {
 			let type = objData.charAt(0);
@@ -478,7 +499,7 @@ function SidebarProjectApp( editor ) {
 			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
 		if (object) {
-			editor.scene.add(object);
+			editor.execute( new AddObjectCommand( editor, object ) );
 		}
 		});
 	});
