@@ -396,11 +396,15 @@ function SidebarProjectApp( editor ) {
 		let objectDataArray = input.split(/(?=[A-Z])/);
 		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
 			let mesh;
+			let geometry;
+			let loader;
+			let material;
+			let mesh;
 			switch (type) {
 				case 'A':
-					let geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
-					let material = new THREE.MeshStandardMaterial();
-					let mesh = new THREE.Mesh( geometry, material );
+					geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
+					material = new THREE.MeshStandardMaterial();
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Plane';
 					mesh.material.side = THREE.DoubleSide;
 					mesh.position.y = -20;
@@ -408,64 +412,64 @@ function SidebarProjectApp( editor ) {
 					mesh.scale.x = 1000;
 					break;
 				case 'B':
-					let geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
-					let loader = new THREE.TextureLoader();
+					geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
+					loader = new THREE.TextureLoader();
 					loader.load( 'images/textures/bright.png', function ( texture ) {
 						texture.colorSpace = THREE.SRGBColorSpace;
-						let material = new THREE.MeshBasicMaterial( { map: texture } );
+						material = new THREE.MeshBasicMaterial( { map: texture } );
 						mesh = new THREE.Mesh( geometry, material );
 						mesh.name = 'Box';
 						mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
 					} );
 					break;
 				case 'C':
-					let geometry = new THREE.ConeGeometry( .5, 1, 16 );
-					let material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
-					let mesh = new THREE.Mesh( geometry, material );
+					geometry = new THREE.ConeGeometry( .5, 1, 16 );
+					material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Cone';
 					mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
 					break;
 				case 'D':
-					let geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
-					let material = new THREE.MeshBasicMaterial( {
+					geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
+					material = new THREE.MeshBasicMaterial( {
 						color: 0x24fc03,
 						opacity: 0.5,
 						transparent: true,
 					} );
-					let mesh = new THREE.Mesh( geometry, material );
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'End';
 					mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
 					break;
 				case 'E':
-					let geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
-					let material = new THREE.MeshBasicMaterial( {
+					geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
+					material = new THREE.MeshBasicMaterial( {
 						color: 0x0000ff,
 						opacity: 0.8,
 						transparent: true,
 					} );
 			
-					let mesh = new THREE.Mesh( geometry, material );
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Cylinder';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 					break;
 				case 'F':
-					let geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
-					let material = new THREE.MeshBasicMaterial( {
+					geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
+					material = new THREE.MeshBasicMaterial( {
 						color: 0x0000ff,
 						opacity: .8,
 						transparent: true,
 					} );
 			
-					let mesh = new THREE.Mesh( geometry, material );
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Sphere';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 			
 					editor.execute( new AddObjectCommand( editor, mesh ) );
 					break;
 				case 'G':
-					let geometry = new THREE.OctahedronGeometry( 3, 1 );
-					let material = new THREE.MeshStandardMaterial();
-					let mesh = new THREE.Mesh( geometry, material );
+					geometry = new THREE.OctahedronGeometry( 3, 1 );
+					material = new THREE.MeshStandardMaterial();
+					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Monkey';
 					break;
 				default:
