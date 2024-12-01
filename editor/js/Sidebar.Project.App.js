@@ -374,9 +374,9 @@ function SidebarProjectApp( editor ) {
 				editor.scene.remove(editor.scene.children[0]);
 		}
 		input = input.replace(/msg=([\d:]+)/g, (match, p1) => {
-			const asciiValues = p1.split(':');
-			const characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
-			const originalString = characters.join('');
+			let asciiValues = p1.split(':');
+			let characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
+			let originalString = characters.join('');
 			return `msg=${originalString}`;
 		});
 		let dollarIndex = input.indexOf('$');
@@ -389,18 +389,18 @@ function SidebarProjectApp( editor ) {
 				input = input.substring(endIndex);
 				}
 		}
-		const index = input.indexOf('&');
+		let index = input.indexOf('&');
 		if (index !== -1) {
 				input = input.substring(0, index);
 		}
-		const objectDataArray = input.split(/(?=[A-Z])/);
+		let objectDataArray = input.split(/(?=[A-Z])/);
 		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
 			let mesh;
 			switch (type) {
 				case 'A':
-					const geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
-					const material = new THREE.MeshStandardMaterial();
-					const mesh = new THREE.Mesh( geometry, material );
+					let geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
+					let material = new THREE.MeshStandardMaterial();
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Plane';
 					mesh.material.side = THREE.DoubleSide;
 					mesh.position.y = -20;
@@ -408,64 +408,64 @@ function SidebarProjectApp( editor ) {
 					mesh.scale.x = 1000;
 					break;
 				case 'B':
-					const geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
-					const loader = new THREE.TextureLoader();
+					let geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
+					let loader = new THREE.TextureLoader();
 					loader.load( 'images/textures/bright.png', function ( texture ) {
 						texture.colorSpace = THREE.SRGBColorSpace;
-						const material = new THREE.MeshBasicMaterial( { map: texture } );
+						let material = new THREE.MeshBasicMaterial( { map: texture } );
 						mesh = new THREE.Mesh( geometry, material );
 						mesh.name = 'Box';
 						mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
 					} );
 					break;
 				case 'C':
-					const geometry = new THREE.ConeGeometry( .5, 1, 16 );
-					const material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
-					const mesh = new THREE.Mesh( geometry, material );
+					let geometry = new THREE.ConeGeometry( .5, 1, 16 );
+					let material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Cone';
 					mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
 					break;
 				case 'D':
-					const geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
-					const material = new THREE.MeshBasicMaterial( {
+					let geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
+					let material = new THREE.MeshBasicMaterial( {
 						color: 0x24fc03,
 						opacity: 0.5,
 						transparent: true,
 					} );
-					const mesh = new THREE.Mesh( geometry, material );
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'End';
 					mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
 					break;
 				case 'E':
-					const geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
-					const material = new THREE.MeshBasicMaterial( {
+					let geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
+					let material = new THREE.MeshBasicMaterial( {
 						color: 0x0000ff,
 						opacity: 0.8,
 						transparent: true,
 					} );
 			
-					const mesh = new THREE.Mesh( geometry, material );
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Cylinder';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 					break;
 				case 'F':
-					const geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
-					const material = new THREE.MeshBasicMaterial( {
+					let geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
+					let material = new THREE.MeshBasicMaterial( {
 						color: 0x0000ff,
 						opacity: .8,
 						transparent: true,
 					} );
 			
-					const mesh = new THREE.Mesh( geometry, material );
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Sphere';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 			
 					editor.execute( new AddObjectCommand( editor, mesh ) );
 					break;
 				case 'G':
-					const geometry = new THREE.OctahedronGeometry( 3, 1 );
-					const material = new THREE.MeshStandardMaterial();
-					const mesh = new THREE.Mesh( geometry, material );
+					let geometry = new THREE.OctahedronGeometry( 3, 1 );
+					let material = new THREE.MeshStandardMaterial();
+					let mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Monkey';
 					break;
 				default:
@@ -473,9 +473,9 @@ function SidebarProjectApp( editor ) {
 			}
 		}
 		objectDataArray.forEach(objData => {
-			const type = objData.charAt(0);
-			const rest = objData.slice(1);
-			const [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
+			let type = objData.charAt(0);
+			let rest = objData.slice(1);
+			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
 		if (object) {
 			editor.scene.add(object);
