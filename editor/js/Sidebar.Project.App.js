@@ -458,12 +458,9 @@ function SidebarProjectApp( editor ) {
 						opacity: .8,
 						transparent: true,
 					} );
-			
 					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Sphere';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
-			
-					editor.execute( new AddObjectCommand( editor, mesh ) );
 					break;
 				case 'G':
 					geometry = new THREE.OctahedronGeometry( 3, 1 );
