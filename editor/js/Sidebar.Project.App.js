@@ -366,7 +366,7 @@ function SidebarProjectApp( editor ) {
 	loadURLButton.setMarginBottom( '10px' );
 	loadURLButton.onClick( function () {
 		let input = prompt("Paste your map link here:");
-		if (input) return;
+		if (!input) return;
 		var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
 		if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
 		var deleteNumber = editor.scene.children.length;
