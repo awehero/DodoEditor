@@ -371,7 +371,7 @@ function SidebarProjectApp( editor ) {
 	loadURLButton.setMarginBottom( '10px' );
 	loadURLButton.onClick( function () {
 		let input = prompt("Paste your map link here:");
-		if (input) return;
+		if (!input) return;
 		var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
 		if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
 		var deleteNumber = editor.scene.children.length;
@@ -379,9 +379,9 @@ function SidebarProjectApp( editor ) {
 				editor.scene.remove(editor.scene.children[0]);
 		}
 		input = input.replace(/msg=([\d:]+)/g, (match, p1) => {
-			const asciiValues = p1.split(':');
-			const characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
-			const originalString = characters.join('');
+			let asciiValues = p1.split(':');
+			let characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
+			let originalString = characters.join('');
 			return `msg=${originalString}`;
 		});
 		let dollarIndex = input.indexOf('$');
@@ -394,55 +394,117 @@ function SidebarProjectApp( editor ) {
 				input = input.substring(endIndex);
 				}
 		}
-		const index = input.indexOf('&');
+		let index = input.indexOf('&');
 		if (index !== -1) {
 				input = input.substring(0, index);
 		}
-		const objectDataArray = input.split(/(?=[A-Z])/);
+		let objectDataArray = input.split(/(?=[A-Z])/);
 		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
+			let geometry;
+			let loader;
+			let material;
 			let mesh;
 			switch (type) {
 				case 'A':
-					
+					geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
+					material = new THREE.MeshStandardMaterial();
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'Plane';
+					mesh.material.side = THREE.DoubleSide;
+					mesh.position.y = -20;
+					mesh.rotation.x = 1.57079633;
+					mesh.scale.x = 1000;
 					break;
 				case 'B':
-					const geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
-					const loader = new THREE.TextureLoader();
+					geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
+					loader = new THREE.TextureLoader();
 					loader.load( 'images/textures/bright.png', function ( texture ) {
 						texture.colorSpace = THREE.SRGBColorSpace;
-						const material = new THREE.MeshBasicMaterial( { map: texture } );
+						material = new THREE.MeshBasicMaterial( { map: texture } );
 						mesh = new THREE.Mesh( geometry, material );
 						mesh.name = 'Box';
 						mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
 					} );
 					break;
 				case 'C':
-					
+					geometry = new THREE.ConeGeometry( .5, 1, 16 );
+					material = new THREE.MeshBasicMaterial( { color: 0xD52B2B } );
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'Cone';
+					mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
 					break;
 				case 'D':
-					
+					geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 );
+					material = new THREE.MeshBasicMaterial( {
+						color: 0x24fc03,
+						opacity: 0.5,
+						transparent: true,
+					} );
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'End';
+					mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
 					break;
 				case 'E':
-					
+					geometry = new THREE.CylinderGeometry( .5, .5, 1, 16, 1, false, 0, Math.PI * 2 );
+					material = new THREE.MeshBasicMaterial( {
+						color: 0x0000ff,
+						opacity: 0.8,
+						transparent: true,
+					} );
+			
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'Cylinder';
+					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 					break;
 				case 'F':
-					
+					geometry = new THREE.SphereGeometry( 1, 32, 16, 0, Math.PI * 2, 0, Math.PI );
+					material = new THREE.MeshBasicMaterial( {
+						color: 0x0000ff,
+						opacity: .8,
+						transparent: true,
+					} );
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'Sphere';
+					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
 					break;
 				case 'G':
-					
+					geometry = new THREE.OctahedronGeometry( 3, 1 );
+					material = new THREE.MeshStandardMaterial();
+					mesh = new THREE.Mesh( geometry, material );
+					mesh.name = 'Monkey';
 					break;
 				default:
                                         console.error('Unknown object type:', type);
 			}
+			mesh.position.x = Math.round(posX * 1000) / 100000;
+	                mesh.position.y = Math.round(posZ * 1000) / 100000;
+	                mesh.position.z = Math.round(posY * 1000) / 100000;
+	                mesh.rotation.x = Math.round((rotX / 100) / (Math.PI / 180));
+	                mesh.rotation.y = Math.round((rotY / 100) / (Math.PI / 180));
+	                mesh.rotation.z = Math.round((rotZ / 100) / (Math.PI / 180));
+	                if (mesh.geometry.type == "OctahedronGeometry" || mesh.geometry.type == "ConeGeometry" || mesh.geometry.type == "CapsuleGeometry") {
+	                	mesh.scale.x = 1;
+	                        mesh.scale.y = 1;
+	                        mesh.scale.z = 1;
+	                } else if (mesh.geometry.type == "PlaneGeometry") {
+	                        mesh.scale.x = scaleX / 100;
+	                        mesh.scale.y = scaleY / 100;
+	                        mesh.scale.y = scaleZ / 100;
+	                } else {
+				mesh.scale.x = scaleX / 100;
+	                        mesh.scale.y = scaleZ / 100;
+	                        mesh.scale.y = scaleY / 100;
+			}
+	                mesh.name = effects;
+			return mesh;
 		}
 		objectDataArray.forEach(objData => {
-			const type = objData.charAt(0);
-			const rest = objData.slice(1);
-			const [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
+			let type = objData.charAt(0);
+			let rest = objData.slice(1);
+			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
-		}
 		if (object) {
-			editor.scene.add(object);
+			editor.execute( new AddObjectCommand( editor, object ) );
 		}
 		});
 	});

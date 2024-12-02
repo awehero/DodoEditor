@@ -63,6 +63,7 @@ function MenubarAdd( editor ) {
 
 	let option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addPlatform');
 	option.setTextContent( strings.getKey( 'menubar/add/box' ) );
 	option.onClick( function () {
 
@@ -87,6 +88,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addEnding');
 	option.setTextContent( strings.getKey( 'menubar/add/end' ) );
 	option.onClick( function () {
 
@@ -124,6 +126,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addCylinder');
 	option.setTextContent( strings.getKey( 'menubar/add/cylinder' ) );
 	option.onClick( function () {
 
@@ -161,6 +164,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addSphere');
 	option.setTextContent( strings.getKey( 'menubar/add/sphere' ) );
 	option.onClick( function () {
 
@@ -194,6 +198,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addCone');
 	option.setTextContent( strings.getKey( 'menubar/add/cone' ) );
 	option.onClick( function () {
 
@@ -212,6 +217,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addPlane');
 	option.setTextContent( strings.getKey( 'menubar/add/mesh/plane' ) );
 	option.onClick( function () {
 
@@ -234,6 +240,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addMonkey');
 	option.setTextContent( strings.getKey( 'menubar/add/monkey' ) );
 	option.onClick( function () {
 
@@ -252,6 +259,7 @@ function MenubarAdd( editor ) {
 
 	option = new UIRow();
 	option.setClass( 'option' );
+	option.setId('addSpawn');
 	option.setTextContent( strings.getKey( 'menubar/add/spawn' ) );
 	option.onClick( function () {
 
