@@ -1,22 +1,6 @@
 import * as THREE from 'three';
 
-import { UIPanel, UIRow, UIInput,
-	  UIColor, UISelect,
-	  UIText, UINumber
-	 } from './libs/ui.js';
-// import { UIBoolean } from './libs/ui.three.js';
-
-// import { SetUuidCommand } from './commands/SetUuidCommand.js';
-import { SetValueCommand } from './commands/SetValueCommand.js';
-import { SetPositionCommand } from './commands/SetPositionCommand.js';
-import { SetRotationCommand } from './commands/SetRotationCommand.js';
-import { SetScaleCommand } from './commands/SetScaleCommand.js';
-// import { SetColorCommand } from './commands/SetColorCommand.js';
-// import { SetShadowValueCommand } from './commands/SetShadowValueCommand.js';
-
-// import { SidebarObjectAnimation } from './Sidebar.Object.Animation.js';
-
-import { refreshUI } from './Sidebar.Scene.js';
+import { UIPanel, UIRow, UIInput, UIColor, UISelect, UIText, UINumber } from './libs/ui.js';
 
 function SidebarEffects( editor ) {
 
@@ -30,88 +14,16 @@ function SidebarEffects( editor ) {
 	container.setPaddingTop( '20px' );
 	container.setDisplay( 'none' );
 
-	// Actions
-
-	/*
-	let objectActions = new UI.Select().setPosition( 'absolute' ).setRight( '8px' ).setFontSize( '11px' );
-	objectActions.setOptions( {
-
-		'Actions': 'Actions',
-		'Reset Position': 'Reset Position',
-		'Reset Rotation': 'Reset Rotation',
-		'Reset Scale': 'Reset Scale'
-
-	} );
-	objectActions.onClick( function ( event ) {
-
-		event.stopPropagation(); // Avoid panel collapsing
-
-	} );
-	objectActions.onChange( function ( event ) {
-
-		let object = editor.selected;
-
-		switch ( this.getValue() ) {
-
-			case 'Reset Position':
-				editor.execute( new SetPositionCommand( editor, object, new Vector3( 0, 0, 0 ) ) );
-				break;
-
-			case 'Reset Rotation':
-				editor.execute( new SetRotationCommand( editor, object, new Euler( 0, 0, 0 ) ) );
-				break;
-
-			case 'Reset Scale':
-				editor.execute( new SetScaleCommand( editor, object, new Vector3( 1, 1, 1 ) ) );
-				break;
-
-		}
-
-		this.setValue( 'Actions' );
-
-	} );
-	container.addStatic( objectActions );
-	*/
-
-	// type
-
-	// const objectTypeRow = new UIRow();
-	// const objectType = new UIText();
-
-	// objectTypeRow.add( new UIText( strings.getKey( 'sidebar/object/type' ) ).setClass( 'Label' ) );
-	// objectTypeRow.add( objectType );
-
-	// container.add( objectTypeRow );
-
-	// uuid
-
-	// const objectUUIDRow = new UIRow();
-	// const objectUUID = new UIInput().setWidth( '102px' ).setFontSize( '12px' ).setDisabled( true );
-	// const objectUUIDRenew = new UIButton( strings.getKey( 'sidebar/object/new' ) ).setMarginLeft( '7px' ).onClick( function () {
-
-	// 	objectUUID.setValue( THREE.MathUtils.generateUUID() );
-
-	// 	editor.execute( new SetUuidCommand( editor, editor.selected, objectUUID.getValue() ) );
-
-	// } );
-
-	// objectUUIDRow.add( new UIText( strings.getKey( 'sidebar/object/uuid' ) ).setClass( 'Label' ) );
-	// objectUUIDRow.add( objectUUID );
-	// objectUUIDRow.add( objectUUIDRenew );
-
-	// container.add( objectUUIDRow );
-
-	//id
-
 	// use
 
 	const objectUseRow = new UIRow();
 	const objectUse = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('use')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'use' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d?$/.test( value ) ) {
 
@@ -127,7 +39,6 @@ function SidebarEffects( editor ) {
 	);
 	objectUseRow.add( objectUse );
 	container.add( objectUseRow );
-
 
 	// drift
 
@@ -146,7 +57,6 @@ function SidebarEffects( editor ) {
 	objectDriftRow.add( objectDrift );
 	container.add( objectDriftRow );
 
-
 	// jump
 
 	const objectJumpRow = new UIRow();
@@ -164,16 +74,16 @@ function SidebarEffects( editor ) {
 	objectJumpRow.add( objectJump );
 	container.add( objectJumpRow );
 
-
 	// jh
 
 	const objectJhRow = new UIRow();
 	const objectJh = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('jh')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'jh' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -190,16 +100,16 @@ function SidebarEffects( editor ) {
 	objectJhRow.add( objectJh );
 	container.add( objectJhRow );
 
-
 	// js
 
 	const objectJsRow = new UIRow();
 	const objectJs = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('js')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'js' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -216,16 +126,16 @@ function SidebarEffects( editor ) {
 	objectJsRow.add( objectJs );
 	container.add( objectJsRow );
 
-
 	// turn
 
 	const objectTurnRow = new UIRow();
 	const objectTurn = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('turn')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'turn' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -242,16 +152,16 @@ function SidebarEffects( editor ) {
 	objectTurnRow.add( objectTurn );
 	container.add( objectTurnRow );
 
-
 	// speed
 
 	const objectSpeedRow = new UIRow();
 	const objectSpeed = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('speed')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'speed' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -268,16 +178,16 @@ function SidebarEffects( editor ) {
 	objectSpeedRow.add( objectSpeed );
 	container.add( objectSpeedRow );
 
-
 	// dx
 
 	const objectDxRow = new UIRow();
 	const objectDx = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('dx')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'dx' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -294,16 +204,16 @@ function SidebarEffects( editor ) {
 	objectDxRow.add( objectDx );
 	container.add( objectDxRow );
 
-
 	// dy
 
 	const objectDyRow = new UIRow();
 	const objectDy = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('dy')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'dy' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -320,16 +230,16 @@ function SidebarEffects( editor ) {
 	objectDyRow.add( objectDy );
 	container.add( objectDyRow );
 
-
 	// dz
 
 	const objectDzRow = new UIRow();
 	const objectDz = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('dz')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'dz' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -351,14 +261,14 @@ function SidebarEffects( editor ) {
 
 	const objectSlRow = new UIRow();
 	const objectSl = new UISelect()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('sl')
-	    .setValue('')
-	    .setOptions({ off: 'Off', on: 'On' })
-	    .setValue('off') // Default to 'off'
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'sl' )
+	    .setValue( '' )
+	    .setOptions( { off: 'Off', on: 'On' } )
+	    .setValue( 'off' ) // Default to 'off'
+	    .onChange( update );
+
 	objectSlRow.add(
 	    new UIText( strings.getKey( 'sidebar/effects/sl' ) ).setClass( 'Label' )
 	);
@@ -370,11 +280,12 @@ function SidebarEffects( editor ) {
 
 	const objectSrRow = new UIRow();
 	const objectSr = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('sr')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'sr' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -391,16 +302,16 @@ function SidebarEffects( editor ) {
 	objectSrRow.add( objectSr );
 	container.add( objectSrRow );
 
-
 	// id
 
 	const objectIdRow = new UIRow();
 	const objectId = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('id')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'id' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d?$/.test( value ) ) {
 
@@ -417,16 +328,16 @@ function SidebarEffects( editor ) {
 	objectIdRow.add( objectId );
 	container.add( objectIdRow );
 
-
 	// mx
 
 	const objectMxRow = new UIRow();
 	const objectMx = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('mx')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'mx' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -443,16 +354,16 @@ function SidebarEffects( editor ) {
 	objectMxRow.add( objectMx );
 	container.add( objectMxRow );
 
-
 	// my
 
 	const objectMyRow = new UIRow();
 	const objectMy = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('my')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'my' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -469,16 +380,16 @@ function SidebarEffects( editor ) {
 	objectMyRow.add( objectMy );
 	container.add( objectMyRow );
 
-
 	// mz
 
 	const objectMzRow = new UIRow();
 	const objectMz = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('mz')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'mz' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -499,11 +410,12 @@ function SidebarEffects( editor ) {
 
 	const objectRxRow = new UIRow();
 	const objectRx = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('rx')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'rx' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -520,16 +432,16 @@ function SidebarEffects( editor ) {
 	objectRxRow.add( objectRx );
 	container.add( objectRxRow );
 
-
 	// ry
 
 	const objectRyRow = new UIRow();
 	const objectRy = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('ry')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'ry' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -546,16 +458,16 @@ function SidebarEffects( editor ) {
 	objectRyRow.add( objectRy );
 	container.add( objectRyRow );
 
-
 	// rz
 
 	const objectRzRow = new UIRow();
 	const objectRz = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('rz')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'rz' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -572,16 +484,16 @@ function SidebarEffects( editor ) {
 	objectRzRow.add( objectRz );
 	container.add( objectRzRow );
 
-
 	// gx
 
 	const objectGxRow = new UIRow();
 	const objectGx = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('gx')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'gx' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -598,16 +510,16 @@ function SidebarEffects( editor ) {
 	objectGxRow.add( objectGx );
 	container.add( objectGxRow );
 
-
 	// gy
 
 	const objectGyRow = new UIRow();
 	const objectGy = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('gy')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'gy' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -624,16 +536,16 @@ function SidebarEffects( editor ) {
 	objectGyRow.add( objectGy );
 	container.add( objectGyRow );
 
-
 	// gz
 
 	const objectGzRow = new UIRow();
 	const objectGz = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('gz')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'gz' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -650,16 +562,16 @@ function SidebarEffects( editor ) {
 	objectGzRow.add( objectGz );
 	container.add( objectGzRow );
 
-
 	// bou
 
 	const objectBouRow = new UIRow();
 	const objectBou = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('bou')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'bou' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -676,16 +588,16 @@ function SidebarEffects( editor ) {
 	objectBouRow.add( objectBou );
 	container.add( objectBouRow );
 
-
 	// mass
 
 	const objectMassRow = new UIRow();
 	const objectMass = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('mass')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'mass' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -706,11 +618,12 @@ function SidebarEffects( editor ) {
 
 	const objectFrRow = new UIRow();
 	const objectFr = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('fr')
-	    .setValue(1)
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'fr' )
+	    .setValue( 1 )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -726,7 +639,6 @@ function SidebarEffects( editor ) {
 	);
 	objectFrRow.add( objectFr );
 	container.add( objectFrRow );
-
 
 	// air
 
@@ -745,16 +657,16 @@ function SidebarEffects( editor ) {
 	objectAirRow.add( objectAir );
 	container.add( objectAirRow );
 
-
 	// topr
 
 	const objectToprRow = new UIRow();
 	const objectTopr = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('topr')
-	    .setValue(1)
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'topr' )
+	    .setValue( 1 )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -770,7 +682,6 @@ function SidebarEffects( editor ) {
 	);
 	objectToprRow.add( objectTopr );
 	container.add( objectToprRow );
-
 
 	// k
 
@@ -789,16 +700,16 @@ function SidebarEffects( editor ) {
 	objectKRow.add( objectK );
 	container.add( objectKRow );
 
-
 	// d
 
 	const objectDRow = new UIRow();
 	const objectD = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('d')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'd' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -815,16 +726,16 @@ function SidebarEffects( editor ) {
 	objectDRow.add( objectD );
 	container.add( objectDRow );
 
-
 	// eye
 
 	const objectEyeRow = new UIRow();
 	const objectEye = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('eye')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'eye' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -841,16 +752,16 @@ function SidebarEffects( editor ) {
 	objectEyeRow.add( objectEye );
 	container.add( objectEyeRow );
 
-
 	// fov
 
 	const objectFovRow = new UIRow();
 	const objectFov = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('fov')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'fov' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -867,16 +778,16 @@ function SidebarEffects( editor ) {
 	objectFovRow.add( objectFov );
 	container.add( objectFovRow );
 
-
 	// tx
 
 	const objectTxRow = new UIRow();
 	const objectTx = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('tx')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'tx' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -897,11 +808,12 @@ function SidebarEffects( editor ) {
 
 	const objectTyRow = new UIRow();
 	const objectTy = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('ty')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'ty' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -918,16 +830,16 @@ function SidebarEffects( editor ) {
 	objectTyRow.add( objectTy );
 	container.add( objectTyRow );
 
-
 	// tz
 
 	const objectTzRow = new UIRow();
 	const objectTz = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('tz')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'tz' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -944,16 +856,16 @@ function SidebarEffects( editor ) {
 	objectTzRow.add( objectTz );
 	container.add( objectTzRow );
 
-
 	// cd
 
 	const objectCdRow = new UIRow();
 	const objectCd = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('cd')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'cd' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -970,16 +882,16 @@ function SidebarEffects( editor ) {
 	objectCdRow.add( objectCd );
 	container.add( objectCdRow );
 
-
 	// cr
 
 	const objectCrRow = new UIRow();
 	const objectCr = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('cr')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'cr' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -996,33 +908,32 @@ function SidebarEffects( editor ) {
 	objectCrRow.add( objectCr );
 	container.add( objectCrRow );
 
-
 	// msg
 
 	const objectMsgRow = new UIRow();
 	const objectMsg = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('msg')
-	    .setValue('')
-	    .onChange(update);
-	
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'msg' )
+	    .setValue( '' )
+	    .onChange( update );
+
 	objectMsgRow.add(
 	    new UIText( strings.getKey( 'sidebar/effects/msg' ) ).setClass( 'Label' )
 	);
 	objectMsgRow.add( objectMsg );
 	container.add( objectMsgRow );
 
-
 	// br
 
 	const objectBrRow = new UIRow();
 	const objectBr = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('br')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'br' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( ! /^\d*$/.test( value ) ) {
 
@@ -1039,16 +950,16 @@ function SidebarEffects( editor ) {
 	objectBrRow.add( objectBr );
 	container.add( objectBrRow );
 
-
 	// bg
 
 	const objectBgRow = new UIRow();
 	const objectBg = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('bg')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'bg' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( value.length > 6 ) {
 
@@ -1069,11 +980,12 @@ function SidebarEffects( editor ) {
 
 	const objectAmbRow = new UIRow();
 	const objectAmb = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('amb')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'amb' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( value.length > 6 ) {
 
@@ -1095,11 +1007,12 @@ function SidebarEffects( editor ) {
 
 	const objectDifRow = new UIRow();
 	const objectDif = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('dif')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'dif' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( value.length > 6 ) {
 
@@ -1116,16 +1029,16 @@ function SidebarEffects( editor ) {
 	objectDifRow.add( objectDif );
 	container.add( objectDifRow );
 
-
 	// spe
 
 	const objectSpeRow = new UIRow();
 	const objectSpe = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('spe')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'spe' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( value.length > 6 ) {
 
@@ -1142,16 +1055,16 @@ function SidebarEffects( editor ) {
 	objectSpeRow.add( objectSpe );
 	container.add( objectSpeRow );
 
-
 	// gro
 
 	const objectGroRow = new UIRow();
 	const objectGro = new UIInput()
-	    .setWidth('150px')
-	    .setFontSize('12px')
-	    .setId('gro')
-	    .setValue('')
-	    .onInput(function () {
+	    .setWidth( '150px' )
+	    .setFontSize( '12px' )
+	    .setId( 'gro' )
+	    .setValue( '' )
+	    .onInput( function () {
+
 	        const value = this.getValue();
 	        if ( value.length > 6 ) {
 
@@ -1168,552 +1081,53 @@ function SidebarEffects( editor ) {
 	objectGroRow.add( objectGro );
 	container.add( objectGroRow );
 
-
-
-
-	// change functions
-	/*function handleSelectionChange() { MIGHT NEED THIS LATER IDK
-
-		if ( editor.selected === null ) return;
-
-		const selectedObject = editor.selected;
-
-		// Hide all dropdowns initially
-		sphereCylinderDropdown.setDisplay( 'none' );
-		coneDropdown.setDisplay( 'none' );
-		platformBoxDropdown.setDisplay( 'none' );
-		colorPickerRow.setDisplay( 'none' );
-		alphaRow.setDisplay( 'none' );
-
-		if ( selectedObject.geometry.type == 'SphereGeometry' || selectedObject.geometry.type == 'CylinderGeometry' ) {
-
-			sphereCylinderDropdown.setDisplay( '' );
-			colorPickerRow.setDisplay( '' );
-			alphaRow.setDisplay( '' );
-
-		} else if ( selectedObject.geometry.type == 'ConeGeometry' && selectedObject.name !== 'Spawn' ) {
-
-			coneDropdown.setDisplay( '' );
-
-		} else if ( selectedObject.geometry.type == 'BoxGeometry' ) {
-
-			platformBoxDropdown.setDisplay( '' );
-			colorPickerRow.setDisplay( '' );
-			alphaRow.setDisplay( '' );
-
-		}
-
-		afterSelection();
-
-	}*/
-
-	// Ensure handleSelectionChange is called when a new object is selected
-	//editor.signals.objectSelected.add( handleSelectionChange ); MIGHT NEED THIS LATER IDK
-	// fov
-
-	// const objectFovRow = new UIRow();
-	// const objectFov = new UINumber().onChange( update );
-
-	// objectFovRow.add( new UIText( strings.getKey( 'sidebar/object/fov' ) ).setClass( 'Label' ) );
-	// objectFovRow.add( objectFov );
-
-	// container.add( objectFovRow );
-
-	// left
-
-	// const objectLeftRow = new UIRow();
-	// const objectLeft = new UINumber().onChange( update );
-
-	// objectLeftRow.add( new UIText( strings.getKey( 'sidebar/object/left' ) ).setClass( 'Label' ) );
-	// objectLeftRow.add( objectLeft );
-
-	// container.add( objectLeftRow );
-
-	// right
-
-	// const objectRightRow = new UIRow();
-	// const objectRight = new UINumber().onChange( update );
-
-	// objectRightRow.add( new UIText( strings.getKey( 'sidebar/object/right' ) ).setClass( 'Label' ) );
-	// objectRightRow.add( objectRight );
-
-	// container.add( objectRightRow );
-
-	// top
-
-	// const objectTopRow = new UIRow();
-	// const objectTop = new UINumber().onChange( update );
-
-	// objectTopRow.add( new UIText( strings.getKey( 'sidebar/object/top' ) ).setClass( 'Label' ) );
-	// objectTopRow.add( objectTop );
-
-	// container.add( objectTopRow );
-
-	// bottom
-
-	// const objectBottomRow = new UIRow();
-	// const objectBottom = new UINumber().onChange( update );
-
-	// objectBottomRow.add( new UIText( strings.getKey( 'sidebar/object/bottom' ) ).setClass( 'Label' ) );
-	// objectBottomRow.add( objectBottom );
-
-	// container.add( objectBottomRow );
-
-	// near
-
-	// const objectNearRow = new UIRow();
-	// const objectNear = new UINumber().onChange( update );
-
-	// objectNearRow.add( new UIText( strings.getKey( 'sidebar/object/near' ) ).setClass( 'Label' ) );
-	// objectNearRow.add( objectNear );
-
-	// container.add( objectNearRow );
-
-	// far
-
-	// const objectFarRow = new UIRow();
-	// const objectFar = new UINumber().onChange( update );
-
-	// objectFarRow.add( new UIText( strings.getKey( 'sidebar/object/far' ) ).setClass( 'Label' ) );
-	// objectFarRow.add( objectFar );
-
-	// container.add( objectFarRow );
-
-	// intensity
-
-	// const objectIntensityRow = new UIRow();
-	// const objectIntensity = new UINumber().onChange( update );
-
-	// objectIntensityRow.add( new UIText( strings.getKey( 'sidebar/object/intensity' ) ).setClass( 'Label' ) );
-	// objectIntensityRow.add( objectIntensity );
-
-	// container.add( objectIntensityRow );
-
-	// color
-
-	// const objectColorRow = new UIRow();
-	// const objectColor = new UIColor().onInput( update );
-
-	// objectColorRow.add( new UIText( strings.getKey( 'sidebar/object/color' ) ).setClass( 'Label' ) );
-	// objectColorRow.add( objectColor );
-
-	// container.add( objectColorRow );
-
-	// ground color
-
-	// const objectGroundColorRow = new UIRow();
-	// const objectGroundColor = new UIColor().onInput( update );
-
-	// objectGroundColorRow.add( new UIText( strings.getKey( 'sidebar/object/groundcolor' ) ).setClass( 'Label' ) );
-	// objectGroundColorRow.add( objectGroundColor );
-
-	// container.add( objectGroundColorRow );
-
-	// distance
-
-	// const objectDistanceRow = new UIRow();
-	// const objectDistance = new UINumber().setRange( 0, Infinity ).onChange( update );
-
-	// objectDistanceRow.add( new UIText( strings.getKey( 'sidebar/object/distance' ) ).setClass( 'Label' ) );
-	// objectDistanceRow.add( objectDistance );
-
-	// container.add( objectDistanceRow );
-
-	// angle
-
-	// const objectAngleRow = new UIRow();
-	// const objectAngle = new UINumber().setPrecision( 3 ).setRange( 0, Math.PI / 2 ).onChange( update );
-
-	// objectAngleRow.add( new UIText( strings.getKey( 'sidebar/object/angle' ) ).setClass( 'Label' ) );
-	// objectAngleRow.add( objectAngle );
-
-	// container.add( objectAngleRow );
-
-	// penumbra
-
-	// const objectPenumbraRow = new UIRow();
-	// const objectPenumbra = new UINumber().setRange( 0, 1 ).onChange( update );
-
-	// objectPenumbraRow.add( new UIText( strings.getKey( 'sidebar/object/penumbra' ) ).setClass( 'Label' ) );
-	// objectPenumbraRow.add( objectPenumbra );
-
-	// container.add( objectPenumbraRow );
-
-	// decay
-
-	// const objectDecayRow = new UIRow();
-	// const objectDecay = new UINumber().setRange( 0, Infinity ).onChange( update );
-
-	// objectDecayRow.add( new UIText( strings.getKey( 'sidebar/object/decay' ) ).setClass( 'Label' ) );
-	// objectDecayRow.add( objectDecay );
-
-	// container.add( objectDecayRow );
-
-	// shadow
-
-	// const objectShadowRow = new UIRow();
-
-	// objectShadowRow.add( new UIText( strings.getKey( 'sidebar/object/shadow' ) ).setClass( 'Label' ) );
-
-	// const objectCastShadow = new UIBoolean( false, strings.getKey( 'sidebar/object/cast' ) ).onChange( update );
-	// objectShadowRow.add( objectCastShadow );
-
-	// const objectReceiveShadow = new UIBoolean( false, strings.getKey( 'sidebar/object/receive' ) ).onChange( update );
-	// objectShadowRow.add( objectReceiveShadow );
-
-	// container.add( objectShadowRow );
-
-	// // shadow intensity
-
-	// const objectShadowIntensityRow = new UIRow();
-
-	// objectShadowIntensityRow.add( new UIText( strings.getKey( 'sidebar/object/shadowIntensity' ) ).setClass( 'Label' ) );
-
-	// const objectShadowIntensity = new UINumber( 0 ).setRange( 0, 1 ).onChange( update );
-	// objectShadowIntensityRow.add( objectShadowIntensity );
-
-	// container.add( objectShadowIntensityRow );
-
-	// // shadow bias
-
-	// const objectShadowBiasRow = new UIRow();
-
-	// objectShadowBiasRow.add( new UIText( strings.getKey( 'sidebar/object/shadowBias' ) ).setClass( 'Label' ) );
-
-	// const objectShadowBias = new UINumber( 0 ).setPrecision( 5 ).setStep( 0.0001 ).setNudge( 0.00001 ).onChange( update );
-	// objectShadowBiasRow.add( objectShadowBias );
-
-	// container.add( objectShadowBiasRow );
-
-	// // shadow normal offset
-
-	// const objectShadowNormalBiasRow = new UIRow();
-
-	// objectShadowNormalBiasRow.add( new UIText( strings.getKey( 'sidebar/object/shadowNormalBias' ) ).setClass( 'Label' ) );
-
-	// const objectShadowNormalBias = new UINumber( 0 ).onChange( update );
-	// objectShadowNormalBiasRow.add( objectShadowNormalBias );
-
-	// container.add( objectShadowNormalBiasRow );
-
-	// // shadow radius
-
-	// const objectShadowRadiusRow = new UIRow();
-
-	// objectShadowRadiusRow.add( new UIText( strings.getKey( 'sidebar/object/shadowRadius' ) ).setClass( 'Label' ) );
-
-	// const objectShadowRadius = new UINumber( 1 ).onChange( update );
-	// objectShadowRadiusRow.add( objectShadowRadius );
-
-	// container.add( objectShadowRadiusRow );
-
-	// // visible
-
-	// const objectVisibleRow = new UIRow();
-	// const objectVisible = new UICheckbox().onChange( update );
-
-	// objectVisibleRow.add( new UIText( strings.getKey( 'sidebar/object/visible' ) ).setClass( 'Label' ) );
-	// objectVisibleRow.add( objectVisible );
-
-	// container.add( objectVisibleRow );
-
-	// // frustumCulled
-
-	// const objectFrustumCulledRow = new UIRow();
-	// const objectFrustumCulled = new UICheckbox().onChange( update );
-
-	// objectFrustumCulledRow.add( new UIText( strings.getKey( 'sidebar/object/frustumcull' ) ).setClass( 'Label' ) );
-	// objectFrustumCulledRow.add( objectFrustumCulled );
-
-	// container.add( objectFrustumCulledRow );
-
-	// // renderOrder
-
-	// const objectRenderOrderRow = new UIRow();
-	// const objectRenderOrder = new UIInteger().setWidth( '50px' ).onChange( update );
-
-	// objectRenderOrderRow.add( new UIText( strings.getKey( 'sidebar/object/renderorder' ) ).setClass( 'Label' ) );
-	// objectRenderOrderRow.add( objectRenderOrder );
-
-	// container.add( objectRenderOrderRow );
-
-	// user data
-
-	// const objectUserDataRow = new UIRow();
-	// const objectUserData = new UITextArea().setWidth( '150px' ).setHeight( '40px' ).setFontSize( '12px' ).onChange( update );
-	// objectUserData.onKeyUp( function () {
-
-	// 	try {
-
-	// 		JSON.parse( objectUserData.getValue() );
-
-	// 		objectUserData.dom.classList.add( 'success' );
-	// 		objectUserData.dom.classList.remove( 'fail' );
-
-	// 	} catch ( error ) {
-
-	// 		objectUserData.dom.classList.remove( 'success' );
-	// 		objectUserData.dom.classList.add( 'fail' );
-
-	// 	}
-
-	// } );
-
-	// objectUserDataRow.add( new UIText( strings.getKey( 'sidebar/object/userdata' ) ).setClass( 'Label' ) );
-	// objectUserDataRow.add( objectUserData );
-
-	// container.add( objectUserDataRow );
-
-	// // Export JSON
-
-	// const exportJson = new UIButton( strings.getKey( 'sidebar/object/export' ) );
-	// exportJson.setMarginLeft( '120px' );
-	// exportJson.onClick( function () {
-
-	// 	const object = editor.selected;
-
-	// 	let output = object.toJSON();
-
-	// 	try {
-
-	// 		output = JSON.stringify( output, null, '\t' );
-	// 		output = output.replace( /[\n\t]+([\d\.e\-\[\]]+)/g, '$1' );
-
-	// 	} catch ( e ) {
-
-	// 		output = JSON.stringify( output );
-
-	// 	}
-
-	// 	editor.utils.save( new Blob( [ output ] ), `${ objectName.getValue() || 'object' }.json` );
-
-	// } );
-	// container.add( exportJson );
-
-	// // Animations
-
-	// container.add( new SidebarObjectAnimation( editor ) );
-
-	//
-
 	function update() {
 
-		/*const object = editor.selected;
-
-		if ( object !== null ) {
-
-			const newPosition = new THREE.Vector3(
-				objectPositionX.getValue(),
-				objectPositionY.getValue(),
-				objectPositionZ.getValue()
-			);
-			if ( object.position.distanceTo( newPosition ) >= 0.01 ) {
-
-				editor.execute( new SetPositionCommand( editor, object, newPosition ) );
-
-			}
-
-			const newRotation = new THREE.Euler(
-				objectRotationX.getValue() * THREE.MathUtils.DEG2RAD,
-				objectRotationY.getValue() * THREE.MathUtils.DEG2RAD,
-				objectRotationZ.getValue() * THREE.MathUtils.DEG2RAD
-			);
-			if (
-				new THREE.Vector3()
-					.setFromEuler( object.rotation )
-					.distanceTo( new THREE.Vector3().setFromEuler( newRotation ) ) >= 0.01
-			) {
-
-				editor.execute( new SetRotationCommand( editor, object, newRotation ) );
-
-			}
-
-			const newScale = new THREE.Vector3(
-				objectScaleX.getValue(),
-				objectScaleY.getValue(),
-				objectScaleZ.getValue()
-			);
-			if ( object.scale.distanceTo( newScale ) >= 0.01 ) {
-
-				if ( editor.selected.geometry.type == 'ConeGeometry' ) return;
-				editor.execute( new SetScaleCommand( editor, object, newScale ) );
-
-			}*/
-
-		// if ( object.fov !== undefined && Math.abs( object.fov - objectFov.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'fov', objectFov.getValue() ) );
-		// 	object.updateProjectionMatrix();
-
-		// }
-
-		// if ( object.left !== undefined && Math.abs( object.left - objectLeft.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'left', objectLeft.getValue() ) );
-		// 	object.updateProjectionMatrix();
-
-		// }
-
-		// if ( object.right !== undefined && Math.abs( object.right - objectRight.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'right', objectRight.getValue() ) );
-		// 	object.updateProjectionMatrix();
-
-		// }
-
-		// if ( object.top !== undefined && Math.abs( object.top - objectTop.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'top', objectTop.getValue() ) );
-		// 	object.updateProjectionMatrix();
-
-		// }
-
-		// if ( object.bottom !== undefined && Math.abs( object.bottom - objectBottom.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'bottom', objectBottom.getValue() ) );
-		// 	object.updateProjectionMatrix();
-
-		// }
-
-		// if ( object.near !== undefined && Math.abs( object.near - objectNear.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'near', objectNear.getValue() ) );
-		// 	if ( object.isOrthographicCamera ) {
-
-		// 		object.updateProjectionMatrix();
-
-		// 	}
-
-		// }
-
-		// if ( object.far !== undefined && Math.abs( object.far - objectFar.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'far', objectFar.getValue() ) );
-		// 	if ( object.isOrthographicCamera ) {
-
-		// 		object.updateProjectionMatrix();
-
-		// 	}
-
-		// }
-
-		// if ( object.intensity !== undefined && Math.abs( object.intensity - objectIntensity.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'intensity', objectIntensity.getValue() ) );
-
-		// }
-
-		// if ( object.color !== undefined && object.color.getHex() !== objectColor.getHexValue() ) {
-
-		// 	editor.execute( new SetColorCommand( editor, object, 'color', objectColor.getHexValue() ) );
-
-		// }
-
-		// if ( object.groundColor !== undefined && object.groundColor.getHex() !== objectGroundColor.getHexValue() ) {
-
-		// 	editor.execute( new SetColorCommand( editor, object, 'groundColor', objectGroundColor.getHexValue() ) );
-
-		// }
-
-		// if ( object.distance !== undefined && Math.abs( object.distance - objectDistance.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'distance', objectDistance.getValue() ) );
-
-		// }
-
-		// if ( object.angle !== undefined && Math.abs( object.angle - objectAngle.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'angle', objectAngle.getValue() ) );
-
-		// }
-
-		// if ( object.penumbra !== undefined && Math.abs( object.penumbra - objectPenumbra.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'penumbra', objectPenumbra.getValue() ) );
-
-		// }
-
-		// if ( object.decay !== undefined && Math.abs( object.decay - objectDecay.getValue() ) >= 0.01 ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'decay', objectDecay.getValue() ) );
-
-		// }
-
-		// if ( object.visible !== objectVisible.getValue() ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'visible', objectVisible.getValue() ) );
-
-		// }
-
-		// if ( object.frustumCulled !== objectFrustumCulled.getValue() ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'frustumCulled', objectFrustumCulled.getValue() ) );
-
-		// }
-
-		// if ( object.renderOrder !== objectRenderOrder.getValue() ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'renderOrder', objectRenderOrder.getValue() ) );
-
-		// }
-
-		// if ( object.castShadow !== undefined && object.castShadow !== objectCastShadow.getValue() ) {
-
-		// 	editor.execute( new SetValueCommand( editor, object, 'castShadow', objectCastShadow.getValue() ) );
-
-		// }
-
-		// if ( object.receiveShadow !== objectReceiveShadow.getValue() ) {
-
-		// 	if ( object.material !== undefined ) object.material.needsUpdate = true;
-		// 	editor.execute( new SetValueCommand( editor, object, 'receiveShadow', objectReceiveShadow.getValue() ) );
-
-		// }
-
-		// if ( object.shadow !== undefined ) {
-
-		// 	if ( object.shadow.intensity !== objectShadowIntensity.getValue() ) {
-
-		// 		editor.execute( new SetShadowValueCommand( editor, object, 'intensity', objectShadowIntensity.getValue() ) );
-
-		// 	}
-
-		// 	if ( object.shadow.bias !== objectShadowBias.getValue() ) {
-
-		// 		editor.execute( new SetShadowValueCommand( editor, object, 'bias', objectShadowBias.getValue() ) );
-
-		// 	}
-
-		// 	if ( object.shadow.normalBias !== objectShadowNormalBias.getValue() ) {
-
-		// 		editor.execute( new SetShadowValueCommand( editor, object, 'normalBias', objectShadowNormalBias.getValue() ) );
-
-		// 	}
-
-		// 	if ( object.shadow.radius !== objectShadowRadius.getValue() ) {
-
-		// 		editor.execute( new SetShadowValueCommand( editor, object, 'radius', objectShadowRadius.getValue() ) );
-
-		// 	}
-
-		// }
-
-		// try {
-
-		// 	const userData = JSON.parse( objectUserData.getValue() );
-		// 	if ( JSON.stringify( object.userData ) != JSON.stringify( userData ) ) {
-
-		// 		editor.execute( new SetValueCommand( editor, object, 'userData', userData ) );
-
-		// 	}
-
-		// } catch ( exception ) {
-
-		// 	console.warn( exception );
-
-		// }
-
-		//} Finally, I found the problem
+		editor.selected.userData.effects = {
+			use: objectUse.getValue(),
+			drift: objectDrift.getValue() === 'on',
+			jump: objectJump.getValue() === 'on',
+			jh: parseFloat( objectJh.getValue() ),
+			js: parseFloat( objectJs.getValue() ),
+			turn: parseFloat( objectTurn.getValue() ),
+			speed: parseFloat( objectSpeed.getValue() ),
+			dx: parseFloat( objectDx.getValue() ),
+			dy: parseFloat( objectDy.getValue() ),
+			dz: parseFloat( objectDz.getValue() ),
+			sl: parseFloat( objectSl.getValue() ),
+			sr: parseFloat( objectSr.getValue() ),
+			id: objectId.getValue(),
+			mx: parseFloat( objectMx.getValue() ),
+			my: parseFloat( objectMy.getValue() ),
+			mz: parseFloat( objectMz.getValue() ),
+			rx: parseFloat( objectRx.getValue() ),
+			ry: parseFloat( objectRy.getValue() ),
+			rz: parseFloat( objectRz.getValue() ),
+			gx: parseFloat( objectGx.getValue() ),
+			gy: parseFloat( objectGy.getValue() ),
+			gz: parseFloat( objectGz.getValue() ),
+			bou: parseFloat( objectBou.getValue() ),
+			mass: parseFloat( objectMass.getValue() ),
+			fr: parseFloat( objectFr.getValue() ),
+			air: objectAir.getValue() === 'on',
+			topr: parseFloat( objectTopr.getValue() ),
+			k: objectK.getValue() === 'on',
+			d: parseFloat( objectD.getValue() ),
+			eye: parseFloat( objectEye.getValue() ),
+			fov: parseFloat( objectFov.getValue() ),
+			tx: parseFloat( objectTx.getValue() ),
+			ty: parseFloat( objectTy.getValue() ),
+			tz: parseFloat( objectTz.getValue() ),
+			cd: parseFloat( objectCd.getValue() ),
+			cr: parseFloat( objectCr.getValue() ),
+			msg: objectMsg.getValue(),
+			br: parseFloat( objectBr.getValue() ),
+			bg: objectBg.getValue(),
+			amb: objectAmb.getValue(),
+			dif: objectDif.getValue(),
+			spe: objectSpe.getValue(),
+			gro: objectGro.getValue(),
+		};
 
 	}
 
@@ -1759,21 +1173,19 @@ function SidebarEffects( editor ) {
 
 		}
 
-		//
-
-		// if ( object.isLight ) {
-
-		// 	objectReceiveShadow.setDisplay( 'none' );
-
-		// }
-
-		// if ( object.isAmbientLight || object.isHemisphereLight ) {
-
-		// 	objectShadowRow.setDisplay( 'none' );
-
-		// }
-
 	}
+
+	// function updateTransformRows( object ) {
+
+	// }
+
+	// if ( object.isAmbientLight || object.isHemisphereLight ) {
+
+	// 	objectShadowRow.setDisplay( 'none' );
+
+	// }
+
+	// }
 
 	function updateTransformRows( object ) {
 
@@ -1825,261 +1237,113 @@ function SidebarEffects( editor ) {
 		updateUI( object );
 
 	} );
-	
-	function applySettings(geometryType) {
-		const geometries = ['PlaneGeometry', 'BoxGeometry', 'ConeGeometry', 'CapsuleGeometry', 'CylinderGeometry', 'SphereGeometry', 'OctahedronGeometry'];
-		const effects = {
-		    use: [1,0,0,0,0,0,1],
-		    drift: [0,1,0,0,0,0,0],
-		    jump: [0,1,0,0,0,0,0],
-		    jh: [1,0,0,0,0,0,1],
-		    js: [1,0,0,0,0,0,1],
-		    turn: [1,0,0,0,0,0,1],
-		    speed: [1,0,0,0,0,0,1],
-		    dx: [1,0,0,0,0,0,1],
-		    dy: [1,0,0,0,0,0,1],
-		    dz: [1,0,0,0,0,0,1],
-		    sl: [1,0,0,0,0,0,0],
-		    sr: [1,0,0,0,0,0,0],
-		    id: [1,1,1,1,1,1,1],
-		    mx: [0,1,1,1,1,1,0],
-		    my: [0,1,1,1,1,1,0],
-		    mz: [0,1,1,1,1,1,0],
-		    rx: [0,1,1,1,1,1,0],
-		    ry: [0,1,1,1,1,1,0],
-		    rz: [0,1,1,1,1,1,0],
-		    gx: [1,0,0,0,0,0,1],
-		    gy: [1,0,0,0,0,0,1],
-		    gz: [1,0,0,0,0,0,1],
-		    bou: [0,1,0,0,1,1,0],
-		    mass: [0,1,0,0,1,1,0],
-		    fr: [0,1,0,0,1,1,0],
-		    air: [0,1,0,0,1,1,0],
-		    topr: [0,0,0,0,1,0,0],
-		    k: [0,1,0,0,1,1,0],
-		    d: [1,0,0,0,0,0,1],
-		    eye: [1,0,0,0,0,0,1],
-		    fov: [1,0,0,0,0,0,1],
-		    tx: [1,0,0,0,0,0,1],
-		    ty: [1,0,0,0,0,0,1],
-		    tz: [1,0,0,0,0,0,1],
-		    cd: [1,0,0,0,0,0,1],
-		    cr: [1,0,0,0,0,0,1],
-		    msg: [1,0,0,0,0,0,0],
-		    br: [1,0,0,0,0,0,1],
-		    bg: [1,0,0,0,0,0,1],
-		    amb: [1,0,0,0,0,0,1],
-		    dif: [1,0,0,0,0,0,1],
-		    spe: [1,0,0,0,0,0,1],
-		    gro: [1,0,0,0,0,0,1],
-		};
-		const geometryIndex = geometries.indexOf(geometryType);
-		if (geometryIndex === -1) {
-			console.warn(`No settings found for geometry type: ${geometryType}`); //THIS LINE CAN BE REMOVED LATER
+
+	function applySettings( geometryType ) {
+
+		const geometries = [ 'PlaneGeometry', 'BoxGeometry', 'ConeGeometry', 'CapsuleGeometry', 'CylinderGeometry', 'SphereGeometry', 'OctahedronGeometry' ];
+		// const effects = {
+		//     use: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     drift: [ 0, 1, 0, 0, 0, 0, 0 ],
+		//     jump: [ 0, 1, 0, 0, 0, 0, 0 ],
+		//     jh: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     js: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     turn: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     speed: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     dx: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     dy: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     dz: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     sl: [ 1, 0, 0, 0, 0, 0, 0 ],
+		//     sr: [ 1, 0, 0, 0, 0, 0, 0 ],
+		//     id: [ 1, 1, 1, 1, 1, 1, 1 ],
+		//     mx: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     my: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     mz: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     rx: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     ry: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     rz: [ 0, 1, 1, 1, 1, 1, 0 ],
+		//     gx: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     gy: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     gz: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     bou: [ 0, 1, 0, 0, 1, 1, 0 ],
+		//     mass: [ 0, 1, 0, 0, 1, 1, 0 ],
+		//     fr: [ 0, 1, 0, 0, 1, 1, 0 ],
+		//     air: [ 0, 1, 0, 0, 1, 1, 0 ],
+		//     topr: [ 0, 0, 0, 0, 1, 0, 0 ],
+		//     k: [ 0, 1, 0, 0, 1, 1, 0 ],
+		//     d: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     eye: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     fov: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     tx: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     ty: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     tz: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     cd: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     cr: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     msg: [ 1, 0, 0, 0, 0, 0, 0 ],
+		//     br: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     bg: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     amb: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     dif: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     spe: [ 1, 0, 0, 0, 0, 0, 1 ],
+		//     gro: [ 1, 0, 0, 0, 0, 0, 1 ],
+		// };
+		const geometryIndex = geometries.indexOf( geometryType );
+		if ( geometryIndex === - 1 ) {
+
+			console.warn( `No settings found for geometry type: ${geometryType}` ); //THIS LINE CAN BE REMOVED LATER
 			return;
-		}
-		
-		for (const [effect, settings] of Object.entries(effects)) {
-			const hidden = settings[geometryIndex] === 0; // 0 means hidden, 1 means visible
-		        const element = document.getElementById(effect);
-		        if (element) {
+
+
+			for ( const [ effect, settings ] of Object.entries( effects ) ) {
+
+				const hidden = settings[ geometryIndex ] === 0; // 0 means hidden, 1 means visible
+		        const element = document.getElementById( effect );
+		        if ( element ) {
+
 		            element.parentElement.hidden = hidden;
-		        }
+
+				}
+
+			}
+
+			for ( const [ effect, settings ] of Object.entries( effects ) ) {
+
+				const hidden = settings[ geometryIndex ] === 0; // 0 means hidden, 1 means visible
+		        const element = document.getElementById( effect );
+		        if ( element ) {
+
+		            element.parentElement.hidden = hidden;
+
+				}
+
+			}
+
 		}
+
+		for ( const [ effect, settings ] of Object.entries( effects ) ) {
+
+			const hidden = settings[ geometryIndex ] === 0; // 0 means hidden, 1 means visible
+		        const element = document.getElementById( effect );
+		        if ( element ) element.parentElement.hidden = hidden;
+
+		}
+
+		// editor.selected.userData.effects = effects;
+
 	}
-	
+
 	function updateUI( object ) {
-		applySettings(object.geometry.type);
 
-		// objectType.setValue( object.type );
-
-		// objectUUID.setValue( object.uuid );
-		/*objectName.setValue( object.name );
-		if ( object.name == 'Spawn' ) {
-
-		    document.querySelectorAll( 'input' )[ 5 ].disabled = true;
-
-		} else {
-
-		    document.querySelectorAll( 'input' )[ 5 ].disabled = false;
-
-		}
-
-		objectPositionX.setValue( object.position.x );
-		objectPositionY.setValue( object.position.y );
-		objectPositionZ.setValue( object.position.z );
-
-		objectRotationX.setValue( object.rotation.x * THREE.MathUtils.RAD2DEG );
-		objectRotationY.setValue( object.rotation.y * THREE.MathUtils.RAD2DEG );
-		objectRotationZ.setValue( object.rotation.z * THREE.MathUtils.RAD2DEG );
-
-		objectScaleX.setValue( object.scale.x );
-		objectScaleY.setValue( object.scale.y );
-		objectScaleZ.setValue( object.scale.z );
-
-		if (object.geometry.type == 'PlaneGeometry') {
-		    	document.getElementById('PosX').disabled = true;
-			document.getElementById('PosY').disabled = true;
-			document.getElementById('RotX').disabled = true;
-			document.getElementById('RotY').disabled = true;
-			document.getElementById('RotZ').disabled = true;
-			document.getElementById('SizeX').disabled = true;
-			document.getElementById('SizeZ').disabled = true;
-			document.getElementById('PosX').style.color = 'gray';
-			document.getElementById('PosY').style.color = 'gray';
-			document.getElementById('RotX').style.color = 'gray';
-			document.getElementById('RotY').style.color = 'gray';
-			document.getElementById('RotZ').style.color = 'gray';
-			document.getElementById('SizeX').style.color = 'gray';
-			document.getElementById('SizeZ').style.color = 'gray';
-		} else {
-		    	document.getElementById('PosX').disabled = false;
-			document.getElementById('PosY').disabled = false;
-			document.getElementById('RotX').disabled = false;
-			document.getElementById('RotY').disabled = false;
-			document.getElementById('RotZ').disabled = false;
-			document.getElementById('SizeX').disabled = false;
-			document.getElementById('SizeZ').disabled = false;
-			document.getElementById('PosX').style.color = '';
-			document.getElementById('PosY').style.color = '';
-			document.getElementById('RotX').style.color = '';
-			document.getElementById('RotY').style.color = '';
-			document.getElementById('RotZ').style.color = '';
-			document.getElementById('SizeX').style.color = '';
-			document.getElementById('SizeZ').style.color = '';
-		}*/
-
-		// if ( object.fov !== undefined ) {
-
-		// 	objectFov.setValue( object.fov );
-
-		// }
-
-		// if ( object.left !== undefined ) {
-
-		// 	objectLeft.setValue( object.left );
-
-		// }
-
-		// if ( object.right !== undefined ) {
-
-		// 	objectRight.setValue( object.right );
-
-		// }
-
-		// if ( object.top !== undefined ) {
-
-		// 	objectTop.setValue( object.top );
-
-		// }
-
-		// if ( object.bottom !== undefined ) {
-
-		// 	objectBottom.setValue( object.bottom );
-
-		// }
-
-		// if ( object.near !== undefined ) {
-
-		// 	objectNear.setValue( object.near );
-
-		// }
-
-		// if ( object.far !== undefined ) {
-
-		// 	objectFar.setValue( object.far );
-
-		// }
-
-		// if ( object.intensity !== undefined ) {
-
-		// 	objectIntensity.setValue( object.intensity );
-
-		// }
-
-		// if ( object.color !== undefined ) {
-
-		// 	objectColor.setHexValue( object.color.getHexString() );
-
-		// }
-
-		// if ( object.groundColor !== undefined ) {
-
-		// 	objectGroundColor.setHexValue( object.groundColor.getHexString() );
-
-		// }
-
-		// if ( object.distance !== undefined ) {
-
-		// 	objectDistance.setValue( object.distance );
-
-		// }
-
-		// if ( object.angle !== undefined ) {
-
-		// 	objectAngle.setValue( object.angle );
-
-		// }
-
-		// if ( object.penumbra !== undefined ) {
-
-		// 	objectPenumbra.setValue( object.penumbra );
-
-		// }
-
-		// if ( object.decay !== undefined ) {
-
-		// 	objectDecay.setValue( object.decay );
-
-		// }
-
-		// if ( object.castShadow !== undefined ) {
-
-		// 	objectCastShadow.setValue( object.castShadow );
-
-		// }
-
-		// if ( object.receiveShadow !== undefined ) {
-
-		// 	objectReceiveShadow.setValue( object.receiveShadow );
-
-		// }
-
-		// if ( object.shadow !== undefined ) {
-
-		// 	objectShadowIntensity.setValue( object.shadow.intensity );
-		// 	objectShadowBias.setValue( object.shadow.bias );
-		// 	objectShadowNormalBias.setValue( object.shadow.normalBias );
-		// 	objectShadowRadius.setValue( object.shadow.radius );
-
-		// }
-
-		// objectVisible.setValue( object.visible );
-		// objectFrustumCulled.setValue( object.frustumCulled );
-		// objectRenderOrder.setValue( object.renderOrder );
-
-		// try {
-
-		// 	objectUserData.setValue( JSON.stringify( object.userData, null, '  ' ) );
-
-		// } catch ( error ) {
-
-		// 	console.log( error );
-
-		// }
-
-		// objectUserData.setBorderColor( 'transparent' );
-		// objectUserData.setBackgroundColor( '' );
+		applySettings( object.geometry.type );
 
 		updateTransformRows( object );
 
 	}
 
-	container.setContentHidden = function ( hidden ) {
+	// container.setContentHidden = function ( hidden ) {
 
-        	content.setHidden( hidden );
+	//     	content.setHidden( hidden );
 
-	};
+	// };
 
 	return container;
 
