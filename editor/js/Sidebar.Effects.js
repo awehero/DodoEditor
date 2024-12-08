@@ -664,7 +664,7 @@ function SidebarEffects( editor ) {
 	    .setWidth( '150px' )
 	    .setFontSize( '12px' )
 	    .setId( 'topr' )
-	    .setValue( 1 )
+	    .setValue( '' )
 	    .onInput( function () {
 
 	        const value = this.getValue();
