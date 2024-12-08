@@ -1083,7 +1083,7 @@ function SidebarEffects( editor ) {
 
 	function update() {
 		
-		/*editor.selected.userData.effects = {
+		editor.selected.userData.effects = {
 			use: objectUse.getValue(),
 			drift: objectDrift.getValue() === 'on',
 			jump: objectJump.getValue() === 'on',
@@ -1130,7 +1130,7 @@ function SidebarEffects( editor ) {
 		};
 		editor.storage.set( editor.toJSON() );
 
-		editor.signals.savingFinished.dispatch();*/
+		editor.signals.savingFinished.dispatch();
 
 	}
 
