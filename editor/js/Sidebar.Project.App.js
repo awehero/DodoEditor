@@ -90,6 +90,51 @@ function SidebarProjectApp( editor ) {
 		getLinkOrMapfile( 'url' );
 
 	} );
+	let blanks = {
+	    use: [NaN, ""],
+	    drift: [NaN, false],
+	    jump: [NaN, false],
+	    jh: [NaN, ""],
+	    js: [NaN, ""],
+	    turn: [NaN, ""],
+	    speed: [NaN, ""],
+	    dx: [NaN, ""],
+	    dy: [NaN, ""],
+	    dz: [NaN, ""],
+	    sl: [NaN, false],
+	    sr: [NaN, ""],
+	    id: [NaN, ""],
+	    mx: [NaN, ""],
+	    my: [NaN, ""],
+	    mz: [NaN, ""],
+	    rx: [NaN, ""],
+	    ry: [NaN, ""],
+	    rz: [NaN, ""],
+	    gx: [NaN, ""],
+	    gy: [NaN, ""],
+	    gz: [NaN, ""],
+	    bou: [NaN, ""],
+	    mass: [NaN, ""],
+	    fr: [NaN, ""],
+	    air: [NaN, false],
+	    topr: [NaN, ""],
+	    k: [NaN, false],
+	    d: [NaN, ""],
+	    eye: [NaN, ""],
+	    fov: [NaN, ""],
+	    tx: [NaN, ""],
+	    ty: [NaN, ""],
+	    tz: [NaN, ""],
+	    cd: [NaN, ""],
+	    cr: [NaN, ""],
+	    msg: [NaN, ""],
+	    br: [NaN, ""],
+	    bg: [NaN, ""],
+	    amb: [NaN, ""],
+	    dif: [NaN, ""],
+	    spe: [NaN, ""],
+	    gro: [NaN, ""],
+	};
 	function getLinkOrMapfile( which ) {
 
 		var dataString = '';
@@ -139,10 +184,19 @@ function SidebarProjectApp( editor ) {
 					}
 
 				}
-
-				var objectNameStart = object.name.includes( '[' ) ? object.name : '_';
+				//var objectNameStart = object.name.includes( '[' ) ? object.name : '_';
+				var objectNameStart = "";
+				for (const effect in object.userData.effects) {
+					let value = (object.userData.effects[effect]);
+					if (value == blanks[effect][0] || value == blanks[effect][1]) return;
+					if (objectNameStart == "") {
+						objectNameStart = effect + "=" + value;
+					} else {
+				        	objectNameStart = "?" + effect + "=" + value;
+				    	}
+				}
 				let inputString = objectNameStart;
-				const replacements = [ //This whole section might not be needed in the future, keep for now
+				/*const replacements = [ //This whole section might not be needed in the future, keep for now
 				    { search: ',t=', replace: ',turn=' },
 				    { search: ', t=', replace: ', turn=' },
 				    { search: '\\[t=', replace: '[turn=' },
@@ -165,16 +219,12 @@ function SidebarProjectApp( editor ) {
 				    { search: ',', replace: '?' }
 				];
 				replacements.forEach( pair => {
-
 					inputString = inputString.replace( new RegExp( pair.search, 'g' ), pair.replace );
-
-				} );
-				if ( ! inputString.includes( 'm=' ) ) {
-
+				} );*/
+				if (!inputString.includes('m=') ) {
 					let matAdd = '';
-					console.log( object.name );
-					switch ( object.userData.CustomTexture[ 0 ] ) {
-
+					console.log(object.name);
+					switch (object.userData.CustomTexture[0]) {
 						case './images/textures/bright.png':
 				        		matAdd = 'm=0';
 				        		break;
@@ -185,30 +235,20 @@ function SidebarProjectApp( editor ) {
 							matAdd = 'm=2';
 							break;
 						case 'hex':
-							matAdd = 'm=' + object.userData.CustomTexture[ 1 ];
-							if ( object.userData.CustomTexture[ 2 ] != 1 ) {
-
-								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ];
-
+							matAdd = 'm=' + object.userData.CustomTexture[1];
+							if (object.userData.CustomTexture[2] != 1) {
+								matAdd = matAdd + '?' + object.userData.CustomTexture[2];
 							}
-
 							break;
 						default:
 							matAdd = 'm=0';
 							break;
-
 					}
-
 					if ( inputString == '_' ) {
-
 						inputString = matAdd;
-
 					} else {
-
 						inputString = inputString + '?' + matAdd;
-
 					}
-
 				}
 
 				var objectName = inputString;
