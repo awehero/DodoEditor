@@ -197,8 +197,8 @@ function SidebarProjectApp( editor ) {
 					}
 				}
 				let inputString = objectNameStart;
-				/*const replacements = [ //This whole section might not be needed in the future, keep for now
-				    { search: ',t=', replace: ',turn=' },
+				const replacements = [ //This whole section might not be needed in the future, keep for now
+				    /*{ search: ',t=', replace: ',turn=' },
 				    { search: ', t=', replace: ', turn=' },
 				    { search: '\\[t=', replace: '[turn=' },
 				    { search: ',s=', replace: ',speed=' },
@@ -216,12 +216,12 @@ function SidebarProjectApp( editor ) {
 				    { search: 'gro=#', replace: 'gro=' },
 				    { search: ' ', replace: '' },
 				    { search: '\\[', replace: '' },
-				    { search: '\\]', replace: '' },
-				    { search: ',', replace: '?' }
+				    { search: '\\]', replace: '' },*/
+				    { search: '=true', replace: '=on' }
 				];
 				replacements.forEach( pair => {
 					inputString = inputString.replace( new RegExp( pair.search, 'g' ), pair.replace );
-				} );*/
+				} );
 				if (!inputString.includes('m=') ) {
 					let matAdd = '';
 					console.log(object.name);
