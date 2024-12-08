@@ -358,7 +358,7 @@ function SidebarObject( editor ) {
 		// correspond
 		if ( selectedObject.geometry.type == 'ConeGeometry' && ( selectedValue === '4' || selectedValue === '5' || selectedValue === '3' ) ) {
 
-			const colors = [0xd52b2b, 0x41aed9];
+			const colors = [ 0xd52b2b, 0x41aed9 ];
 			let newMaterial;
 			const alphaValue = alphaInput.getValue();
 
@@ -1049,14 +1049,13 @@ function SidebarObject( editor ) {
 
 	// events
 
-	signals.objectSelected.add( function ( object ) {
+	signals.objectSelected.add( function ( objects ) {
 
-		if ( object !== null ) {
+		if ( objects.length > 0 ) {
 
 			container.setDisplay( 'block' );
-
-			updateRows( object );
-			updateUI( object );
+			updateRows( objects );
+			updateUI( objects );
 
 		} else {
 

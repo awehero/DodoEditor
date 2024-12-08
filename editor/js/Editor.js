@@ -531,7 +531,7 @@ Editor.prototype = {
 
 	//
 
-	select: function ( object ) {
+	select( object ) {
 
 		this.selector.select( object );
 
@@ -566,9 +566,9 @@ Editor.prototype = {
 
 	},
 
-	deselect: function () {
+	deselect(object = null) {
 
-		this.selector.deselect();
+		this.selector.deselect(object);
 
 	},
 

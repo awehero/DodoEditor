@@ -48,15 +48,20 @@ function Viewport( editor ) {
 
 	const grid = new THREE.Group();
 
-	const grid1 = new THREE.GridHelper( 30, 30 );
+	// 1:1 grid
+	const grid1 = new THREE.GridHelper( 200, 200 );
 	grid1.material.color.setHex( GRID_COLORS_LIGHT[ 0 ] );
 	grid1.material.vertexColors = false;
 	grid.add( grid1 );
 
-	const grid2 = new THREE.GridHelper( 50, 5 );
+	// 10:1 grid
+	const grid2 = new THREE.GridHelper( 200, 20 );
 	grid2.material.color.setHex( GRID_COLORS_LIGHT[ 1 ] );
 	grid2.material.vertexColors = false;
 	grid.add( grid2 );
+
+	// const axesHelper = new THREE.AxesHelper(5);
+	// scene.add(axesHelper);
 
 	const viewHelper = new ViewHelper( camera, container );
 

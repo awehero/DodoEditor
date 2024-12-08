@@ -53,7 +53,7 @@ function MenubarFile( editor ) {
 		}
 
 	} );
-	// options.add( option );
+	options.add( option );
 
 	//
 
@@ -64,7 +64,7 @@ function MenubarFile( editor ) {
 	const examples = [
 		// { title: 'menubar/file/new/Arkanoid', file: 'arkanoid.app.json' },
 		// { title: 'menubar/file/new/Camera', file: 'camera.app.json' },
-		{ title: 'menubar/file/new/Custom', file: 'defaultNewV1.json' },
+		// { title: 'menubar/file/new/Custom', file: 'defaultNewV1.json' },
 		// { title: 'menubar/file/new/Particles', file: 'particles.app.json' },
 		// { title: 'menubar/file/new/Pong', file: 'pong.app.json' },
 		// { title: 'menubar/file/new/Shaders', file: 'shaders.app.json' }
@@ -615,7 +615,7 @@ render_update: function() {}}`;
 		console.log( script );
 
 	} );
-	options.add( option );
+	// options.add( option );
 
 	//
 	function getAnimations( scene ) {
