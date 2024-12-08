@@ -1081,10 +1081,10 @@ function SidebarEffects( editor ) {
 	objectGroRow.add( objectGro );
 	container.add( objectGroRow );
 
+	globalThis.updateUIIsReady = false;
+
 	function update() {
-		if (editor.scene.children.length != 0) {
-			updateUI(editor.selected);
-		}
+		if (!updateUIIsReady) return;
 		if (editor.selected.uuid == lastObjectId) {
 			editor.selected.userData.effects = {
 				use: objectUse.getValue(),
