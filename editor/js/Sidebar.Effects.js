@@ -1085,6 +1085,7 @@ function SidebarEffects( editor ) {
 
 	function update() {
 		if (!updateUIIsReady) return;
+		updateUI(editor.selected);
 		if (editor.selected.uuid == lastObjectId) {
 			editor.selected.userData.effects = {
 				use: objectUse.getValue(),
