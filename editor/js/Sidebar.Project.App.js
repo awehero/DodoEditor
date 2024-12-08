@@ -116,7 +116,7 @@ function SidebarProjectApp( editor ) {
 	    bou: ['NaN', ""],
 	    mass: ['NaN', ""],
 	    fr: ['NaN', ""],
-	    air: ['NaN', 'true'],
+	    air: ['NaN', 'false'],
 	    topr: ['NaN', ""],
 	    k: ['NaN', 'false'],
 	    d: ['NaN', ""],
