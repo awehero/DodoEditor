@@ -1338,7 +1338,7 @@ function SidebarEffects( editor ) {
 		}
 
 		// editor.selected.userData.effects = effects;
-		update();
+		//update();
 
 	}
 
