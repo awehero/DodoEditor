@@ -188,12 +188,13 @@ function SidebarProjectApp( editor ) {
 				var objectNameStart = "";
 				for (const effect in object.userData.effects) {
 					let value = (object.userData.effects[effect]);
-					if (value == blanks[effect][0] || value == blanks[effect][1]) return;
-					if (objectNameStart == "") {
-						objectNameStart = effect + "=" + value;
-					} else {
-				        	objectNameStart = "?" + effect + "=" + value;
-				    	}
+					if (value != blanks[effect][0] && value != blanks[effect][1]) {
+						if (objectNameStart == "") {
+							objectNameStart = effect + "=" + value;
+						} else {
+					        	objectNameStart = "?" + effect + "=" + value;
+					    	}
+					}
 				}
 				let inputString = objectNameStart;
 				/*const replacements = [ //This whole section might not be needed in the future, keep for now
