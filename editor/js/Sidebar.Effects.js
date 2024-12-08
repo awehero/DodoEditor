@@ -315,7 +315,7 @@ function SidebarEffects( editor ) {
 	        const value = this.getValue();
 	        if ( ! /^\d?$/.test( value ) ) {
 
-	            this.setValue( value.slice( 0, 1 ) ); // 1 digit limit
+	            this.setValue( value.slice( 0, 3 ) ); // 3 digit limit
 
 			}
 
@@ -621,7 +621,7 @@ function SidebarEffects( editor ) {
 	    .setWidth( '150px' )
 	    .setFontSize( '12px' )
 	    .setId( 'fr' )
-	    .setValue( 1 )
+	    .setValue( '' )
 	    .onInput( function () {
 
 	        const value = this.getValue();
@@ -648,7 +648,7 @@ function SidebarEffects( editor ) {
 	    .setFontSize( '12px' )
 	    .setId( 'air' )
 	    .setOptions( { on: 'On', off: 'Off' } )
-	    .setValue( 'on' ) // Default value is "on"
+	    .setValue( 'off' ) // Default value is "on"
 	    .onChange( update );
 
 	objectAirRow.add(
@@ -664,7 +664,7 @@ function SidebarEffects( editor ) {
 	    .setWidth( '150px' )
 	    .setFontSize( '12px' )
 	    .setId( 'topr' )
-	    .setValue( 1 )
+	    .setValue( '' )
 	    .onInput( function () {
 
 	        const value = this.getValue();
@@ -1082,7 +1082,7 @@ function SidebarEffects( editor ) {
 	container.add( objectGroRow );
 
 	function update() {
-
+		
 		editor.selected.userData.effects = {
 			use: objectUse.getValue(),
 			drift: objectDrift.getValue() === 'on',
@@ -1332,16 +1332,42 @@ function SidebarEffects( editor ) {
 		}
 
 		// editor.selected.userData.effects = effects;
+		update();
 
 	}
 
-	function updateUI( object ) {
-
-		applySettings( object.geometry.type );
-
-		updateTransformRows( object );
-
+	function updateUI(object) {
+		applySettings(object.geometry.type);
+		
+		function addEffects() {
+		    for (let effect in effectsData) {
+		            let value = effectsData[effect];
+		            if (value.toString() == 'NaN') value = '';
+		            if (value.toString() == 'false') value = 'off';
+		            if (value.toString() == 'true') value = 'on';
+		            document.getElementById(effect).value = value;
+		    }
+		}
+		let objectMatch = -1;
+		for (let i = 0; i < editor.scene.children.length; i++) {
+		    if (editor.scene.children[i].uuid === editor.selected.uuid) {
+		            objectMatch = i;
+		    }
+		}
+		let request = indexedDB.open("threejs-editor", 1);
+		request.onsuccess = function() {
+		        let transaction = request.result.transaction("states")
+		        let store = transaction.objectStore("states")
+		        let qresult = store.getAll();
+		    qresult.onsuccess = function(event) {
+		        let states = event.target.result;
+		        globalThis.effectsData = states[0].scene.object.children[objectMatch].userData.effects;
+		        addEffects();
+		        };
+		    };
+		updateTransformRows(object);
 	}
+
 
 	// container.setContentHidden = function ( hidden ) {
 
