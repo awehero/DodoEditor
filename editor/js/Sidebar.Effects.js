@@ -621,7 +621,7 @@ function SidebarEffects( editor ) {
 	    .setWidth( '150px' )
 	    .setFontSize( '12px' )
 	    .setId( 'fr' )
-	    .setValue( 1 )
+	    .setValue( '' )
 	    .onInput( function () {
 
 	        const value = this.getValue();
