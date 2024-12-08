@@ -648,7 +648,7 @@ function SidebarEffects( editor ) {
 	    .setFontSize( '12px' )
 	    .setId( 'air' )
 	    .setOptions( { on: 'On', off: 'Off' } )
-	    .setValue( 'on' ) // Default value is "on"
+	    .setValue( 'off' ) // Default value is "on"
 	    .onChange( update );
 
 	objectAirRow.add(
