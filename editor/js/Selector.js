@@ -73,7 +73,9 @@ class Selector {
 	}
 
 	select( object ) {
-		globalThis.lastObjectId = object.uuid;
+		if (object.uuid != null) {
+			globalThis.lastObjectId = object.uuid;
+		}
 		if ( this.editor.selected === object ) return;
 
 		let uuid = null;
