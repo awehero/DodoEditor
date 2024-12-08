@@ -192,7 +192,7 @@ function SidebarProjectApp( editor ) {
 						if (objectNameStart == "") {
 							objectNameStart = effect + "=" + value;
 						} else {
-					        	objectNameStart = "?" + effect + "=" + value;
+					        	objectNameStart = objectNameStart + "?" + effect + "=" + value;
 					    	}
 					}
 				}
