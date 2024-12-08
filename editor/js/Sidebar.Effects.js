@@ -1083,7 +1083,7 @@ function SidebarEffects( editor ) {
 
 	function update() {
 
-		if (editor.selected.uuid != lastObjectId) {
+		if (editor.selected.uuid == lastObjectId) {
 			editor.selected.userData.effects = {
 				use: objectUse.getValue(),
 				drift: objectDrift.getValue() === 'on',
