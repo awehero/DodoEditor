@@ -1082,55 +1082,58 @@ function SidebarEffects( editor ) {
 	container.add( objectGroRow );
 
 	function update() {
-		
-		editor.selected.userData.effects = {
-			use: objectUse.getValue(),
-			drift: objectDrift.getValue() === 'on',
-			jump: objectJump.getValue() === 'on',
-			jh: parseFloat( objectJh.getValue() ),
-			js: parseFloat( objectJs.getValue() ),
-			turn: parseFloat( objectTurn.getValue() ),
-			speed: parseFloat( objectSpeed.getValue() ),
-			dx: parseFloat( objectDx.getValue() ),
-			dy: parseFloat( objectDy.getValue() ),
-			dz: parseFloat( objectDz.getValue() ),
-			sl: parseFloat( objectSl.getValue() ),
-			sr: parseFloat( objectSr.getValue() ),
-			id: objectId.getValue(),
-			mx: parseFloat( objectMx.getValue() ),
-			my: parseFloat( objectMy.getValue() ),
-			mz: parseFloat( objectMz.getValue() ),
-			rx: parseFloat( objectRx.getValue() ),
-			ry: parseFloat( objectRy.getValue() ),
-			rz: parseFloat( objectRz.getValue() ),
-			gx: parseFloat( objectGx.getValue() ),
-			gy: parseFloat( objectGy.getValue() ),
-			gz: parseFloat( objectGz.getValue() ),
-			bou: parseFloat( objectBou.getValue() ),
-			mass: parseFloat( objectMass.getValue() ),
-			fr: parseFloat( objectFr.getValue() ),
-			air: objectAir.getValue() === 'on',
-			topr: parseFloat( objectTopr.getValue() ),
-			k: objectK.getValue() === 'on',
-			d: parseFloat( objectD.getValue() ),
-			eye: parseFloat( objectEye.getValue() ),
-			fov: parseFloat( objectFov.getValue() ),
-			tx: parseFloat( objectTx.getValue() ),
-			ty: parseFloat( objectTy.getValue() ),
-			tz: parseFloat( objectTz.getValue() ),
-			cd: parseFloat( objectCd.getValue() ),
-			cr: parseFloat( objectCr.getValue() ),
-			msg: objectMsg.getValue(),
-			br: parseFloat( objectBr.getValue() ),
-			bg: objectBg.getValue(),
-			amb: objectAmb.getValue(),
-			dif: objectDif.getValue(),
-			spe: objectSpe.getValue(),
-			gro: objectGro.getValue(),
-		};
-		editor.storage.set( editor.toJSON() );
-
-		editor.signals.savingFinished.dispatch();
+		updateUI(editor.selected);
+		if (editor.selected.uuid == lastObjectId) {
+			editor.selected.userData.effects = {
+				use: objectUse.getValue(),
+				drift: objectDrift.getValue() === 'on',
+				jump: objectJump.getValue() === 'on',
+				jh: parseFloat( objectJh.getValue() ),
+				js: parseFloat( objectJs.getValue() ),
+				turn: parseFloat( objectTurn.getValue() ),
+				speed: parseFloat( objectSpeed.getValue() ),
+				dx: parseFloat( objectDx.getValue() ),
+				dy: parseFloat( objectDy.getValue() ),
+				dz: parseFloat( objectDz.getValue() ),
+				sl: parseFloat( objectSl.getValue() ),
+				sr: parseFloat( objectSr.getValue() ),
+				id: objectId.getValue(),
+				mx: parseFloat( objectMx.getValue() ),
+				my: parseFloat( objectMy.getValue() ),
+				mz: parseFloat( objectMz.getValue() ),
+				rx: parseFloat( objectRx.getValue() ),
+				ry: parseFloat( objectRy.getValue() ),
+				rz: parseFloat( objectRz.getValue() ),
+				gx: parseFloat( objectGx.getValue() ),
+				gy: parseFloat( objectGy.getValue() ),
+				gz: parseFloat( objectGz.getValue() ),
+				bou: parseFloat( objectBou.getValue() ),
+				mass: parseFloat( objectMass.getValue() ),
+				fr: parseFloat( objectFr.getValue() ),
+				air: objectAir.getValue() === 'on',
+				topr: parseFloat( objectTopr.getValue() ),
+				k: objectK.getValue() === 'on',
+				d: parseFloat( objectD.getValue() ),
+				eye: parseFloat( objectEye.getValue() ),
+				fov: parseFloat( objectFov.getValue() ),
+				tx: parseFloat( objectTx.getValue() ),
+				ty: parseFloat( objectTy.getValue() ),
+				tz: parseFloat( objectTz.getValue() ),
+				cd: parseFloat( objectCd.getValue() ),
+				cr: parseFloat( objectCr.getValue() ),
+				msg: objectMsg.getValue(),
+				br: parseFloat( objectBr.getValue() ),
+				bg: objectBg.getValue(),
+				amb: objectAmb.getValue(),
+				dif: objectDif.getValue(),
+				spe: objectSpe.getValue(),
+				gro: objectGro.getValue(),
+			};
+			editor.storage.set( editor.toJSON() );
+	
+			editor.signals.savingFinished.dispatch();
+		}
+		lastObjectId = editor.selected.uuid;
 
 	}
 
@@ -1332,7 +1335,7 @@ function SidebarEffects( editor ) {
 		}
 
 		// editor.selected.userData.effects = effects;
-		update();
+		//update();
 
 	}
 
