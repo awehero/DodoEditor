@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { zipSync, strToU8 } from 'three/addons/libs/fflate.module.js';
 
 import { UIButton, UICheckbox, UIPanel, UIInput, UIRow, UIText } from './libs/ui.js';
+import { AddObjectCommand } from './commands/AddObjectCommand.js';
+import { RemoveObjectCommand } from './commands/RemoveObjectCommand.js';
 
 function SidebarProjectApp( editor ) {
 
@@ -417,7 +419,7 @@ function SidebarProjectApp( editor ) {
 		if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
 		var deleteNumber = editor.scene.children.length;
 		for (let i = 0; i < deleteNumber; i++) {
-				editor.scene.remove(editor.scene.children[0]);
+			editor.execute(new RemoveObjectCommand(editor,editor.scene.children[0]));
 		}
 		input = input.replace(/msg=([\d:]+)/g, (match, p1) => {
 			let asciiValues = p1.split(':');
@@ -545,7 +547,7 @@ function SidebarProjectApp( editor ) {
 			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
 			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
 		if (object) {
-			editor.execute( new AddObjectCommand( editor, object ) );
+			editor.execute(new AddObjectCommand(editor,object));
 		}
 		});
 	});
