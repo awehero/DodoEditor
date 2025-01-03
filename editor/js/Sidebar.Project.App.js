@@ -415,18 +415,12 @@ function SidebarProjectApp( editor ) {
 	loadURLButton.onClick( function () {
 		let input = prompt("Paste your map link here:");
 		if (!input) return;
-		var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
-		if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
+		//var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
+		//if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
 		var deleteNumber = editor.scene.children.length;
 		for (let i = 0; i < deleteNumber; i++) {
 			editor.execute(new RemoveObjectCommand(editor,editor.scene.children[0]));
 		}
-		input = input.replace(/msg=([\d:]+)/g, (match, p1) => {
-			let asciiValues = p1.split(':');
-			let characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
-			let originalString = characters.join('');
-			return `msg=${originalString}`;
-		});
 		let dollarIndex = input.indexOf('$');
 		if (dollarIndex !== -1) {
 				let endIndex = dollarIndex - 1;
@@ -538,7 +532,13 @@ function SidebarProjectApp( editor ) {
 	                        mesh.scale.y = scaleZ / 100;
 	                        mesh.scale.y = scaleY / 100;
 			}
-	                mesh.name = effects;
+			effects = effects.replace(/msg=([\d:]+)/g, (match, p1) => {
+				let asciiValues = p1.split(':');
+				let characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
+				let originalString = characters.join('');
+				return `msg=${originalString}`;
+			});
+			mesh.name = effects;
 			return mesh;
 		}
 		objectDataArray.forEach(objData => {
