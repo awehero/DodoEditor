@@ -76,6 +76,7 @@ function MenubarAdd( editor ) {
 			const mesh = new THREE.Mesh( geometry, material );
 			mesh.name = 'Box';
 			mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
+			mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 
 			editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -116,6 +117,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'End';
 		mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -154,6 +156,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cylinder';
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -188,6 +191,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Sphere';
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -207,6 +211,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cone';
 		mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -231,6 +236,7 @@ function MenubarAdd( editor ) {
 		mesh.scale.x = 1000;
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -250,6 +256,7 @@ function MenubarAdd( editor ) {
 		mesh.name = 'Monkey';
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -272,6 +279,7 @@ function MenubarAdd( editor ) {
 		// mesh.geometry.type = "SpawnGeometry";
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": "","drift": false,"jump": true,"jh": null,"js": null,"turn": null,"speed": null,"dx": null,"dy": null,"dz": null,"sl": null,"sr": null,"id": null,"mx": null,"my": null,"mz": null,"rx": null,"ry": null,"rz": null,"gx": null,"gy": null,"gz": null,"bou": null,"mass": null,"fr": null,"air": true,"topr": null,"k": false,"d": null,"eye": null,"fov": null,"tx": null,"ty": null,"tz": null,"cd": null,"cr": null,"msg": "","br": null,"bg": "","amb": "","dif": "","spe": "","gro": ""};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
