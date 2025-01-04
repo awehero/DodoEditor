@@ -28,6 +28,8 @@ class AddObjectCommand extends Command {
 
 		this.editor.addObject( this.object );
 		this.editor.select( this.object );
+		editor.storage.set( editor.toJSON() );
+		editor.signals.savingFinished.dispatch();
 
 	}
 
