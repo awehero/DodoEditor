@@ -76,6 +76,7 @@ function MenubarAdd( editor ) {
 			const mesh = new THREE.Mesh( geometry, material );
 			mesh.name = 'Box';
 			mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
+			mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 
 			editor.execute( new AddObjectCommand( editor, mesh ) );
 
@@ -116,7 +117,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'End';
 		mesh.userData.CustomTexture = [ 'hex', '24fc03', 0.5 ];
-
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -154,7 +155,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cylinder';
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
-
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -188,7 +189,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Sphere';
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
-
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -207,7 +208,7 @@ function MenubarAdd( editor ) {
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Cone';
 		mesh.userData.CustomTexture = [ 'hex', 'D52B2B', 1.0 ];
-
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -231,6 +232,7 @@ function MenubarAdd( editor ) {
 		mesh.scale.x = 1000;
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -250,6 +252,7 @@ function MenubarAdd( editor ) {
 		mesh.name = 'Monkey';
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
@@ -272,6 +275,7 @@ function MenubarAdd( editor ) {
 		// mesh.geometry.type = "SpawnGeometry";
 
 		mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
+		mesh.userData.effects = {"use": NaN,"drift": false,"jump": false,"jh": NaN,"js": NaN,"turn": NaN,"speed": NaN,"dx": NaN,"dy": NaN,"dz": NaN,"sl": false,"sr": NaN,"id": NaN,"mx": NaN,"my": NaN,"mz": NaN,"rx": NaN,"ry": NaN,"rz": NaN,"gx": NaN,"gy": NaN,"gz": NaN,"bou": NaN,"mass": NaN,"fr": NaN,"air": false,"topr": NaN,"k": false,"d": NaN,"eye": NaN,"fov": NaN,"tx": NaN,"ty": NaN,"tz": NaN,"cd": NaN,"cr": NaN,"msg": NaN,"br": NaN,"bg": NaN,"amb": NaN,"dif": NaN,"spe": NaN,"gro": NaN};
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );

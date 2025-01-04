@@ -578,9 +578,9 @@ function SidebarEffects( editor ) {
 	            this.setValue( value.replace( /\D/g, '' ) ); // Allow only digits
 
 			}
-
+		update();
 		} )
-	    .onChange( update );
+	    //.onChange( update );
 
 	objectBouRow.add(
 	    new UIText( strings.getKey( 'sidebar/effects/bou' ) ).setClass( 'Label' )
