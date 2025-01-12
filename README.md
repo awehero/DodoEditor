@@ -1,5 +1,6 @@
 # DodoEditor
 A fork of threejs editor to make maps for ice dodo
+This took a long time to become useable
 
 works on mobile but Ice Dodo does not 
 
