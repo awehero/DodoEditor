@@ -279,7 +279,7 @@ function MenubarAdd( editor ) {
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
 	} );
-	options.add( option );
+	// options.add( option ); maybe one day
 
 	return container;
 

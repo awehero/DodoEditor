@@ -51,7 +51,7 @@ function SidebarProjectApp( editor ) {
 
 	// Play/Stop
 
-	let isPlaying = false;
+	const isPlaying = false;
 
 	const playButton = new UIButton( strings.getKey( 'sidebar/project/app/play' ) );
 	playButton.setWidth( '170px' );
@@ -92,50 +92,50 @@ function SidebarProjectApp( editor ) {
 		getLinkOrMapfile( 'url' );
 
 	} );
-	let blanks = {
-	    use: ['NaN', ""],
-	    drift: ['NaN', 'false'],
-	    jump: ['NaN', 'false'],
-	    jh: ['NaN', ""],
-	    js: ['NaN', ""],
-	    turn: ['NaN', ""],
-	    speed: ['NaN', ""],
-	    dx: ['NaN', ""],
-	    dy: ['NaN', ""],
-	    dz: ['NaN', ""],
-	    sl: ['NaN', 'false'],
-	    sr: ['NaN', ""],
-	    id: ['NaN', ""],
-	    mx: ['NaN', ""],
-	    my: ['NaN', ""],
-	    mz: ['NaN', ""],
-	    rx: ['NaN', ""],
-	    ry: ['NaN', ""],
-	    rz: ['NaN', ""],
-	    gx: ['NaN', ""],
-	    gy: ['NaN', ""],
-	    gz: ['NaN', ""],
-	    bou: ['NaN', ""],
-	    mass: ['NaN', ""],
-	    fr: ['NaN', ""],
-	    air: ['NaN', 'false'],
-	    topr: ['NaN', ""],
-	    k: ['NaN', 'false'],
-	    d: ['NaN', ""],
-	    eye: ['NaN', ""],
-	    fov: ['NaN', ""],
-	    tx: ['NaN', ""],
-	    ty: ['NaN', ""],
-	    tz: ['NaN', ""],
-	    cd: ['NaN', ""],
-	    cr: ['NaN', ""],
-	    msg: ['NaN', ""],
-	    br: ['NaN', ""],
-	    bg: ['NaN', ""],
-	    amb: ['NaN', ""],
-	    dif: ['NaN', ""],
-	    spe: ['NaN', ""],
-	    gro: ['NaN', ""],
+	const blanks = {
+	    use: [ 'NaN', '' ],
+	    drift: [ 'NaN', 'false' ],
+	    jump: [ 'NaN', 'false' ],
+	    jh: [ 'NaN', '' ],
+	    js: [ 'NaN', '' ],
+	    turn: [ 'NaN', '' ],
+	    speed: [ 'NaN', '' ],
+	    dx: [ 'NaN', '' ],
+	    dy: [ 'NaN', '' ],
+	    dz: [ 'NaN', '' ],
+	    sl: [ 'NaN', 'false' ],
+	    sr: [ 'NaN', '' ],
+	    id: [ 'NaN', '' ],
+	    mx: [ 'NaN', '' ],
+	    my: [ 'NaN', '' ],
+	    mz: [ 'NaN', '' ],
+	    rx: [ 'NaN', '' ],
+	    ry: [ 'NaN', '' ],
+	    rz: [ 'NaN', '' ],
+	    gx: [ 'NaN', '' ],
+	    gy: [ 'NaN', '' ],
+	    gz: [ 'NaN', '' ],
+	    bou: [ 'NaN', '' ],
+	    mass: [ 'NaN', '' ],
+	    fr: [ 'NaN', '' ],
+	    air: [ 'NaN', 'false' ],
+	    topr: [ 'NaN', '' ],
+	    k: [ 'NaN', 'false' ],
+	    d: [ 'NaN', '' ],
+	    eye: [ 'NaN', '' ],
+	    fov: [ 'NaN', '' ],
+	    tx: [ 'NaN', '' ],
+	    ty: [ 'NaN', '' ],
+	    tz: [ 'NaN', '' ],
+	    cd: [ 'NaN', '' ],
+	    cr: [ 'NaN', '' ],
+	    msg: [ 'NaN', '' ],
+	    br: [ 'NaN', '' ],
+	    bg: [ 'NaN', '' ],
+	    amb: [ 'NaN', '' ],
+	    dif: [ 'NaN', '' ],
+	    spe: [ 'NaN', '' ],
+	    gro: [ 'NaN', '' ],
 	};
 	function getLinkOrMapfile( which ) {
 
@@ -186,18 +186,28 @@ function SidebarProjectApp( editor ) {
 					}
 
 				}
+
 				//var objectNameStart = object.name.includes( '[' ) ? object.name : '_';
-				var objectNameStart = "";
-				for (const effect in object.userData.effects) {
-					let value = (object.userData.effects[effect]);
-					if (value.toString() != blanks[effect][0] && value.toString() != blanks[effect][1]) {
-						if (objectNameStart == "") {
-							objectNameStart = effect + "=" + value;
+				var objectNameStart = '';
+				for ( const effect in object.userData.effects ) {
+
+					const value = ( object.userData.effects[ effect ] );
+					if ( value.toString() != blanks[ effect ][ 0 ] && value.toString() != blanks[ effect ][ 1 ] ) {
+
+						if ( objectNameStart == '' ) {
+
+							objectNameStart = effect + '=' + value;
+
 						} else {
-					        	objectNameStart = objectNameStart + "?" + effect + "=" + value;
-					    	}
+
+					        	objectNameStart = objectNameStart + '?' + effect + '=' + value;
+
+						}
+
 					}
+
 				}
+
 				let inputString = objectNameStart;
 				const replacements = [ //This whole section might not be needed in the future, keep for now
 				    /*{ search: ',t=', replace: ',turn=' },
@@ -222,12 +232,16 @@ function SidebarProjectApp( editor ) {
 				    { search: '=true', replace: '=on' }
 				];
 				replacements.forEach( pair => {
+
 					inputString = inputString.replace( new RegExp( pair.search, 'g' ), pair.replace );
+
 				} );
-				if (!inputString.includes('m=') ) {
+				if ( ! inputString.includes( 'm=' ) ) {
+
 					let matAdd = '';
-					console.log(object.name);
-					switch (object.userData.CustomTexture[0]) {
+					console.log( object.name );
+					switch ( object.userData.CustomTexture[ 0 ] ) {
+
 						case './images/textures/bright.png':
 				        		matAdd = 'm=0';
 				        		break;
@@ -238,20 +252,30 @@ function SidebarProjectApp( editor ) {
 							matAdd = 'm=2';
 							break;
 						case 'hex':
-							matAdd = 'm=' + object.userData.CustomTexture[1];
-							if (object.userData.CustomTexture[2] != 1) {
-								matAdd = matAdd + '?' + object.userData.CustomTexture[2];
+							matAdd = 'm=' + object.userData.CustomTexture[ 1 ];
+							if ( object.userData.CustomTexture[ 2 ] != 1 ) {
+
+								matAdd = matAdd + '?' + object.userData.CustomTexture[ 2 ];
+
 							}
+
 							break;
 						default:
 							matAdd = 'm=0';
 							break;
+
 					}
+
 					if ( inputString == '_' ) {
+
 						inputString = matAdd;
+
 					} else {
+
 						inputString = inputString + '?' + matAdd;
+
 					}
+
 				}
 
 				var objectName = inputString;
@@ -404,7 +428,7 @@ function SidebarProjectApp( editor ) {
 
 	}
 
-	container.add( urlButton );
+	// container.add( urlButton );
 
 	// Load URL
 
@@ -413,42 +437,59 @@ function SidebarProjectApp( editor ) {
 	loadURLButton.setMarginLeft( '120px' );
 	loadURLButton.setMarginBottom( '10px' );
 	loadURLButton.onClick( function () {
-		let input = prompt("Paste your map link here:");
-		if (!input) return;
+
+		let input = prompt( 'Paste your map link here:' );
+		if ( ! input ) return;
 		//var warning = prompt("Are you sure you want to load a map? This will delete everything! (y/n)");
 		//if (warning == "" || (warning.toLowerCase() != 'y')) {return;}
 		var deleteNumber = editor.scene.children.length;
-		for (let i = 0; i < deleteNumber; i++) {
-			editor.execute(new RemoveObjectCommand(editor,editor.scene.children[0]));
+		for ( let i = 0; i < deleteNumber; i ++ ) {
+
+			editor.execute( new RemoveObjectCommand( editor, editor.scene.children[ 0 ] ) );
+
 		}
-		let dollarIndex = input.indexOf('$');
-		if (dollarIndex !== -1) {
-				let endIndex = dollarIndex - 1;
-				while (endIndex >= 0 && !/[A-G]/.test(input[endIndex])) {
-					endIndex--;
-				}
-				if (endIndex >= 0) {
-				input = input.substring(endIndex);
-				}
+
+		const dollarIndex = input.indexOf( '$' );
+		if ( dollarIndex !== - 1 ) {
+
+			let endIndex = dollarIndex - 1;
+			while ( endIndex >= 0 && ! /[A-G]/.test( input[ endIndex ] ) ) {
+
+				endIndex --;
+
+			}
+
+			if ( endIndex >= 0 ) {
+
+				input = input.substring( endIndex );
+
+			}
+
 		}
-		let index = input.indexOf('&');
-		if (index !== -1) {
-				input = input.substring(0, index);
+
+		const index = input.indexOf( '&' );
+		if ( index !== - 1 ) {
+
+			input = input.substring( 0, index );
+
 		}
-		let objectDataArray = input.split(/(?=[A-Z])/);
-		function loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects) {
+
+		const objectDataArray = input.split( /(?=[A-Z])/ );
+		function loadObject( type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects ) {
+
 			let geometry;
 			let loader;
 			let material;
 			let mesh;
-			switch (type) {
+			switch ( type ) {
+
 				case 'A':
 					geometry = new THREE.PlaneGeometry( 1, 1, 1, 1 );
 					material = new THREE.MeshStandardMaterial();
 					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Plane';
 					mesh.material.side = THREE.DoubleSide;
-					mesh.position.y = -20;
+					mesh.position.y = - 20;
 					mesh.rotation.x = 1.57079633;
 					mesh.scale.x = 1000;
 					break;
@@ -456,11 +497,13 @@ function SidebarProjectApp( editor ) {
 					geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
 					loader = new THREE.TextureLoader();
 					loader.load( 'images/textures/bright.png', function ( texture ) {
+
 						texture.colorSpace = THREE.SRGBColorSpace;
 						material = new THREE.MeshBasicMaterial( { map: texture } );
 						mesh = new THREE.Mesh( geometry, material );
 						mesh.name = 'Box';
 						mesh.userData.CustomTexture = [ 'images/textures/bright.png' ];
+
 					} );
 					break;
 				case 'C':
@@ -488,7 +531,7 @@ function SidebarProjectApp( editor ) {
 						opacity: 0.8,
 						transparent: true,
 					} );
-			
+
 					mesh = new THREE.Mesh( geometry, material );
 					mesh.name = 'Cylinder';
 					mesh.userData.CustomTexture = [ 'hex', '0000ff', 0.8 ];
@@ -511,46 +554,64 @@ function SidebarProjectApp( editor ) {
 					mesh.name = 'Monkey';
 					break;
 				default:
-                                        console.error('Unknown object type:', type);
+					console.error( 'Unknown object type:', type );
+
 			}
-			mesh.position.x = Math.round(posX * 1000) / 100000;
-	                mesh.position.y = Math.round(posZ * 1000) / 100000;
-	                mesh.position.z = Math.round(posY * 1000) / 100000;
-	                mesh.rotation.x = Math.round((rotX / 100) / (Math.PI / 180));
-	                mesh.rotation.y = Math.round((rotY / 100) / (Math.PI / 180));
-	                mesh.rotation.z = Math.round((rotZ / 100) / (Math.PI / 180));
-	                if (mesh.geometry.type == "OctahedronGeometry" || mesh.geometry.type == "ConeGeometry" || mesh.geometry.type == "CapsuleGeometry") {
+
+			mesh.position.x = Math.round( posX * 1000 ) / 100000;
+	                mesh.position.y = Math.round( posZ * 1000 ) / 100000;
+	                mesh.position.z = Math.round( posY * 1000 ) / 100000;
+	                mesh.rotation.x = Math.round( ( rotX / 100 ) / ( Math.PI / 180 ) );
+	                mesh.rotation.y = Math.round( ( rotY / 100 ) / ( Math.PI / 180 ) );
+	                mesh.rotation.z = Math.round( ( rotZ / 100 ) / ( Math.PI / 180 ) );
+	                if ( mesh.geometry.type == 'OctahedronGeometry' || mesh.geometry.type == 'ConeGeometry' || mesh.geometry.type == 'CapsuleGeometry' ) {
+
 	                	mesh.scale.x = 1;
 	                        mesh.scale.y = 1;
 	                        mesh.scale.z = 1;
-	                } else if (mesh.geometry.type == "PlaneGeometry") {
+
+			} else if ( mesh.geometry.type == 'PlaneGeometry' ) {
+
 	                        mesh.scale.x = scaleX / 100;
 	                        mesh.scale.y = scaleY / 100;
 	                        mesh.scale.y = scaleZ / 100;
-	                } else {
+
+			} else {
+
 				mesh.scale.x = scaleX / 100;
 	                        mesh.scale.y = scaleZ / 100;
 	                        mesh.scale.y = scaleY / 100;
+
 			}
-			effects = effects.replace(/msg=([\d:]+)/g, (match, p1) => {
-				let asciiValues = p1.split(':');
-				let characters = asciiValues.map(ascii => String.fromCharCode(parseInt(ascii, 10)));
-				let originalString = characters.join('');
+
+			effects = effects.replace( /msg=([\d:]+)/g, ( match, p1 ) => {
+
+				const asciiValues = p1.split( ':' );
+				const characters = asciiValues.map( ascii => String.fromCharCode( parseInt( ascii, 10 ) ) );
+				const originalString = characters.join( '' );
 				return `msg=${originalString}`;
-			});
+
+			} );
 			mesh.name = effects;
 			return mesh;
+
 		}
-		objectDataArray.forEach(objData => {
-			let type = objData.charAt(0);
-			let rest = objData.slice(1);
-			let [posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects] = rest.split("$");
-			let object = loadObject(type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects);
-		if (object) {
-			editor.execute(new AddObjectCommand(editor,object));
-		}
-		});
-	});
+
+		objectDataArray.forEach( objData => {
+
+			const type = objData.charAt( 0 );
+			const rest = objData.slice( 1 );
+			const [ posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects ] = rest.split( '$' );
+			const object = loadObject( type, posX, posY, posZ, rotX, rotY, rotZ, sizeX, sizeY, sizeZ, effects );
+			if ( object ) {
+
+				editor.execute( new AddObjectCommand( editor, object ) );
+
+			}
+
+		} );
+
+	} );
 
 	container.add( loadURLButton );
 
@@ -626,7 +687,7 @@ function SidebarProjectApp( editor ) {
 		} );
 
 	} );
-	container.add( publishButton );
+	// container.add( publishButton );
 
 	// Signals
 
