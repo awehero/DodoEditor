@@ -13,3 +13,6 @@ You can:
 2. change textures or make color tectures with opacity
 3. save maps for later
 4. add effects (soon)
+5. play maps under the project tab
+
+made by Guy and AweHero (https://github.com/awehero)
