@@ -1051,7 +1051,7 @@ function SidebarObject( editor ) {
 
 	signals.objectSelected.add( function ( objects ) {
 
-		if ( objects.length > 0 ) {
+		if ( objects !== null) {
 
 			container.setDisplay( 'block' );
 			updateRows( objects );
