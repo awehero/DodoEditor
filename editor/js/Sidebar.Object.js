@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput,
-	  UIColor, UISelect,
-	  UIText, UINumber, UICheckbox
+	  UIColor, UISelect, UICheckbox,
+	  UIText, UINumber
 	 } from './libs/ui.js';
 // import { UIBoolean } from './libs/ui.three.js';
 
