@@ -297,24 +297,28 @@ function SidebarObject( editor ) {
 		platformBoxDropdown.setDisplay( 'none' );
 		colorPickerRow.setDisplay( 'none' );
 		alphaRow.setDisplay( 'none' );
+		hideRow.setDisplay( 'none' );
 
 		if ( selectedObject.geometry.type == 'SphereGeometry' || selectedObject.geometry.type == 'CylinderGeometry' ) {
 
 			sphereCylinderDropdown.setDisplay( '' );
 			colorPickerRow.setDisplay( '' );
 			alphaRow.setDisplay( '' );
+			hideRow.setDisplay( '' );
 
 		} else if ( selectedObject.geometry.type == 'ConeGeometry' && selectedObject.name !== 'Spawn' ) {
 
 			coneDropdown.setDisplay( '' );
 			colorPickerRow.setDisplay( '' );
 			alphaRow.setDisplay( '' );
+			hideRow.setDisplay( '' );
 
 		} else if ( selectedObject.geometry.type == 'BoxGeometry' ) {
 
 			platformBoxDropdown.setDisplay( '' );
 			colorPickerRow.setDisplay( '' );
 			alphaRow.setDisplay( '' );
+			hideRow.setDisplay( '' );
 
 		}
 
