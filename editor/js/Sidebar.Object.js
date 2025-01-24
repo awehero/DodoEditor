@@ -268,6 +268,18 @@ function SidebarObject( editor ) {
 	container.add( colorPickerRow );
 	container.add( alphaRow );
 
+	// Hide in Editor
+	const hideRow = new UIRow().setDisplay( 'none' ).setId( 'hideRow' );
+	hideRow.add( new UIText( 'Hide Object in Editor' ).setClass( 'Label' ) );
+	const hideCheckbox = new UICheckbox( true )
+		    .setId( 'hideObject' )
+		    .onChange( function () {
+		        editor.selected.visible = this.getValue();
+		    } );
+	hideRow.add( hideInput );
+	
+	container.add( hideRow );
+
 	// change functions
 	let LastSelected = null;
 	function handleSelectionChange() {
