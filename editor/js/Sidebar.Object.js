@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput,
 	  UIColor, UISelect,
-	  UIText, UINumber
+	  UIText, UINumber, UICheckbox
 	 } from './libs/ui.js';
 // import { UIBoolean } from './libs/ui.three.js';
 
