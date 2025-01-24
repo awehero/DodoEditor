@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput,
-	  UIColor, UISelect, UICheckbox,
+	  UIColor, UISelect, UIButton,
 	  UIText, UINumber
 	 } from './libs/ui.js';
 // import { UIBoolean } from './libs/ui.three.js';
@@ -271,12 +271,14 @@ function SidebarObject( editor ) {
 	// Hide in Editor
 	const hideRow = new UIRow().setDisplay( 'none' ).setId( 'hideRow' );
 	hideRow.add( new UIText( 'Hide Object in Editor' ).setClass( 'Label' ) );
-	const hideCheckbox = new UICheckbox( true )
-		    .setId( 'hideObject' )
-		    .onChange( function () {
-		        editor.selected.visible = this.getValue();
-		    } );
-	hideRow.add( hideInput );
+	const hideButton = new UIButton( 'Toggle Visibility' )
+		.setId( 'toggleVisibility' )
+		.onClick( function () {
+			if ( editor.selected ) {
+		        	editor.selected.visible = !editor.selected.visible;
+		        }
+		} );
+	hideRow.add( hideButton );
 	
 	container.add( hideRow );
 
